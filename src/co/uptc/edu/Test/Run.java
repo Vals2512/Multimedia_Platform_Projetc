@@ -3,9 +3,7 @@ package co.uptc.edu.Test;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import co.uptc.edu.control.AdminControl;
-import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.UsuarioControl;
-import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.Multimedia;
 import co.uptc.edu.model.Usuario;
 
@@ -13,7 +11,6 @@ public class Run {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         UsuarioControl usuarioControl = new UsuarioControl();
-        MoviesControl mc = new MoviesControl();
         String email = "";
         String password = "";
 
@@ -52,12 +49,9 @@ public class Run {
                                 System.out.println("Bienvenido administrador");
                                 System.out.println("1. Buscar usuario registrado");
                                 System.out.println("2. Eliminar usuario registrado");
-                                System.out.println("3. Buscar pelicula");
-                                System.out.println("4. Añadir pelicula");
-                                System.out.println("5. Salir");
+                                System.out.println("3. Salir");
                                 try {
                                     opc1 = sc.nextInt();
-                                    sc.nextLine();
                                 } catch (InputMismatchException e) {
                                     System.out.println("Por favor, ingrese una opción válida");
                                     sc.next(); // descarta la entrada incorrecta
@@ -86,33 +80,6 @@ public class Run {
                                         }
                                         break;
                                     case 3:
-                                        System.out.println("Ingrese el título de la película que desea buscar: ");
-                                        String tittle = sc.next();
-                                        Multimedia movie = mc.getMovieTittle(tittle);
-                                        if (movie != null) {
-                                            System.out.println(movie.toString());
-                                        } else {
-                                            System.out.println("Película no encontrada");
-                                        }
-                                    break;
-                                    case 4:
-                                        System.out.println("Ingrese el título de la película que desea añadir: ");
-                                        tittle = sc.nextLine();
-                                        System.out.println("Ingrese la categoría de la película que desea añadir: ");
-                                        String category = sc.nextLine();
-                                        System.out.println("Ingrese los detalles de la película que desea añadir: ");
-                                        String details = sc.nextLine();
-                                        System.out.println("Ingrese el año de lanzamiento de la película que desea añadir: ");
-                                        int releaseYear = sc.nextInt();
-                                        System.out.println("Ingrese la duración de la película que desea añadir: ");
-                                        int duration = sc.nextInt();
-                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
-                                            System.out.println("Película añadida exitosamente");
-                                        } else {
-                                            System.out.println("Error al añadir la película");
-                                        }
-                                    break;
-                                    case 5:
                                         System.out.println("Saliendo.");
                                         leave = true;
                                         break;
@@ -120,7 +87,7 @@ public class Run {
                                         System.out.println("Ingrese una opción válida.");
                                         break;
                                 }
-                            } while (!leave && opc1 != 5);
+                            } while (!leave && opc1 != 3);
                         } else {
                             tries++;
                             System.out.println("Error al iniciar sesión. Intento " + tries + " de 3");
