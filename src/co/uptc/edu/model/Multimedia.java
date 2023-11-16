@@ -10,6 +10,9 @@ public class Multimedia {
     private int releaseYear;
     Timer timer = new Timer();
 
+    public Multimedia() {
+    }
+
     public Multimedia(String tittle, String category, char details, int releaseYear) {
         this.tittle = tittle;
         this.category = category;
@@ -49,7 +52,16 @@ public class Multimedia {
         this.releaseYear = releaseYear;
     }
 
-    public void play() {
+    public void play(int duration) {
+        try {
+
+            System.out.println("playing");// agregar segundos
+            Thread.sleep(duration);
+
+            // Así, se da la impresión de que se ejecuta cada cierto tiempo
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void stopPlay() {
