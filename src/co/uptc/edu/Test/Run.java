@@ -1,7 +1,6 @@
 package co.uptc.edu.Test;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import co.uptc.edu.control.AdminControl;
 import co.uptc.edu.control.UsuarioControl;
 import co.uptc.edu.model.Usuario;
 
@@ -38,7 +37,7 @@ public class Run {
                 String adminEmail = sc.next();
                 System.out.print("Ingrese su contraseña: ");
                 String adminPassword = sc.next();
-                AdminControl adc = new AdminControl();
+                
                 if (adc.loginAdmin(adminEmail, adminPassword)) {
                     System.out.println("Inicio de sesión exitoso");
                     tries=0;
@@ -120,7 +119,7 @@ public class Run {
                     }
                 } while (!password.equals(passwordConfirmation));
 
-                if (usuarioControl.addUser(new Usuario(email, password), passwordConfirmation)) { //Se añade al arraylist de usuarios validando que los datos coincidan
+                if (usuarioControl.addUser(, passwordConfirmation)) { //Se añade al arraylist de usuarios validando que los datos coincidan
                     System.out.println("Usuario registrado exitosamente");
                 } else {
                     System.out.println("Error al registrar el usuario");
