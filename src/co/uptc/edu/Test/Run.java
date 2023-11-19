@@ -3,8 +3,9 @@ package co.uptc.edu.Test;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import co.uptc.edu.control.AdminControl;
-import co.uptc.edu.control.MultimediaControl;
+import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.UsuarioControl;
+import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.Multimedia;
 import co.uptc.edu.model.Usuario;
 
@@ -12,7 +13,7 @@ public class Run {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         UsuarioControl usuarioControl = new UsuarioControl();
-        MultimediaControl mc = new MultimediaControl();
+        MoviesControl mc = new MoviesControl();
         String email = "";
         String password = "";
 
@@ -105,7 +106,7 @@ public class Run {
                                         int releaseYear = sc.nextInt();
                                         System.out.println("Ingrese la duración de la película que desea añadir: ");
                                         int duration = sc.nextInt();
-                                        if (mc.addMovie(new Multimedia(tittle, category, details, releaseYear, duration))) {
+                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
                                             System.out.println("Película añadida exitosamente");
                                         } else {
                                             System.out.println("Error al añadir la película");

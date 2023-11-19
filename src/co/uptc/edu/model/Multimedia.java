@@ -8,19 +8,17 @@ public class Multimedia {
     private String category;
     private String details;
     private int releaseYear;
-    private int duration;
 
     Timer timer = new Timer();
 
     public Multimedia() {
     }
 
-    public Multimedia(String tittle, String category, String details, int releaseYear, int duration) {
+    public Multimedia(String tittle, String category, String details, int releaseYear) {
         this.tittle = tittle;
         this.category = category;
         this.details = details;
         this.releaseYear = releaseYear;
-        this.duration = duration;
     }
 
     public String getTittle() {
@@ -56,34 +54,10 @@ public class Multimedia {
     }
 
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void play(int duration) {
-        try {
-
-            System.out.println("playing");// agregar segundos
-            Thread.sleep(duration);
-
-            // Así, se da la impresión de que se ejecuta cada cierto tiempo
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void stopPlay() {
-
-    }
-
     @Override
     public String toString() {
-        return "Multimedia: Titulo=" + tittle + ", categoria=" + category + ", detalles=" + details + ", año de lanzamiento="
-                + releaseYear + ", duracion=" + duration +"mins.";
+        return "Titulo: " + tittle + ", categoria: " + category + ", detalles: " + details + ", año de lanzamiento: "
+                + releaseYear;
     }
 
 }
