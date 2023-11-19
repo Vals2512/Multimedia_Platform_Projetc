@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import co.uptc.edu.model.Usuario;
 
-public class UsuarioControl {
+public class UsuarioDao {
     private List<Usuario> usuarios;
 
-    public UsuarioControl(){
+    public UsuarioDao(){
         usuarios = new ArrayList<>();
     }
     
