@@ -3,6 +3,7 @@ package co.uptc.edu.Test;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import co.uptc.edu.control.AdminControl;
+import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.UsuarioControl;
 import co.uptc.edu.model.Multimedia;
 import co.uptc.edu.model.Usuario;
@@ -15,6 +16,7 @@ public class Run {
         String password = "";
 
         int opc = 0;
+
         do {
             System.out.println("Bienvenido a la plataforma multimedia.");
             System.out.println("Seleccione una opción: ");
