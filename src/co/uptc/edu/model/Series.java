@@ -43,5 +43,4 @@ public class Series extends Multimedia {
         return "Series [seasons=" + seasons + ", chapterDuration=" + chapterDuration + "]";
     }
 
-
 }
