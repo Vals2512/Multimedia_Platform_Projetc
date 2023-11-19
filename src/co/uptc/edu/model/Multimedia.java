@@ -52,22 +52,6 @@ public class Multimedia {
         this.releaseYear = releaseYear;
     }
 
-    public void play(int duration) {
-        try {
-
-            System.out.println("playing");// agregar segundos
-            Thread.sleep(duration);
-
-            // Así, se da la impresión de que se ejecuta cada cierto tiempo
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void stopPlay() {
-
-    }
-
     @Override
     public String toString() {
         return "Multimedia [tittle=" + tittle + ", category=" + category + ", details=" + details + ", releaseYear="

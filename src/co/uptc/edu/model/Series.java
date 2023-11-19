@@ -6,7 +6,8 @@ public class Series extends Multimedia {
     private float chapterDuration;
     private String chapterTittle;
 
-    public Series(String tittle, String category, String details, int releaseYear, int seasons, float chapterDuration, String chapterTittle) {
+    public Series(String tittle, String category, char details, int releaseYear, int seasons, float chapterDuration,
+            String chapterTittle) {
         super(tittle, category, details, releaseYear);
         this.seasons = seasons;
         this.chapterDuration = chapterDuration;
@@ -29,19 +30,9 @@ public class Series extends Multimedia {
         this.chapterDuration = chapterDuration;
     }
 
-    public String getChapterTittle() {
-        return chapterTittle;
-    }
-
-    public void setChapterTittle(String chapterTittle) {
-        this.chapterTittle = chapterTittle;
-    }
-    
-
     @Override
     public String toString() {
         return "Series [seasons=" + seasons + ", chapterDuration=" + chapterDuration + "]";
     }
-
 
 }
