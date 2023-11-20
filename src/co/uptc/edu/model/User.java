@@ -1,16 +1,29 @@
 package co.uptc.edu.model;
-    
-public class Usuario {
+
+import java.util.ArrayList;
+
+import co.uptc.edu.model.multimediaModel.Playlist;
+
+public class User {
     private String email,password,id,firstName,lastName,role;
+    private ArrayList<Playlist> playlists;
     
     
-    public Usuario(String email, String password, String id, String firstName, String lastName,String role) {
+   
+    public User(String email, String password, String id, String firstName, String lastName,String role) {
+        this.playlists=new ArrayList<>();
         this.role=role;
         this.email = email;
         this.password = password;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    } 
+        public void setPlaylists(ArrayList<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+    public ArrayList<Playlist> getPlaylists() {
+        return playlists;
     }
     public String getRole() {
         return role;
