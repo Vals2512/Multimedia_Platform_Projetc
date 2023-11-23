@@ -56,10 +56,9 @@ public class Run {
                                 System.out.println("Bienvenido administrador");
                                 System.out.println("1. Buscar usuario registrado");
                                 System.out.println("2. Eliminar usuario registrado");
-                                System.out.println("3. Buscar pelicula");
-                                System.out.println("4. Añadir pelicula");
-                                System.out.println("5. Añadir serie");
-                                System.out.println("6. Salir");
+                                System.out.println("3. Añadir pelicula");
+                                System.out.println("4. Añadir serie");
+                                System.out.println("5. Salir");
                                 try {
                                     opc1 = sc.nextInt();
                                     sc.nextLine();
@@ -90,19 +89,10 @@ public class Run {
                                             System.out.println("Error al eliminar el usuario");
                                         }
                                         break;
+
                                     case 3:
-                                        System.out.println("Ingrese el título de la película que desea buscar: ");
-                                        String tittle = sc.nextLine();
-                                        Multimedia movie = mc.getMovieTittle(tittle);
-                                        if (movie != null) {
-                                            System.out.println(movie.toString());
-                                        } else {
-                                            System.out.println("Película no encontrada");
-                                        }
-                                    break;
-                                    case 4:
                                         System.out.println("Ingrese el título de la película que desea añadir: ");
-                                        tittle = sc.nextLine();
+                                        String tittle = sc.nextLine();
                                         System.out.println("Ingrese la categoría de la película que desea añadir: ");
                                         String category = sc.nextLine();
                                         System.out.println("Ingrese los detalles de la película que desea añadir: ");
@@ -117,7 +107,7 @@ public class Run {
                                             System.out.println("Error al añadir la película");
                                         }
                                     break;
-                                    case 5:
+                                    case 4:
                                         System.out.println("Ingrese el título de la serie que desea añadir: ");
                                         tittle = sc.nextLine();
                                         System.out.println("Ingrese la categoría de la serie que desea añadir: ");
@@ -153,7 +143,7 @@ public class Run {
                                         }
                                     break;
 
-                                    case 6:
+                                    case 5:
                                         System.out.println("Saliendo.");
                                         leave = true;
                                         break;
@@ -161,7 +151,7 @@ public class Run {
                                         System.out.println("Ingrese una opción válida.");
                                         break;
                                 }
-                            } while (!leave && opc1 != 6);
+                            } while (!leave && opc1 != 5);
                         } else {
                             tries++;
                             System.out.println("Error al iniciar sesión. Intento " + tries + " de 3");
@@ -224,8 +214,37 @@ public class Run {
 
                         if (usuarioControl.login(email, password)) {
                             System.out.println("Inicio de sesión exitoso");
-
-
+                            int opc2=0;
+                            do {
+                                System.out.println("Bienvenido Usuario");
+                                System.out.println("1. Buscar Pelicula");
+                                System.out.println("2. Volver");
+                                try {
+                                    opc2=sc.nextInt();
+                                    sc.nextLine();
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Por favor, ingrese una opción válida");
+                                    sc.next(); // descarta la entrada incorrecta
+                                    continue;
+                                }
+                                switch (opc2) {
+                                    case 1:
+                                        System.out.println("Ingrese el título de la película que desea buscar: ");
+                                        String tittle = sc.nextLine();
+                                        Multimedia movie = mc.getMovieTittle(tittle);
+                                        if (movie != null) {
+                                            System.out.println(movie.toString());
+                                        } else {
+                                            System.out.println("Película no encontrada");
+                                        }
+                                    break;
+                                
+                                    default:
+                                    System.out.println("Seleccione una opci+on válida");
+                                    break;
+                                }
+                                
+                            } while (opc2!=2);
 
 
 
