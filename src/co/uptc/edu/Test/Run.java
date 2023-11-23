@@ -4,19 +4,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import co.uptc.edu.control.AdminControl;
 import co.uptc.edu.control.MoviesControl;
+import co.uptc.edu.control.SeriesControl;
 import co.uptc.edu.control.UsuarioControl;
+import co.uptc.edu.model.Capitulo;
+import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.Multimedia;
+import co.uptc.edu.model.Series;
 import co.uptc.edu.model.Usuario;
 
 public class Run {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         UsuarioControl usuarioControl = new UsuarioControl();
+        MoviesControl mc = new MoviesControl();
+        SeriesControl src = new SeriesControl();
         String email = "";
         String password = "";
 
         int opc = 0;
-
         do {
             System.out.println("Bienvenido a la plataforma multimedia.");
             System.out.println("Seleccione una opción: ");
@@ -51,9 +56,13 @@ public class Run {
                                 System.out.println("Bienvenido administrador");
                                 System.out.println("1. Buscar usuario registrado");
                                 System.out.println("2. Eliminar usuario registrado");
-                                System.out.println("3. Salir");
+                                System.out.println("3. Buscar pelicula");
+                                System.out.println("4. Añadir pelicula");
+                                System.out.println("5. Añadir serie");
+                                System.out.println("6. Salir");
                                 try {
                                     opc1 = sc.nextInt();
+                                    sc.nextLine();
                                 } catch (InputMismatchException e) {
                                     System.out.println("Por favor, ingrese una opción válida");
                                     sc.next(); // descarta la entrada incorrecta
@@ -82,6 +91,69 @@ public class Run {
                                         }
                                         break;
                                     case 3:
+                                        System.out.println("Ingrese el título de la película que desea buscar: ");
+                                        String tittle = sc.nextLine();
+                                        Multimedia movie = mc.getMovieTittle(tittle);
+                                        if (movie != null) {
+                                            System.out.println(movie.toString());
+                                        } else {
+                                            System.out.println("Película no encontrada");
+                                        }
+                                    break;
+                                    case 4:
+                                        System.out.println("Ingrese el título de la película que desea añadir: ");
+                                        tittle = sc.nextLine();
+                                        System.out.println("Ingrese la categoría de la película que desea añadir: ");
+                                        String category = sc.nextLine();
+                                        System.out.println("Ingrese los detalles de la película que desea añadir: ");
+                                        String details = sc.nextLine();
+                                        System.out.println("Ingrese el año de lanzamiento de la película que desea añadir: ");
+                                        int releaseYear = sc.nextInt();
+                                        System.out.println("Ingrese la duración de la película que desea añadir (en minutos): ");
+                                        int duration = sc.nextInt();
+                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
+                                            System.out.println("Película añadida exitosamente");
+                                        } else {
+                                            System.out.println("Error al añadir la película");
+                                        }
+                                    break;
+                                    case 5:
+                                        System.out.println("Ingrese el título de la serie que desea añadir: ");
+                                        tittle = sc.nextLine();
+                                        System.out.println("Ingrese la categoría de la serie que desea añadir: ");
+                                        category = sc.nextLine();
+                                        System.out.println("Ingrese los detalles de la serie que desea añadir: ");
+                                        details = sc.nextLine();
+                                        System.out.println("Ingrese el año de lanzamiento de la serie que desea añadir: ");
+                                        releaseYear = sc.nextInt();
+                                        System.out.println("Ingrese la cantidad de temporadas de la serie que desea añadir: ");
+                                        int seasons = sc.nextInt();
+
+                                        Series newSerie = new Series(tittle, category, details, releaseYear, seasons);
+                                        System.out.println("Ingrese la cantidad de capítulos:");
+                                        int cantidadCapitulos = sc.nextInt();
+                                        sc.nextLine();  // Consumir la nueva línea
+
+                                        for (int i = 1; i <= cantidadCapitulos; i++) {
+                                            System.out.println("Ingrese el nombre del capítulo " + i + ":");
+                                            String nombreCapitulo = sc.nextLine();
+
+                                            System.out.println("Ingrese la duración del capítulo " + i + " (en minutos):");
+                                            int duracionCapitulo = sc.nextInt();
+                                            sc.nextLine();  // Consumir la nueva línea
+
+                                            Capitulo capitulo = new Capitulo(nombreCapitulo, duracionCapitulo);
+                                            newSerie.agregarCapitulo(capitulo);
+                                        }
+
+                                        if (src.addSerie(newSerie)) {  // Aquí está la corrección
+                                            System.out.println("Serie añadida exitosamente");
+                                        } else {
+                                            System.out.println("Error al añadir la serie");
+                                        }
+                                    break;
+
+                                    case 6:
                                         System.out.println("Saliendo.");
                                         leave = true;
                                         break;
@@ -89,7 +161,7 @@ public class Run {
                                         System.out.println("Ingrese una opción válida.");
                                         break;
                                 }
-                            } while (!leave && opc1 != 3);
+                            } while (!leave && opc1 != 6);
                         } else {
                             tries++;
                             System.out.println("Error al iniciar sesión. Intento " + tries + " de 3");
@@ -152,6 +224,11 @@ public class Run {
 
                         if (usuarioControl.login(email, password)) {
                             System.out.println("Inicio de sesión exitoso");
+
+
+
+
+
                             break;
                         } else {
                             System.out.println("Error al iniciar sesión");
