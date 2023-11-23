@@ -1,16 +1,31 @@
 package co.uptc.edu.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Series extends Multimedia {
 
     private int seasons;
-    private float chapterDuration;
-    private String chapterTittle;
+    private Multimedia multimedia;
+    private List<Capitulo> capitulos;
+    private String nombreCapitulo;
+    private int duracionCapitulo;
+    private Capitulo chap;
 
-    public Series(String tittle, String category, String details, int releaseYear, int seasons, float chapterDuration, String chapterTittle) {
+
+    public Series(String tittle, String category, String details, int releaseYear, int seasons) {
         super(tittle, category, details, releaseYear);
         this.seasons = seasons;
-        this.chapterDuration = chapterDuration;
-        this.chapterTittle = chapterTittle;
+        multimedia = new Multimedia(tittle, category, details, releaseYear);
+        this.capitulos= new ArrayList<>();
+    }
+
+    public Series(String nombreCapitulo, int duracionCapitulo) {
+        this.nombreCapitulo = nombreCapitulo;
+        this.duracionCapitulo = duracionCapitulo;
+        chap = new Capitulo(nombreCapitulo, duracionCapitulo);
+
+
     }
 
     public int getSeasons() {
@@ -21,26 +36,14 @@ public class Series extends Multimedia {
         this.seasons = seasons;
     }
 
-    public float getChapterDuration() {
-        return chapterDuration;
+    public void agregarCapitulo(Capitulo capitulo) {
+        this.capitulos.add(capitulo);
     }
 
-    public void setChapterDuration(float chapterDuration) {
-        this.chapterDuration = chapterDuration;
-    }
-
-    public String getChapterTittle() {
-        return chapterTittle;
-    }
-
-    public void setChapterTittle(String chapterTittle) {
-        this.chapterTittle = chapterTittle;
-    }
-    
 
     @Override
     public String toString() {
-        return "Series [seasons=" + seasons + ", chapterDuration=" + chapterDuration + "]";
+        return "Serie: " + multimedia + " temporadas: " + seasons + chap ;
     }
 
 }

@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.Multimedia;
 import co.uptc.edu.model.MultimediaAction;
 
 public class MoviesControl extends MultimediaAction {
-    private List<Multimedia> movies;
+    private List<Movies> movies;
     int duration = 0;
 
     public MoviesControl(){
@@ -24,7 +23,7 @@ public class MoviesControl extends MultimediaAction {
         return -1;
     }
 
-    public Multimedia getMovieTittle(String tittle){
+    public Movies getMovieTittle(String tittle){
         int movieIndex = searchMovie(tittle);
         if (movieIndex != -1) {
             return movies.get(movieIndex);
@@ -32,7 +31,7 @@ public class MoviesControl extends MultimediaAction {
         return null;
     }
 
-    public boolean addMovie(Multimedia tittle){
+    public boolean addMovie(Movies tittle){
         if (searchMovie(tittle.getTittle()) == -1) {
             movies.add(tittle);
             return true;
@@ -40,12 +39,6 @@ public class MoviesControl extends MultimediaAction {
         return false;
     }
 
-    public List<Multimedia> getMovies() {
-        return movies;
-    }
-    public void setMovies(List<Multimedia> movies) {
-        this.movies = movies;
-    }
 
 
 
