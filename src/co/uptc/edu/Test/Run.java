@@ -48,7 +48,7 @@ public class Run {
                         System.out.print("Ingrese su contraseña: ");
                         String adminPassword = sc.next();
                         AdminControl adc = new AdminControl();
-                        if (adc.loginAdmin(adminEmail, adminPassword)) {
+                        if (adc.loginAdminBackup(adminEmail, adminPassword)) {
                             System.out.println("Inicio de sesión exitoso");
                             tries = 0;
                             int opc1 = 0;
@@ -218,7 +218,8 @@ public class Run {
                             do {
                                 System.out.println("Bienvenido Usuario");
                                 System.out.println("1. Buscar Pelicula");
-                                System.out.println("2. Volver");
+                                System.out.println("2. Mostrar Peliculas Disponibles");
+                                System.out.println("3. Volver");
                                 try {
                                     opc2=sc.nextInt();
                                     sc.nextLine();
@@ -229,6 +230,7 @@ public class Run {
                                 }
                                 switch (opc2) {
                                     case 1:
+
                                         System.out.println("Ingrese el título de la película que desea buscar: ");
                                         String tittle = sc.nextLine();
                                         Multimedia movie = mc.getMovieTittle(tittle);
@@ -238,13 +240,15 @@ public class Run {
                                             System.out.println("Película no encontrada");
                                         }
                                     break;
-                                
+                                    case 2:
+
+                                        break;
                                     default:
                                     System.out.println("Seleccione una opci+on válida");
                                     break;
                                 }
                                 
-                            } while (opc2!=2);
+                            } while (opc2!=3);
 
 
 

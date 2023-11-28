@@ -38,7 +38,9 @@ public class MoviesControl extends MultimediaAction {
         }
         return false;
     }
-
+    public String showAllMovies(){
+        return movies.toString();
+    }
 
 
 

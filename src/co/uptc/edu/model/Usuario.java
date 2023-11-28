@@ -1,11 +1,22 @@
 package co.uptc.edu.model;
-    
+
+import java.util.ArrayList;
+
 public class Usuario {
     private String email;
-    private String password;
 
+    public Usuario() {
+    }
+
+    private String password;
+    private ArrayList<Playlist> playlists;
+
+    public ArrayList<Playlist> getPlaylists() {
+        return playlists;
+    }
 
     public Usuario(String email, String password) {
+        playlists=new ArrayList<>();
         this.email = email;
         this.password = password;
     }
