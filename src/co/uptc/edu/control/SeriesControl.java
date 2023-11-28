@@ -38,7 +38,9 @@ public class SeriesControl extends MultimediaAction {
         }
         return false;
     }
-
+    public String showSeries(){
+        return series.toString();
+    }
 
 
 

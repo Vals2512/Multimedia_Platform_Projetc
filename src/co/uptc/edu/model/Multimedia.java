@@ -6,14 +6,15 @@ public class Multimedia {
 
     private String tittle;
     private String category;
-    private char details;
+    private String details;
     private int releaseYear;
-    Timer timer = new Timer();
+
+
 
     public Multimedia() {
     }
 
-    public Multimedia(String tittle, String category, char details, int releaseYear) {
+    public Multimedia(String tittle, String category, String details, int releaseYear) {
         this.tittle = tittle;
         this.category = category;
         this.details = details;
@@ -36,11 +37,11 @@ public class Multimedia {
         this.category = category;
     }
 
-    public char getDetails() {
+    public String getDetails() {
         return details;
     }
 
-    public void setDetails(char details) {
+    public void setDetails(String details) {
         this.details = details;
     }
 
@@ -52,10 +53,11 @@ public class Multimedia {
         this.releaseYear = releaseYear;
     }
 
+
     @Override
     public String toString() {
-        return "Multimedia [tittle=" + tittle + ", category=" + category + ", details=" + details + ", releaseYear="
-                + releaseYear + "]";
+        return "Titulo: " + tittle + ", categoria: " + category + ", detalles: " + details + ", año de lanzamiento: "
+                + releaseYear;
     }
 
 }
