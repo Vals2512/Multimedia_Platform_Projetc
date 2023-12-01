@@ -7,7 +7,7 @@ import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.MultimediaAction;
 
 public class MoviesControl extends MultimediaAction {
-    private List<Movies> movies;
+    private ArrayList<Movies> movies;
     int duration = 0;
 
     public MoviesControl(){

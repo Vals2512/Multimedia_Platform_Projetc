@@ -5,7 +5,7 @@ import java.util.List;
 import co.uptc.edu.model.Usuario;
 
 public class UsuarioControl {
-    private List<Usuario> usuarios;
+    private ArrayList<Usuario> usuarios;
 
     public UsuarioControl(){
         usuarios = new ArrayList<>();

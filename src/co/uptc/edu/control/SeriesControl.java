@@ -7,7 +7,7 @@ import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
 public class SeriesControl extends MultimediaAction {
-    private List<Series> series;
+    private ArrayList<Series> series;
     int chapterDuration = 0;
 
     public SeriesControl() {
