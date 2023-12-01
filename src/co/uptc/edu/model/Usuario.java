@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 public class Usuario {
     private String email;
-
-    public Usuario() {
-    }
-
     private String password;
     private ArrayList<Playlist> playlists;
+
+    public Usuario() {
+    playlists=new ArrayList<>();
+    }
+
+
+
 
     public ArrayList<Playlist> getPlaylists() {
         return playlists;
@@ -33,5 +36,12 @@ public class Usuario {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", playlists=" + playlists +
+                '}';
+    }
 }

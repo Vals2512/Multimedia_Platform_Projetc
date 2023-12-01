@@ -1,6 +1,6 @@
 package co.uptc.edu.Utilities;
 
-public class UserUtilities {
+public class LoginUtilities {
 public boolean verifyPassword(String password){
     return false;
 }
