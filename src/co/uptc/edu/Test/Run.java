@@ -32,7 +32,7 @@ public class Run {
             System.out.println("2. Registrarse");
             System.out.println("3. Entrar como usuario registrado");
             System.out.println("4. Ingresar como visitante");
-            System.out.println("5. Salir");
+            System.out.println("0. Salir");
             try {
                 opc = sc.nextInt();
             } catch (InputMismatchException e) {
@@ -56,14 +56,18 @@ public class Run {
                             tries = 0;
                             int opc1 = 0;
                             do {
-                                System.out.println("Bienvenido administrador");
-                                System.out.println("1. Buscar usuario registrado");
-                                System.out.println("2. Eliminar usuario registrado");
-                                System.out.println("3. Añadir pelicula");
-                                System.out.println("4. Añadir serie");
-                                System.out.println("5. Añadir  usuario administrador");
-                                System.out.println("0. Salir");
+
+                                System.out.println("""
+                                        Bienvenido usuario administrador
+                                        1. Buscar usuario registrado
+                                        2. Eliminar usuario registrado
+                                        3. Añadir pelicula
+                                        4. Añadir serie
+                                        5. Añadir  usuario administrador
+                                        0. Salir
+                                        """);
                                 try {
+
                                     opc1 = sc.nextInt();
                                     sc.nextLine();
                                 } catch (InputMismatchException e) {
@@ -178,6 +182,7 @@ public class Run {
                                         }else{
                                             System.out.println("administrador no añadido");
                                         }
+                                        break;
                                     case 0:
                                         System.out.println("Saliendo.");
                                         leave = true;
