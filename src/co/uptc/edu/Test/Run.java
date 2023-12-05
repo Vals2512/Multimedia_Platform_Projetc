@@ -261,6 +261,28 @@ public class Run {
 
                 case 4:
 
+                    int opVisitante=0;
+                    System.out.println("Bienvenido visitante");
+                    System.out.println("¿Qué desea realiazr?");
+                    System.out.println("1. Ver películas disponibles");
+                    System.out.println("2. Ver series disponibles");
+                    opVisitante=sc.nextInt();
+
+                    switch (opVisitante) {
+                        case 1:
+                         System.out.println("la lista de peliculas disponibles es:");
+                            Movies.class.getName();
+                            break;
+
+                        case 2:
+                        System.out.println("la lista de series disponibles es: ");  
+                            Series.class.getName();
+                            break;
+                    
+                        default:
+                        System.out.println("Digite una opción válida");
+                            break;
+                    }
                     break;
 
                 case 5:
