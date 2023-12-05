@@ -48,10 +48,10 @@ public class MoviesControl extends MultimediaAction {
     public void play() {
         try {
 
-            System.out.println("playing");// agregar segundos
+            System.out.println("playing");// add seconds
             Thread.sleep(duration);
 
-            // Así, se da la impresión de que se ejecuta cada cierto tiempo
+            // This gives the impression that it is executed from time to time
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
