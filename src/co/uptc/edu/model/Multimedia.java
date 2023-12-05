@@ -1,22 +1,22 @@
 package co.uptc.edu.model;
 
+import java.util.List;
 import java.util.Timer;
 
 public class Multimedia {
 
     private String tittle;
-    private String category;
+    private List<Category> categories;
     private String details;
     private int releaseYear;
 
     Timer timer = new Timer();
 
-    public Multimedia() {
-    }
+    public Multimedia() {}
 
-    public Multimedia(String tittle, String category, String details, int releaseYear) {
+    public Multimedia(String tittle, List<Category> categories, String details, int releaseYear) {
         this.tittle = tittle;
-        this.category = category;
+        this.categories = categories;
         this.details = details;
         this.releaseYear = releaseYear;
     }
@@ -29,12 +29,12 @@ public class Multimedia {
         this.tittle = tittle;
     }
 
-    public String getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public String getDetails() {
@@ -56,7 +56,7 @@ public class Multimedia {
 
     @Override
     public String toString() {
-        return "Titulo: " + tittle + ", categoria: " + category + ", detalles: " + details + ", año de lanzamiento: "
+        return "Titulo: " + tittle + ", categorias: " + categories + ", detalles: " + details + ", año de lanzamiento: "
                 + releaseYear;
     }
 

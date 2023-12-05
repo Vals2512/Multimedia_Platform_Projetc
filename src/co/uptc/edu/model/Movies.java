@@ -1,11 +1,13 @@
 package co.uptc.edu.model;
 
+import java.util.List;
+
 public class Movies extends Multimedia {
 
     private int duration;
     private Multimedia multimedia;
 
-    public Movies() {
+    public Movies(String tittle, String category, String details, int releaseYear, int duration2) {
 
     }
 
@@ -25,7 +27,7 @@ public class Movies extends Multimedia {
 
     @Override
     public String toString() {
-        return "Pelicula: " + multimedia +  " duracion:" + duration;
+        return "Pelicula: " + multimedia + " duracion:" + duration;
     }
 
 }
