@@ -5,6 +5,13 @@
             "name": "Run",
             "request": "launch",
             "mainClass": "co.uptc.edu.Test.Run",
+            "projectName": "Multimedia_Platform_Projetc_c9d3ef5d"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.uptc.edu.Test.Run",
             "projectName": "Multimedia_Platform_Projetc_5b878613"
         },
         {

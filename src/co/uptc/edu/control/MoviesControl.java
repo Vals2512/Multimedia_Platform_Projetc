@@ -10,11 +10,11 @@ public class MoviesControl extends MultimediaAction {
     private List<Movies> movies;
     int duration = 0;
 
-    public MoviesControl(){
-        movies=new ArrayList<>();
+    public MoviesControl() {
+        movies = new ArrayList<>();
     }
 
-    public int searchMovie(String tittle){
+    public int searchMovie(String tittle) {
         for (int i = 0; i < movies.size(); i++) {
             if (movies.get(i).getTittle().equals(tittle)) {
                 return i;
@@ -23,7 +23,7 @@ public class MoviesControl extends MultimediaAction {
         return -1;
     }
 
-    public Movies getMovieTittle(String tittle){
+    public Movies getMovieTittle(String tittle) {
         int movieIndex = searchMovie(tittle);
         if (movieIndex != -1) {
             return movies.get(movieIndex);
@@ -31,7 +31,7 @@ public class MoviesControl extends MultimediaAction {
         return null;
     }
 
-    public boolean addMovie(Movies tittle){
+    public boolean addMovie(Movies tittle) {
         if (searchMovie(tittle.getTittle()) == -1) {
             movies.add(tittle);
             return true;
@@ -39,15 +39,30 @@ public class MoviesControl extends MultimediaAction {
         return false;
     }
 
+    public Movies updateMovie(String title, Movies updatedMovie) {
+        int movieIndex = searchMovie(title);
+        if (movieIndex != -1) {
+            movies.set(movieIndex, updatedMovie);
+            return updatedMovie;
+        }
+        return null;
+    }
 
-
+    public boolean deleteMovie(String title) {
+        int movieIndex = searchMovie(title);
+        if (movieIndex != -1) {
+            movies.remove(movieIndex);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void play() {
         try {
 
             System.out.println("playing");// agregar segundos
-            Thread.sleep(duration);
+            Thread.sleep(3000);
 
             // Así, se da la impresión de que se ejecuta cada cierto tiempo
         } catch (InterruptedException e) {
