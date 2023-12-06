@@ -44,7 +44,7 @@ public class UsuarioControl {
         }
         return null;
     }
-    
+
     public boolean login(String email, String password){
         Usuario user = getUser(email);
         if (user != null && user.getPassword().equals(password)) {
