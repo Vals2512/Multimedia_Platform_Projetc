@@ -1,13 +1,13 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
-import java.util.List;
+
 import co.uptc.edu.model.Usuario;
 
-public class UsuarioControl {
+public class UserControl {
     private ArrayList<Usuario> usuarios;
 
-    public UsuarioControl(){
+    public UserControl(){
         usuarios = new ArrayList<>();
     }
     
