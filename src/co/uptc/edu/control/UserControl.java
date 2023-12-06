@@ -1,28 +1,28 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import co.uptc.edu.model.User;
 
 public class UserControl {
-    private ArrayList<User> usuarios;
+    private ArrayList<User> users;
 
     public UserControl(){
-        usuarios = new ArrayList<>();
+        users = new ArrayList<>();
     }
     
     public int searchUser(String email){
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getEmail().equals(email)) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equals(email)) {
                 return i;
             }   
         }
         return -1;
     }
 
-    public boolean addUser(User usuario, String passwordConfirmation){
-        if (searchUser(usuario.getEmail()) == -1 && usuario.getPassword().equals(passwordConfirmation)) {
-            usuarios.add(usuario);
+    public boolean addUser(User user, String passwordConfirmation){
+        if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(passwordConfirmation)) {
+            users.add(user);
             return true;
         }
         return false;
@@ -31,7 +31,7 @@ public class UserControl {
     public boolean deleteUser(String email){
         int userIndex = searchUser(email);
         if (userIndex != -1) {
-            usuarios.remove(userIndex);
+            users.remove(userIndex);
             return true;
         }
         return false;
@@ -40,7 +40,7 @@ public class UserControl {
     public User getUser(String email){
         int userIndex = searchUser(email);
         if (userIndex != -1) {
-            return usuarios.get(userIndex);
+            return users.get(userIndex);
         }
         return null;
     }

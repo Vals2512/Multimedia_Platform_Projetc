@@ -37,7 +37,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", playlists=" + playlists +
