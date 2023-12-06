@@ -5,7 +5,7 @@ import java.util.List;
 import co.uptc.edu.model.Usuario;
 
 public class UsuarioControl {
-    private List<Usuario> usuarios;
+    private ArrayList<Usuario> usuarios;
 
     public UsuarioControl(){
         usuarios = new ArrayList<>();
@@ -44,7 +44,7 @@ public class UsuarioControl {
         }
         return null;
     }
-
+    
     public boolean login(String email, String password){
         Usuario user = getUser(email);
         if (user != null && user.getPassword().equals(password)) {

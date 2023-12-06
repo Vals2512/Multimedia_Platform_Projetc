@@ -9,7 +9,7 @@ public class Multimedia {
     private String details;
     private int releaseYear;
 
-    Timer timer = new Timer();
+
 
     public Multimedia() {
     }

@@ -1,13 +1,13 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
 public class SeriesControl extends MultimediaAction {
-    private List<Series> series;
+    private ArrayList<Series> series;
     int chapterDuration = 0;
 
     public SeriesControl() {
@@ -38,7 +38,9 @@ public class SeriesControl extends MultimediaAction {
         }
         return false;
     }
-
+    public String showSeries(){
+        return series.toString();
+    }
 
 
 
