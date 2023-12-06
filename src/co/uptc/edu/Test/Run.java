@@ -8,11 +8,8 @@ import co.uptc.edu.control.AdminControl;
 import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.SeriesControl;
 import co.uptc.edu.control.UsuarioControl;
-import co.uptc.edu.model.Capitulo;
-import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.Multimedia;
-import co.uptc.edu.model.Series;
-import co.uptc.edu.model.Usuario;
+import co.uptc.edu.model.*;
+
 
 public class Run {
     public static void main(String[] args) {
@@ -140,8 +137,8 @@ public class Run {
                                             int duracionCapitulo = sc.nextInt();
                                             sc.nextLine();  // Consumir la nueva línea
 
-                                            Capitulo capitulo = new Capitulo(nombreCapitulo, duracionCapitulo);
-                                            newSerie.agregarCapitulo(capitulo);
+                                            Chapter capitulo = new Chapter(nombreCapitulo, duracionCapitulo);
+                                            newSerie.addChapter(capitulo);
                                         }
 
                                         if (src.addSerie(newSerie)) {  // Aquí está la corrección
