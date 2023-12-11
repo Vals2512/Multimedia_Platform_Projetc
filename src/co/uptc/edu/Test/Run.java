@@ -1,5 +1,6 @@
 package co.uptc.edu.Test;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,6 +24,8 @@ public class Run {
         LoginUtilities lu=new LoginUtilities();
         String email = "";
         String password = "";
+        ArrayList <Movies>  listAdded = new ArrayList<>();
+        ArrayList <Series>  listAddedSeries = new ArrayList<>();
 
         int opc = 0;
         do {
@@ -51,6 +54,8 @@ public class Run {
                         System.out.print("Input your password: ");
                         String adminPassword = sc.next();
                         AdminControl adc = new AdminControl();
+                        
+
                         if (adc.loginAdminBackup(adminEmail, adminPassword)) {
                             System.out.println("Successful login");
                             tries = 0;
@@ -99,6 +104,7 @@ public class Run {
                                         break;
 
                                     case 3:
+
                                         System.out.println("Input the title of the movie you want to add: ");
                                         String tittle = sc.nextLine();
                                         System.out.println("Input the category of the movie you want to add: ");
@@ -109,7 +115,7 @@ public class Run {
                                         int releaseYear = sc.nextInt();
                                         System.out.println("Input the duration of the movie you want to add (in minutes): ");
                                         int duration = sc.nextInt();
-                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
+                                        if (listAdded.add(new Movies(tittle, category, details, releaseYear, duration))) {
                                             System.out.println("Movie added successfully");
                                         } else {
                                             System.out.println("Error adding movie");
@@ -144,7 +150,7 @@ public class Run {
                                             newSerie.addChapter(chapter);
                                         }
 
-                                        if (src.addSerie(newSerie)) {  // Here is the correction
+                                        if (listAddedSeries.add(newSerie)) {  // Here is the correction
                                             System.out.println("Serie addedd successfully");
                                         } else {
                                             System.out.println("Error adding serie");
@@ -294,7 +300,55 @@ public class Run {
 
 
                 case 4:
+                    
+                int opVisitante=0;
 
+                    
+                    Movies movie1 = new Movies("Titanic","Drama","Pelicula de barco que se unde",1997,23);
+                    Movies movie2 = new Movies("El padrino","Action","Pelicula de policia corrupto y actividades ilegales",1972,175);
+
+                    Series serie1 = new Series("Stranger Things", "Fiction","Seria de niños que descrubren un nuevo mundo fantastico",2018,4);
+                    Series serie2 = new Series("Peaky Blinders", "Action","Serie de mafiosos de época",2013,7);
+
+                    listAdded.add(movie1);
+                    listAdded.add(movie2);
+                    listAddedSeries.add(serie1);
+                    listAddedSeries.add(serie2);
+
+                    System.out.println("Welcome Visitor");
+                    System.out.println("What would you like to do?");
+                    System.out.println("1. See avaliable movies");
+                    System.out.println("2. See avaliable series");
+                    opVisitante=sc.nextInt();
+
+                    switch (opVisitante) {
+                        case 1:
+                         System.out.println("The list of avaliable movies is:");
+                         for (Movies pelicula : listAdded ) {
+                            System.out.println("Tittle: " + pelicula.getTittle());
+                            System.out.println("Category: " + pelicula.getCategory());
+                            System.out.println("Details: " + pelicula.getDetails());
+                            System.out.println("Duration: "+pelicula.getDuration());
+                            System.out.println("-----------------------");
+                        }
+                            break;
+
+                        case 2:
+                        System.out.println("The list of avaliable series is: ");
+                         for (Series serie : listAddedSeries ) {
+                            System.out.println("Tittle: " + serie.getTittle());
+                            System.out.println("Category: " + serie.getCategory());
+                            System.out.println("Details: " + serie.getDetails());
+                            System.out.println("Duration: "+serie.getReleaseYear());
+                            System.out.println("Number of seasons: "+serie.getSeasons());
+                            System.out.println("-----------------------");
+                        }
+                            break;
+                    
+                        default:
+                        System.out.println("Option not avaliable");
+                            break;
+                    }
                     break;
 
                 case 5:
