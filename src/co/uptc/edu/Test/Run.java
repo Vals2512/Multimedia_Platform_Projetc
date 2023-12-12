@@ -157,30 +157,34 @@ public class Run {
                                         }
                                     break;
                                     case 5:
-                                        int opc2=0;
-                                        do{
-                                        System.out.println(src.showSeries());
-                                        System.out.println("Ingrese el titulo de la serie que quiere remover");
-                                        tittle=sc.nextLine();
-                                        if(src.deleteSeries(tittle)){
-                                            System.out.println("serie eliminada exitosamente");
-                                        }else{
-                                            System.out.println("serie no encontrada");
-                                        }
-                                        try{
-                                            do {
+                                        int opc2 = 0;
+                                        do {
+                                            System.out.println(src.showSeries());
+                                            System.out.println("Ingrese el título de la serie que quiere remover");
+                                            String title = sc.nextLine();
 
-                                                System.out.println("desea repetir la accion?\n 1.si \n 2.no");
-                                                opc2= sc.nextInt();
-                                                sc.nextLine();
-                                                if(opc!=1&&opc2!=2){
-                                                    System.out.println("opcion no valida");
-                                                }
-                                                }while (opc!=1&&opc2!=2);}catch (InputMismatchException e){
-                                                System.out.println("opcion no valida");
+                                            if (src.deleteSeries(title)) {
+                                                System.out.println("Serie eliminada exitosamente");
+                                            } else {
+                                                System.out.println("Serie no encontrada");
                                             }
 
-                                        }while (opc2!=2);
+                                            try {
+                                                do {
+                                                    System.out.println("¿Desea repetir la acción?\n1. Sí\n2. No");
+                                                    opc2 = sc.nextInt();
+                                                    sc.nextLine();
+
+                                                    if (opc2 != 1 && opc2 != 2) {
+                                                        System.out.println("Opción no válida");
+                                                    }
+                                                } while (opc2 != 1 && opc2 != 2);
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Opción no válida");
+                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                            }
+
+                                        } while (opc2 != 2);
                                          break;
 
                                     case 6:
