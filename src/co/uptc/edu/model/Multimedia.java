@@ -3,15 +3,6 @@ package co.uptc.edu.model;
 import java.util.Timer;
 
 public class Multimedia {
-    private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     private String tittle;
     private String category;
@@ -23,12 +14,12 @@ public class Multimedia {
     public Multimedia() {
     }
 
-    public Multimedia(String id, String tittle, String category, String details, int releaseYear) {
+    public Multimedia( String tittle, String category, String details, int releaseYear) {
         this.tittle = tittle;
         this.category = category;
         this.details = details;
         this.releaseYear = releaseYear;
-        this.id=id;
+
     }
 
     public String getTittle() {
