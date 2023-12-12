@@ -68,7 +68,8 @@ public class Run {
                                         2. Delete registered user
                                         3. Add movie
                                         4. Add series
-                                        5. Add admin user
+                                        5.delete series
+                                        6. Add admin user
                                         0. Leave
                                         """);
                                 try {
@@ -157,6 +158,38 @@ public class Run {
                                         }
                                     break;
                                     case 5:
+                                        int opc2 = 0;
+                                        do {
+                                            System.out.println(src.showSeries());
+                                            System.out.println("enter the title of the series that you want delete");
+                                            String title = sc.nextLine();
+
+                                            if (src.deleteSeries(title)) {
+                                                System.out.println("Series deleted");
+                                            } else {
+                                                System.out.println("Series not found");
+                                            }
+
+                                            try {
+                                                do {
+                                                    System.out.println("¿Do you want repeat the action?\n1. Sí\n2. No");
+                                                    opc2 = sc.nextInt();
+                                                    sc.nextLine();
+
+                                                    if (opc2 != 1 && opc2 != 2) {
+                                                        System.out.println("unvalid option");
+                                                    }
+                                                } while (opc2 != 1 && opc2 != 2);
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("unvalid option");
+                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                            }
+
+                                        } while (opc2 != 2);
+                                        break;
+
+
+                                    case 6:
                                     System.out.println("Adding administrator\nEnter the user's nickname:");
                                     String name = sc.nextLine();
                                     System.out.println("Enter the email:");
