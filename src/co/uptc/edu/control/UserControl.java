@@ -2,10 +2,10 @@ package co.uptc.edu.control;
 
 import java.util.ArrayList;
 
-import co.uptc.edu.model.Usuario;
+import co.uptc.edu.model.User;
 
 public class UserControl {
-    private ArrayList<Usuario> usuarios;
+    private ArrayList<User> usuarios;
 
     public UserControl(){
         usuarios = new ArrayList<>();
@@ -20,7 +20,7 @@ public class UserControl {
         return -1;
     }
 
-    public boolean addUser(Usuario usuario, String passwordConfirmation){
+    public boolean addUser(User usuario, String passwordConfirmation){
         if (searchUser(usuario.getEmail()) == -1 && usuario.getPassword().equals(passwordConfirmation)) {
             usuarios.add(usuario);
             return true;
@@ -37,7 +37,7 @@ public class UserControl {
         return false;
     }
 
-    public Usuario getUser(String email){
+    public User getUser(String email){
         int userIndex = searchUser(email);
         if (userIndex != -1) {
             return usuarios.get(userIndex);
@@ -46,7 +46,7 @@ public class UserControl {
     }
 
     public boolean login(String email, String password){
-        Usuario user = getUser(email);
+        User user = getUser(email);
         if (user != null && user.getPassword().equals(password)) {
             return true;
         }
