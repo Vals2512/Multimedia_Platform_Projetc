@@ -316,6 +316,14 @@ public class Run {
                         break;
                     case 3:
                         opc2=10;
+                        if(userControl.searchUserObject(email).getPlaylist().getName().isEmpty()){
+
+                                System.out.println("input the playlist name");
+                                String playlistName=sc.nextLine();
+                                userControl.searchUserObject(email).getPlaylist().setName(playlistName);
+
+
+                        }
                         do{
                         System.out.println("this is your playlist: "+userControl.searchUserObject(email).getPlaylist()+"\n");
                             System.out.println("""
