@@ -1,7 +1,11 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.SplittableRandom;
+
+import co.uptc.edu.model.Movies;
+import co.uptc.edu.model.Playlist;
+import co.uptc.edu.model.Series;
 import co.uptc.edu.model.User;
 
 public class UserControl {
@@ -19,7 +23,25 @@ public class UserControl {
         }
         return -1;
     }
-
+    public void addSeriesToPlaylist(String email, Series series){
+        searchUserObject(email).getPlaylist().getContent().add(series);
+    }
+    public void addMoviesToPlaylist(String email, Movies movies){
+        searchUserObject(email).getPlaylist().getContent().add(movies);
+    }
+    public void clearPlaylist(String email){
+        searchUserObject(email).getPlaylist().getContent().clear();
+    }
+    public User searchUserObject(String email){
+        User userFound=null;
+        for (User uIt:
+             users) {
+            if(uIt.getEmail().equals(email)){
+                userFound=uIt;
+            }
+        }
+        return userFound;
+    }
     public boolean addUser(User user, String passwordConfirmation){
         if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(passwordConfirmation)) {
             users.add(user);

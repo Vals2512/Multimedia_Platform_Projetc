@@ -284,12 +284,13 @@ public class Run {
 
                         if (userControl.login(email, password)) {
                             System.out.println("Successful login");
-                            int opc2 = 0;
+                            int opc2 = 10;
                         do {
                         System.out.println("Welcome User");
                         System.out.println("1. Search for Movie");
                         System.out.println("2. Show Available Movies");
-                        System.out.println("3. Go Back");
+                        System.out.println("3. your list ");
+                        System.out.println("0. Go Back");
                         try {
                     opc2 = sc.nextInt();
                     sc.nextLine();
@@ -311,14 +312,64 @@ public class Run {
                         }
                         break;
                     case 2:
+                        System.out.println(mc.showAllMovies());
+                        break;
+                    case 3:
+                        opc2=10;
+                        do{
+                        System.out.println("this is your playlist: "+userControl.searchUserObject(email).getPlaylist()+"\n");
+                            System.out.println("""
+                                    1.add series to playlist
+                                    2.add movies to playlist
+                                    3.clear playlist
+                                    0.back
+                                    """);
+                            try {
 
+                                opc2= sc.nextInt();
+                            }catch (InputMismatchException e){
+                                System.out.println("no valid option");
+                            }
+                            sc.nextLine();
+                            switch (opc2){
+
+                                case 1:
+                                    System.out.println(src.showSeries());
+                                    System.out.println("Input the series name to be addded");
+                                    String seriesName=sc.nextLine();
+                                    if (src.searchSeriesObject(seriesName)!=null){
+                                        userControl.addSeriesToPlaylist(email,src.searchSeriesObject(seriesName));
+                                    }else{
+                                        System.out.println("series not found");
+                                    }
+                                    break;
+
+                                case 2:
+                                    System.out.println(src.showSeries());
+                                    System.out.println("Input the movies name to be addded");
+                                    String moviesName=sc.nextLine();
+                                    if (mc.searchMoviesObject(moviesName)!=null){
+                                        userControl.addSeriesToPlaylist(email,src.searchSeriesObject(moviesName));
+                                    }else{
+                                        System.out.println("movies not found");
+                                    }
+                                    break;
+                                case 3:
+                                    userControl.clearPlaylist(email);
+                                    break;
+                                case 0:
+                                    break;
+                                default:
+                                    System.out.println("no valid option");
+                            }
+                        }while (opc2!=0);
                         break;
                     default:
                         System.out.println("Select a valid option");
                         break;
                 }
 
-            } while (opc2 != 3);
+            } while (opc2 != 0);
 
                     break;
                 } else {
