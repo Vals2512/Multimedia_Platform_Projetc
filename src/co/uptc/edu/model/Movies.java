@@ -9,10 +9,10 @@ public class Movies extends Multimedia {
 
     }
 
-    public Movies(String tittle, String category, String details, int releaseYear, int duration) {
-        super(tittle, category, details, releaseYear);
+    public Movies(String id ,String tittle, String category, String details, int releaseYear, int duration) {
+        super(id,tittle, category, details, releaseYear);
         this.duration = duration;
-        multimedia = new Multimedia(tittle, category, details, releaseYear);
+        multimedia = new Multimedia(id,tittle, category, details, releaseYear);
     }
 
     public int getDuration() {

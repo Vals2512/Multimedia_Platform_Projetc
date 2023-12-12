@@ -56,11 +56,16 @@ public class Run {
 
                                 System.out.println("""
                                         Bienvenido usuario administrador
+                                        -----menu de usuarios-----------
                                         1. Buscar usuario registrado
                                         2. Eliminar usuario registrado
+                                        -------menu de contenido--------
                                         3. Añadir pelicula
                                         4. Añadir serie
-                                        5. Añadir  usuario administrador
+                                        5. Eliminar serie
+                                        -------menu de administrador-----
+                                        6. Añadir  usuario administrador
+                                        
                                         0. Salir
                                         """);
                                 try {
@@ -96,6 +101,8 @@ public class Run {
                                         break;
 
                                     case 3:
+                                        System.out.println("Ingrese el id interno de la pelicula");
+                                        String id= sc.nextLine();
                                         System.out.println("Ingrese el título de la película que desea añadir: ");
                                         String tittle = sc.nextLine();
                                         System.out.println("Ingrese la categoría de la película que desea añadir: ");
@@ -106,13 +113,15 @@ public class Run {
                                         int releaseYear = sc.nextInt();
                                         System.out.println("Ingrese la duración de la película que desea añadir (en minutos): ");
                                         int duration = sc.nextInt();
-                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
+                                        if (mc.addMovie(new Movies(id,tittle, category, details, releaseYear, duration))) {
                                             System.out.println("Película añadida exitosamente");
                                         } else {
                                             System.out.println("Error al añadir la película");
                                         }
                                     break;
                                     case 4:
+                                        System.out.println("Ingrese el id interno de la serie");
+                                        id = sc.nextLine();
                                         System.out.println("Ingrese el título de la serie que desea añadir: ");
                                         tittle = sc.nextLine();
                                         System.out.println("Ingrese la categoría de la serie que desea añadir: ");
@@ -124,7 +133,7 @@ public class Run {
                                         System.out.println("Ingrese la cantidad de temporadas de la serie que desea añadir: ");
                                         int seasons = sc.nextInt();
 
-                                        Series newSerie = new Series(tittle, category, details, releaseYear, seasons);
+                                        Series newSerie = new Series(id,tittle, category, details, releaseYear, seasons);
                                         System.out.println("Ingrese la cantidad de capítulos:");
                                         int cantidadCapitulos = sc.nextInt();
                                         sc.nextLine();  // Consumir la nueva línea
@@ -148,6 +157,33 @@ public class Run {
                                         }
                                     break;
                                     case 5:
+                                        int opc2=0;
+                                        do{
+                                        System.out.println(src.showSeries());
+                                        System.out.println("Ingrese el titulo de la serie que quiere remover");
+                                        tittle=sc.nextLine();
+                                        if(src.deleteSeries(tittle)){
+                                            System.out.println("serie eliminada exitosamente");
+                                        }else{
+                                            System.out.println("serie no encontrada");
+                                        }
+                                        try{
+                                            do {
+
+                                                System.out.println("desea repetir la accion?\n 1.si \n 2.no");
+                                                opc2= sc.nextInt();
+                                                sc.nextLine();
+                                                if(opc!=1&&opc2!=2){
+                                                    System.out.println("opcion no valida");
+                                                }
+                                                }while (opc!=1&&opc2!=2);}catch (InputMismatchException e){
+                                                System.out.println("opcion no valida");
+                                            }
+
+                                        }while (opc2!=2);
+                                         break;
+
+                                    case 6:
                                         System.out.println("Agregacion de administrador\ningrese el nickname del usuario");
                                         String name=sc.nextLine();
                                         System.out.println("ingrese el correo");
@@ -228,7 +264,7 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (usuarioControl.addUser(new Usuario(email, password), passwordConfirmation)) { // Se añade al
+                    if (usuarioControl.addUser(new User(email, password), passwordConfirmation)) { // Se añade al
                                                                                                       // arraylist de
                                                                                                       // usuarios
                                                                                                       // validando que
