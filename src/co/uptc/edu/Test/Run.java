@@ -1,5 +1,6 @@
 package co.uptc.edu.Test;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,351 +9,358 @@ import co.uptc.edu.control.AdminControl;
 import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.SeriesControl;
 import co.uptc.edu.control.UserControl;
-import co.uptc.edu.model.*;
-
+import co.uptc.edu.model.Chapter;
+import co.uptc.edu.model.Movies;
+import co.uptc.edu.model.Multimedia;
+import co.uptc.edu.model.Series;
+import co.uptc.edu.model.User;
 
 public class Run {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        UserControl usuarioControl = new UserControl();
+        UserControl userControl = new UserControl();
         MoviesControl mc = new MoviesControl();
         SeriesControl src = new SeriesControl();
         LoginUtilities lu=new LoginUtilities();
         String email = "";
         String password = "";
+        ArrayList <Movies>  listAdded = new ArrayList<>();
+        ArrayList <Series>  listAddedSeries = new ArrayList<>();
 
         int opc = 0;
         do {
-            System.out.println("Bienvenido a la plataforma multimedia.");
-            System.out.println("Seleccione una opción: ");
-            System.out.println("1. Ingresar como admin");
-            System.out.println("2. Registrarse");
-            System.out.println("3. Entrar como usuario registrado");
-            System.out.println("4. Ingresar como visitante");
-            System.out.println("0. Salir");
+            System.out.println("Welcome to the multimedy platform.");
+            System.out.println("Select an option: ");
+            System.out.println("1. Admin login");
+            System.out.println("2. Register");
+            System.out.println("3. Login as registered user");
+            System.out.println("4. Login as visitor");
+            System.out.println("5. Leave");
             try {
                 opc = sc.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Por favor, ingrese una opción válida");
+                System.out.println("Please, input a valid option");
                 sc.next(); // descarta la entrada incorrecta
                 continue;
             }
             switch (opc) {
                 case 1:
-                    boolean leave = false; // Variable para volver al menpu principal cuando se vuelve true
+                    boolean leave = false; // Variable to return to main menu when true
                     int tries = 0;
                     while (!leave && tries < 3) {
-                        System.out.println("Inicio de sesión de administrador");
-                        System.out.print("Ingrese su usuario: ");
+                        System.out.println("Admin login");
+                        System.out.print("Input your username: ");
                         String adminEmail = sc.next();
-                        System.out.print("Ingrese su contraseña: ");
+                        System.out.print("Input your password: ");
                         String adminPassword = sc.next();
                         AdminControl adc = new AdminControl();
+                        
+
                         if (adc.loginAdminBackup(adminEmail, adminPassword)) {
-                            System.out.println("Inicio de sesión exitoso");
+                            System.out.println("Successful login");
                             tries = 0;
                             int opc1 = 0;
                             do {
 
                                 System.out.println("""
-                                        Bienvenido usuario administrador
-                                        -----menu de usuarios-----------
-                                        1. Buscar usuario registrado
-                                        2. Eliminar usuario registrado
-                                        -------menu de contenido--------
-                                        3. Añadir pelicula
-                                        4. Añadir serie
-                                        5. Eliminar serie
-                                        -------menu de administrador-----
-                                        6. Añadir  usuario administrador
-                                        
-                                        0. Salir
+                                        Welcome admin user
+                                        1. Search registered user
+                                        2. Delete registered user
+                                        3. Add movie
+                                        4. Add series
+                                        5. Add admin user
+                                        0. Leave
                                         """);
                                 try {
 
                                     opc1 = sc.nextInt();
                                     sc.nextLine();
                                 } catch (InputMismatchException e) {
-                                    System.out.println("Por favor, ingrese una opción válida");
-                                    sc.next(); // descarta la entrada incorrecta
+                                    System.out.println("Please, input a valid option");
+                                    sc.next(); // discard incorrect entry
                                     continue;
                                 }
                                 switch (opc1) {
                                     case 1:
-                                        System.out.println("Ingrese el correo del usuario que desea buscar: ");
+                                        System.out.println("Input the user´s email you wants to search: ");
                                         email = sc.next();
 
-                                        if (usuarioControl.getUser(email) != null) {
-                                            System.out.println("Usuario encontrado");
-                                            System.out.println("Correo: " + usuarioControl.getUser(email).getEmail());
-                                            System.out.println("Contraseña: " + usuarioControl.getUser(email).getPassword());
+                                        if (userControl.getUser(email) != null) {
+                                            System.out.println("User found");
+                                            System.out.println("Email: " + userControl.getUser(email).getEmail());
+                                            System.out.println("Password: " + userControl.getUser(email).getPassword());
                                         } else {
-                                            System.out.println("Usuario no encontrado");
+                                            System.out.println("User not found");
                                         }
                                         break;
                                     case 2:
-                                        System.out.println("Ingrese el correo del usuario que desea eliminar: ");
+                                        System.out.println("Input the user´s email you wants to delete: ");
                                         email = sc.next();
-                                        if (usuarioControl.deleteUser(email)) {
-                                            System.out.println("Usuario eliminado exitosamente");
+                                        if (userControl.deleteUser(email)) {
+                                            System.out.println("User deleted successfully");
                                         } else {
-                                            System.out.println("Error al eliminar el usuario");
+                                            System.out.println("Error deleting user");
                                         }
                                         break;
 
                                     case 3:
-                                        System.out.println("Ingrese el id interno de la pelicula");
-                                        String id= sc.nextLine();
-                                        System.out.println("Ingrese el título de la película que desea añadir: ");
+
+                                        System.out.println("Input the title of the movie you want to add: ");
                                         String tittle = sc.nextLine();
-                                        System.out.println("Ingrese la categoría de la película que desea añadir: ");
+                                        System.out.println("Input the category of the movie you want to add: ");
                                         String category = sc.nextLine();
-                                        System.out.println("Ingrese los detalles de la película que desea añadir: ");
+                                        System.out.println("Input the details of the movie you want to add: ");
                                         String details = sc.nextLine();
-                                        System.out.println("Ingrese el año de lanzamiento de la película que desea añadir: ");
+                                        System.out.println("Input the release year of the movie you want to add: ");
                                         int releaseYear = sc.nextInt();
-                                        System.out.println("Ingrese la duración de la película que desea añadir (en minutos): ");
+                                        System.out.println("Input the duration of the movie you want to add (in minutes): ");
                                         int duration = sc.nextInt();
-                                        if (mc.addMovie(new Movies(id,tittle, category, details, releaseYear, duration))) {
-                                            System.out.println("Película añadida exitosamente");
+                                        if (listAdded.add(new Movies(tittle, category, details, releaseYear, duration))) {
+                                            System.out.println("Movie added successfully");
                                         } else {
-                                            System.out.println("Error al añadir la película");
+                                            System.out.println("Error adding movie");
                                         }
                                     break;
                                     case 4:
-                                        System.out.println("Ingrese el id interno de la serie");
-                                        id = sc.nextLine();
-                                        System.out.println("Ingrese el título de la serie que desea añadir: ");
+                                        System.out.println("Input the tittle of the serie you want to add: ");
                                         tittle = sc.nextLine();
-                                        System.out.println("Ingrese la categoría de la serie que desea añadir: ");
+                                        System.out.println("Input the category of the serie you want to add: ");
                                         category = sc.nextLine();
-                                        System.out.println("Ingrese los detalles de la serie que desea añadir: ");
+                                        System.out.println("Input the details of the serie you want to add: ");
                                         details = sc.nextLine();
-                                        System.out.println("Ingrese el año de lanzamiento de la serie que desea añadir: ");
+                                        System.out.println("Input the release year of the serie you want to add:: ");
                                         releaseYear = sc.nextInt();
-                                        System.out.println("Ingrese la cantidad de temporadas de la serie que desea añadir: ");
+                                        System.out.println("Input the quantity of seasons of the serie ypu want to add: ");
                                         int seasons = sc.nextInt();
 
-                                        Series newSerie = new Series(id,tittle, category, details, releaseYear, seasons);
-                                        System.out.println("Ingrese la cantidad de capítulos:");
+                                        Series newSerie = new Series(tittle, category, details, releaseYear, seasons);
+                                        System.out.println("Input the quantity of chapters:");
                                         int cantidadCapitulos = sc.nextInt();
-                                        sc.nextLine();  // Consumir la nueva línea
+                                        sc.nextLine();  // Consume the new line
 
                                         for (int i = 1; i <= cantidadCapitulos; i++) {
-                                            System.out.println("Ingrese el nombre del capítulo " + i + ":");
-                                            String nombreCapitulo = sc.nextLine();
+                                            System.out.println("Input chapter´s name: " + i + ":");
+                                            String chapterName = sc.nextLine();
 
-                                            System.out.println("Ingrese la duración del capítulo " + i + " (en minutos):");
-                                            int duracionCapitulo = sc.nextInt();
-                                            sc.nextLine();  // Consumir la nueva línea
+                                            System.out.println("Input the duration of the chapter " + i + " (in minutes):");
+                                            int chapterLenght = sc.nextInt();
+                                            sc.nextLine();  // Consume the new line
 
-                                            Chapter capitulo = new Chapter(nombreCapitulo, duracionCapitulo);
-                                            newSerie.addChapter(capitulo);
+                                            Chapter chapter = new Chapter(chapterName, chapterLenght);
+                                            newSerie.addChapter(chapter);
                                         }
 
-                                        if (src.addSerie(newSerie)) {  // Aquí está la corrección
-                                            System.out.println("Serie añadida exitosamente");
+                                        if (listAddedSeries.add(newSerie)) {  // Here is the correction
+                                            System.out.println("Serie addedd successfully");
                                         } else {
-                                            System.out.println("Error al añadir la serie");
+                                            System.out.println("Error adding serie");
                                         }
                                     break;
                                     case 5:
-                                        int opc2 = 0;
-                                        do {
-                                            System.out.println(src.showSeries());
-                                            System.out.println("Ingrese el título de la serie que quiere remover");
-                                            String title = sc.nextLine();
-
-                                            if (src.deleteSeries(title)) {
-                                                System.out.println("Serie eliminada exitosamente");
-                                            } else {
-                                                System.out.println("Serie no encontrada");
-                                            }
-
-                                            try {
-                                                do {
-                                                    System.out.println("¿Desea repetir la acción?\n1. Sí\n2. No");
-                                                    opc2 = sc.nextInt();
-                                                    sc.nextLine();
-
-                                                    if (opc2 != 1 && opc2 != 2) {
-                                                        System.out.println("Opción no válida");
-                                                    }
-                                                } while (opc2 != 1 && opc2 != 2);
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Opción no válida");
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                            }
-
-                                        } while (opc2 != 2);
-                                         break;
-
-                                    case 6:
-                                        System.out.println("Agregacion de administrador\ningrese el nickname del usuario");
-                                        String name=sc.nextLine();
-                                        System.out.println("ingrese el correo");
+                                    System.out.println("Adding administrator\nEnter the user's nickname:");
+                                    String name = sc.nextLine();
+                                    System.out.println("Enter the email:");
+                                    email = sc.next();
+                                    while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                                        System.out.println("Invalid email. Please enter a valid email:");
                                         email = sc.next();
-                                        while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-                                            System.out.println("Correo inválido. Por favor, ingrese un correo válido: ");
-                                            email = sc.next();
-                                        }
-                                        System.out.print("Ingrese su contraseña: ");
+                                    }
+                                    System.out.print("Enter your password: ");
+                                    password = sc.next();
+                                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) {
+                                        System.out.println("Invalid password. Please enter a password with at least 8 characters, one uppercase letter, one lowercase letter, and one number:");
                                         password = sc.next();
-                                        while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Linea para validar que la
-                                            // contraseña contenga la
-                                            // seguridad necesaria
-                                            System.out.println(
-                                                    "Contraseña inválida. Por favor, ingrese una contraseña que tenga al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número: ");
-                                            password = sc.next();
+                                    }
+                                    String passwordConfirmation = "";
+                                    do {
+                                        System.out.print("Confirm your password: ");
+                                        passwordConfirmation = sc.next();
+                                        if (!password.equals(passwordConfirmation)) {
+                                            System.out.println("Passwords do not match. Please try again.");
                                         }
-                                        String passwordConfirmation = "";
-                                        do {
-                                            System.out.print("Confirme su contraseña: ");
-                                            passwordConfirmation = sc.next();
-                                            if (!password.equals(passwordConfirmation)) {
-                                                System.out.println("Las contraseñas no coinciden. Por favor, intente de nuevo.");
-                                            }
-                                        } while (!password.equals(passwordConfirmation));
-                                        boolean passwordBoolean=password.equals(passwordConfirmation);
-                                        if(adc.addAdmin(name,password,email,passwordBoolean)){
-                                            System.out.println("administrador añadido");
-                                        }else{
-                                            System.out.println("administrador no añadido");
-                                        }
-                                        break;
-                                    case 0:
-                                        System.out.println("Saliendo.");
-                                        leave = true;
-                                        break;
-                                    default:
-                                        System.out.println("Ingrese una opción válida.");
-                                        break;
+                                    } while (!password.equals(passwordConfirmation));
+                                    boolean passwordBoolean = password.equals(passwordConfirmation);
+                                    if (adc.addAdmin(name, password, email, passwordBoolean)) {
+                                        System.out.println("Administrator added.");
+                                    } else {
+                                        System.out.println("Administrator not added.");
+                                    }
+                                    break;
+                                
+                                case 0:
+                                    System.out.println("Exiting.");
+                                    leave = true;
+                                    break;
+                                
+                                default:
+                                    System.out.println("Enter a valid option.");
+                                    break;
                                 }
+                                
                             } while (!leave && opc1 != 5);
                         } else {
                             tries++;
-                            System.out.println("Error al iniciar sesión. Intento " + tries + " de 3");
+                            System.out.println("Error logging in. Attempt " + tries + " of 3");
                         }
                     }
                     if (tries == 3) {
-                        System.out.println("Ha agotado sus intentos. Volviendo al menú principal.");
+                        System.out.println("You have exhausted your attempts. Returning to the main menu.");
                         break;
-                    }
+                    }                    
                     break;
 
-                case 2:
-                    System.out.println("Registro de usuario");
-                    System.out.print("Ingrese su correo: ");
+                    case 2:
+                    System.out.println("User registration");
+                    System.out.print("Enter your email: ");
                     email = sc.next();
-                    while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) { // Linea para validar que el
-                                                                                      // correo contenga la seguridad
-                                                                                      // necesaria
-                        System.out.println("Correo inválido. Por favor, ingrese un correo válido: ");
+                    while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) { // Line to validate that the email contains the necessary security
+                        System.out.println("Invalid email. Please enter a valid email: ");
                         email = sc.next();
                     }
-                    System.out.print("Ingrese su contraseña: ");
+                    System.out.print("Enter your password: ");
                     password = sc.next();
-                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Linea para validar que la
-                                                                                            // contraseña contenga la
-                                                                                            // seguridad necesaria
+                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Line to validate that the password contains the necessary security
                         System.out.println(
-                                "Contraseña inválida. Por favor, ingrese una contraseña que tenga al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número: ");
+                                "Invalid password. Please enter a password with at least 8 characters, one uppercase letter, one lowercase letter, and one number: ");
                         password = sc.next();
                     }
                     String passwordConfirmation = "";
                     do {
-                        System.out.print("Confirme su contraseña: ");
+                        System.out.print("Confirm your password: ");
                         passwordConfirmation = sc.next();
                         if (!password.equals(passwordConfirmation)) {
-                            System.out.println("Las contraseñas no coinciden. Por favor, intente de nuevo.");
+                            System.out.println("Passwords do not match. Please try again.");
                         }
                     } while (!password.equals(passwordConfirmation));
-
-                    if (usuarioControl.addUser(new User(email, password), passwordConfirmation)) { // Se añade al
-                                                                                                      // arraylist de
-                                                                                                      // usuarios
-                                                                                                      // validando que
-                                                                                                      // los datos
-                                                                                                      // coincidan
-                        System.out.println("Usuario registrado exitosamente");
+                
+                    if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array list of users, validating that the data matches
+                        System.out.println("User registered successfully");
                     } else {
-                        System.out.println("Error al registrar el usuario");
+                        System.out.println("Error registering the user");
+                    }
+                    break;
+                
+                case 3:
+                    String continueOption = "";
+                    do {
+                        System.out.println("Login");
+                        System.out.print("Enter your email: ");
+                        email = sc.next();
+                        System.out.print("Enter your password: ");
+                        password = sc.next();
+
+                        if (userControl.login(email, password)) {
+                            System.out.println("Successful login");
+                            int opc2 = 0;
+                        do {
+                        System.out.println("Welcome User");
+                        System.out.println("1. Search for Movie");
+                        System.out.println("2. Show Available Movies");
+                        System.out.println("3. Go Back");
+                        try {
+                    opc2 = sc.nextInt();
+                    sc.nextLine();
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter a valid option");
+                    sc.next(); // Discards incorrect entry
+                    continue;
+                }
+                switch (opc2) {
+                    case 1:
+
+                        System.out.println("Enter the title of the movie you want to search for: ");
+                        String tittle = sc.nextLine();
+                        Multimedia movie = mc.getMovieTittle(tittle);
+                        if (movie != null) {
+                            System.out.println(movie.toString());
+                        } else {
+                            System.out.println("Movie not found");
+                        }
+                        break;
+                    case 2:
+
+                        break;
+                    default:
+                        System.out.println("Select a valid option");
+                        break;
+                }
+
+            } while (opc2 != 3);
+
+                    break;
+                } else {
+                    System.out.println("Error logging in");
+                }
+
+                    System.out.println("Do you want to try again? (y/n)");
+                    continueOption = sc.next();
+                } while (continueOption.equalsIgnoreCase("y"));
+
+                break;
+
+
+                case 4:
+                    
+                int opVisitante=0;
+
+                    
+                    Movies movie1 = new Movies("Titanic","Drama","Pelicula de barco que se unde",1997,23);
+                    Movies movie2 = new Movies("El padrino","Action","Pelicula de policia corrupto y actividades ilegales",1972,175);
+
+                    Series serie1 = new Series("Stranger Things", "Fiction","Seria de niños que descrubren un nuevo mundo fantastico",2018,4);
+                    Series serie2 = new Series("Peaky Blinders", "Action","Serie de mafiosos de época",2013,7);
+
+                    listAdded.add(movie1);
+                    listAdded.add(movie2);
+                    listAddedSeries.add(serie1);
+                    listAddedSeries.add(serie2);
+
+                    System.out.println("Welcome Visitor");
+                    System.out.println("What would you like to do?");
+                    System.out.println("1. See avaliable movies");
+                    System.out.println("2. See avaliable series");
+                    opVisitante=sc.nextInt();
+
+                    switch (opVisitante) {
+                        case 1:
+                         System.out.println("The list of avaliable movies is:");
+                         for (Movies pelicula : listAdded ) {
+                            System.out.println("Tittle: " + pelicula.getTittle());
+                            System.out.println("Category: " + pelicula.getCategory());
+                            System.out.println("Details: " + pelicula.getDetails());
+                            System.out.println("Duration: "+pelicula.getDuration());
+                            System.out.println("-----------------------");
+                        }
+                            break;
+
+                        case 2:
+                        System.out.println("The list of avaliable series is: ");
+                         for (Series serie : listAddedSeries ) {
+                            System.out.println("Tittle: " + serie.getTittle());
+                            System.out.println("Category: " + serie.getCategory());
+                            System.out.println("Details: " + serie.getDetails());
+                            System.out.println("Duration: "+serie.getReleaseYear());
+                            System.out.println("Number of seasons: "+serie.getSeasons());
+                            System.out.println("-----------------------");
+                        }
+                            break;
+                    
+                        default:
+                        System.out.println("Option not avaliable");
+                            break;
                     }
                     break;
 
-                case 3:
-                    String continuar = "";
-                    do {
-                        System.out.println("Inicio de sesión");
-                        System.out.print("Ingrese su correo: ");
-                        email = sc.next();
-                        System.out.print("Ingrese su contraseña: ");
-                        password = sc.next();
-
-                        if (usuarioControl.login(email, password)) {
-                            System.out.println("Inicio de sesión exitoso");
-                            int opc2=0;
-                            do {
-                                System.out.println("Bienvenido Usuario");
-                                System.out.println("1. Buscar Pelicula");
-                                System.out.println("2. Mostrar Peliculas Disponibles");
-                                System.out.println("3. Volver");
-                                try {
-                                    opc2=sc.nextInt();
-                                    sc.nextLine();
-                                } catch (InputMismatchException e) {
-                                    System.out.println("Por favor, ingrese una opción válida");
-                                    sc.next(); // descarta la entrada incorrecta
-                                    continue;
-                                }
-                                switch (opc2) {
-                                    case 1:
-
-                                        System.out.println("Ingrese el título de la película que desea buscar: ");
-                                        String tittle = sc.nextLine();
-                                        Multimedia movie = mc.getMovieTittle(tittle);
-                                        if (movie != null) {
-                                            System.out.println(movie.toString());
-                                        } else {
-                                            System.out.println("Película no encontrada");
-                                        }
-                                    break;
-                                    case 2:
-
-                                        break;
-                                    default:
-                                    System.out.println("Seleccione una opci+on válida");
-                                    break;
-                                }
-                                
-                            } while (opc2!=3);
-
-
-
-                            break;
-                        } else {
-                            System.out.println("Error al iniciar sesión");
-                        }
-
-                        System.out.println("¿Desea intentarlo de nuevo? (s/n)");
-                        continuar = sc.next();
-                    } while (continuar.equalsIgnoreCase("s"));
-
+                case 5:
+                    System.out.println("Thank you for using the multimedia platform. Exiting.");
                     break;
-
-                case 4:
-
-                    break;
-
-                case 0:
-                    System.out.println("Gracias por usar la plataforma multimedia. Saliendo.");
-                    break;
-
+                
                 default:
-                    System.out.println("Ingrese una opción válida. Intente nuevamente");
+                    System.out.println("Enter a valid option. Please try again");
                     break;
+                
             }
-        } while (opc != 0);
+        } while (opc != 5);
         sc.close();
     }
 }
