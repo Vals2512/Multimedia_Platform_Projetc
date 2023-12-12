@@ -1,11 +1,13 @@
 package co.uptc.edu.model;
-    
-public class Usuario {
+
+import java.util.ArrayList;
+
+public class User {
     private String email;
     private String password;
     private ArrayList<Playlist> playlists;
 
-    public Usuario() {
+    public User() {
     playlists=new ArrayList<>();
     }
 
@@ -16,7 +18,7 @@ public class Usuario {
         return playlists;
     }
 
-    public Usuario(String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }

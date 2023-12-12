@@ -7,14 +7,14 @@ import co.uptc.edu.Utilities.LoginUtilities;
 import co.uptc.edu.control.AdminControl;
 import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.SeriesControl;
-import co.uptc.edu.control.UsuarioControl;
+import co.uptc.edu.control.UserControl;
 import co.uptc.edu.model.*;
 
 
 public class Run {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        UsuarioControl usuarioControl = new UsuarioControl();
+        UserControl usuarioControl = new UserControl();
         MoviesControl mc = new MoviesControl();
         SeriesControl src = new SeriesControl();
         LoginUtilities lu=new LoginUtilities();
@@ -228,7 +228,7 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (usuarioControl.addUser(new Usuario(email, password), passwordConfirmation)) { // Se añade al
+                    if (usuarioControl.addUser(new User(email, password), passwordConfirmation)) { // Se añade al
                                                                                                       // arraylist de
                                                                                                       // usuarios
                                                                                                       // validando que
