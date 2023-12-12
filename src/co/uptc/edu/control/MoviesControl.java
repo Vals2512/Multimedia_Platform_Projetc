@@ -5,6 +5,7 @@ import java.util.List;
 
 import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.MultimediaAction;
+import co.uptc.edu.model.Series;
 
 public class MoviesControl extends MultimediaAction {
     private ArrayList<Movies> movies;
@@ -12,6 +13,14 @@ public class MoviesControl extends MultimediaAction {
 
     public MoviesControl(){
         movies=new ArrayList<>();
+    }
+    public Movies searchMoviesObject(String name){
+        for (Movies s: movies) {
+            if (s.getTittle().equals(name)){
+                return s;
+            }
+        }
+        return null;
     }
 
     public int searchMovie(String tittle){

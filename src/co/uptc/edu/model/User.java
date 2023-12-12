@@ -5,17 +5,15 @@ import java.util.ArrayList;
 public class User {
     private String email;
     private String password;
-    private ArrayList<Playlist> playlists;
+    private Playlist playlist;
 
-    public User() {
-    playlists=new ArrayList<>();
+    public void setPlaylist(Playlist playlists) {
+        this.playlist = playlists;
     }
 
 
-
-
-    public ArrayList<Playlist> getPlaylists() {
-        return playlists;
+    public Playlist getPlaylist() {
+        return playlist;
     }
 
     public User(String email, String password) {
@@ -40,7 +38,7 @@ public class User {
         return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", playlists=" + playlists +
+                ", playlist=" + playlist +
                 '}';
     }
 }
