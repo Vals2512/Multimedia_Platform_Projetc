@@ -5,13 +5,23 @@ import java.util.List;
 
 import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.MultimediaAction;
+import co.uptc.edu.model.Series;
 
 public class MoviesControl extends MultimediaAction {
-    private List<Movies> movies;
+    private ArrayList<Movies> movies;
     int duration = 0;
 
     public MoviesControl() {
         movies = new ArrayList<>();
+    }
+
+    public Movies searchMoviesObject(String name) {
+        for (Movies s : movies) {
+            if (s.getTittle().equals(name)) {
+                return s;
+            }
+        }
+        return null;
     }
 
     public int searchMovie(String tittle) {
@@ -64,7 +74,7 @@ public class MoviesControl extends MultimediaAction {
             System.out.println("playing");// agregar segundos
             Thread.sleep(3000);
 
-            // Así, se da la impresión de que se ejecuta cada cierto tiempo
+            // This gives the impression that it is executed from time to time
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -86,6 +96,10 @@ public class MoviesControl extends MultimediaAction {
     public void stopPlay() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
+    }
+
+    public ArrayList<Movies> getMovies() {
+        return movies;
     }
 
 }

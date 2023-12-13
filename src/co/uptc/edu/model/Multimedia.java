@@ -9,16 +9,17 @@ public class Multimedia {
     private String details;
     private int releaseYear;
 
-    Timer timer = new Timer();
+
 
     public Multimedia() {
     }
 
-    public Multimedia(String tittle, String category, String details, int releaseYear) {
+    public Multimedia( String tittle, String category, String details, int releaseYear) {
         this.tittle = tittle;
         this.category = category;
         this.details = details;
         this.releaseYear = releaseYear;
+
     }
 
     public String getTittle() {
@@ -56,7 +57,7 @@ public class Multimedia {
 
     @Override
     public String toString() {
-        return "Titulo: " + tittle + ", categoria: " + category + ", detalles: " + details + ", año de lanzamiento: "
+        return "Tittle: " + tittle + ", category: " + category + ", details: " + details + ", release year: "
                 + releaseYear;
     }
 
