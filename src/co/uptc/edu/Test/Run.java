@@ -2,6 +2,7 @@ package co.uptc.edu.Test;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import co.uptc.edu.Utilities.LoginUtilities;
@@ -24,8 +25,18 @@ public class Run {
         LoginUtilities lu=new LoginUtilities();
         String email = "";
         String password = "";
-        ArrayList <Movies>  listAdded = new ArrayList<>();
+        List<Movies> movies = mc.getMovies();
         ArrayList <Series>  listAddedSeries = new ArrayList<>();
+        Movies movie1 = new Movies("Titanic","Drama","Pelicula de barco que se unde",1997,23);
+        Movies movie2 = new Movies("El padrino","Action","Pelicula de policia corrupto y actividades ilegales",1972,175);
+
+        Series serie1 = new Series("Stranger Things", "Fiction","Seria de niños que descrubren un nuevo mundo fantastico",2018,4);
+        Series serie2 = new Series("Peaky Blinders", "Action","Serie de mafiosos de época",2013,7);
+
+        mc.addMovie(movie1);
+        mc.addMovie(movie2);
+        src.addSerie(serie1);
+        src.addSerie(serie2);
 
         int opc = 0;
         do {
@@ -68,10 +79,9 @@ public class Run {
                                         2. Delete registered user
                                         3. Add movie
                                         4. Add series
-                                        5.delete series
+                                        5. Delete series
                                         6. Add admin user
-                                        0. Leave
-                                        """);
+                                        0. Leave""");
                                 try {
 
                                     opc1 = sc.nextInt();
@@ -116,7 +126,7 @@ public class Run {
                                         int releaseYear = sc.nextInt();
                                         System.out.println("Input the duration of the movie you want to add (in minutes): ");
                                         int duration = sc.nextInt();
-                                        if (listAdded.add(new Movies(tittle, category, details, releaseYear, duration))) {
+                                        if (mc.addMovie(new Movies(tittle, category, details, releaseYear, duration))) {
                                             System.out.println("Movie added successfully");
                                         } else {
                                             System.out.println("Error adding movie");
@@ -151,7 +161,7 @@ public class Run {
                                             newSerie.addChapter(chapter);
                                         }
 
-                                        if (listAddedSeries.add(newSerie)) {  // Here is the correction
+                                        if (src.addSerie(newSerie)) {  // Here is the correction
                                             System.out.println("Serie addedd successfully");
                                         } else {
                                             System.out.println("Error adding serie");
@@ -312,7 +322,13 @@ public class Run {
                         }
                         break;
                     case 2:
-                        System.out.println(mc.showAllMovies());
+                        if (movies.isEmpty()) {
+                            System.out.println("No hay películas para mostrar.");
+                        } else {
+                            for (Multimedia moviess : movies) {
+                                System.out.println(moviess.toString());
+                            }
+                        }
                         break;
                     case 3:
                         opc2=10;
@@ -394,36 +410,26 @@ public class Run {
                 case 4:
                     
                 int opVisitante=0;
-
-                    
-                    Movies movie1 = new Movies("Titanic","Drama","Pelicula de barco que se unde",1997,23);
-                    Movies movie2 = new Movies("El padrino","Action","Pelicula de policia corrupto y actividades ilegales",1972,175);
-
-                    Series serie1 = new Series("Stranger Things", "Fiction","Seria de niños que descrubren un nuevo mundo fantastico",2018,4);
-                    Series serie2 = new Series("Peaky Blinders", "Action","Serie de mafiosos de época",2013,7);
-
-                    listAdded.add(movie1);
-                    listAdded.add(movie2);
-                    listAddedSeries.add(serie1);
-                    listAddedSeries.add(serie2);
-
+                    do {
                     System.out.println("Welcome Visitor");
                     System.out.println("What would you like to do?");
                     System.out.println("1. See avaliable movies");
                     System.out.println("2. See avaliable series");
+                    System.out.println("3. Go back");
                     opVisitante=sc.nextInt();
 
                     switch (opVisitante) {
                         case 1:
                          System.out.println("The list of avaliable movies is:");
-                         for (Movies pelicula : listAdded ) {
-                            System.out.println("Tittle: " + pelicula.getTittle());
-                            System.out.println("Category: " + pelicula.getCategory());
-                            System.out.println("Details: " + pelicula.getDetails());
-                            System.out.println("Duration: "+pelicula.getDuration());
-                            System.out.println("-----------------------");
+                        if (movies.isEmpty()) {
+                            System.out.println("No hay películas para mostrar.");
+                        } else {
+                            for (Multimedia moviess : movies) {
+                                System.out.println(moviess.toString());
+                            }
                         }
-                            break;
+                        break;
+                            
 
                         case 2:
                         System.out.println("The list of avaliable series is: ");
@@ -441,6 +447,8 @@ public class Run {
                         System.out.println("Option not avaliable");
                             break;
                     }
+                    } while (opVisitante!=3);
+
                     break;
 
                 case 5:

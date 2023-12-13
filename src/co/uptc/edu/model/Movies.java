@@ -25,7 +25,7 @@ public class Movies extends Multimedia {
 
     @Override
     public String toString() {
-        return "Movie: " + multimedia +  " duration:" + duration;
+        return multimedia +  " duration:" + duration;
     }
 
 }

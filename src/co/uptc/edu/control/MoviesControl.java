@@ -10,6 +10,7 @@ import co.uptc.edu.model.Series;
 public class MoviesControl extends MultimediaAction {
     private ArrayList<Movies> movies;
     int duration = 0;
+    
 
     public MoviesControl(){
         movies=new ArrayList<>();
@@ -47,9 +48,6 @@ public class MoviesControl extends MultimediaAction {
         }
         return false;
     }
-    public String showAllMovies(){
-        return movies.toString();
-    }
 
 
 
@@ -82,6 +80,9 @@ public class MoviesControl extends MultimediaAction {
     public void stopPlay() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
+    }
+    public ArrayList<Movies> getMovies() {
+        return movies;
     }
 
 }
