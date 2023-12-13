@@ -27,6 +27,11 @@ public class Run {
         LoginUtilities lu = new LoginUtilities();
         String email = "";
         String password = "";
+        int releaseYear = 0;
+        int seasons=0;
+        int  duration = 0;
+        int opc3=0;
+        boolean validInput = false;
         List<Movies> movies = mc.getMovies();
         ArrayList<Series> listAddedSeries = new ArrayList<>();
 
@@ -42,7 +47,7 @@ public class Run {
         List<Category> categoriesList = List.of(drama, action, fiction, fantasy, thriller, romance, crime); 
         
         // Películas
-        Movies movie1 = new Movies("Titanic", Arrays.asList(drama, romance), "Película de barco que se hunde", 1997, 23);
+        Movies movie1 = new Movies("Titanic", Arrays.asList(drama, romance), "Película de barco que se hunde", 1997, 188);
         Movies movie2 = new Movies("El padrino", Arrays.asList(action, crime), "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
@@ -54,13 +59,13 @@ public class Run {
         src.addSerie(serie1);
         src.addSerie(serie2);
 
-        MoviesControl m1 = new MoviesControl();
-        try {
-            // Thread.sleep(3000);
-            m1.play();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+        // MoviesControl m1 = new MoviesControl();
+        // try {
+        //     // Thread.sleep(3000);
+        //     m1.play();
+        // } catch (Exception e) {
+        //     // TODO: handle exception
+        // }
 
         int opc = 0;
         do {
@@ -149,11 +154,28 @@ public class Run {
                                         String category = sc.nextLine();
                                         System.out.println("Input the details of the movie you want to add: ");
                                         String details = sc.nextLine();
-                                        System.out.println("Input the release year of the movie you want to add: ");
-                                        int releaseYear = sc.nextInt();
-                                        System.out.println(
-                                                "Input the duration of the movie you want to add (in minutes): ");
-                                        int duration = sc.nextInt();
+                                        do {
+                                            System.out.println("Input the release year of the movie you want to add: ");
+                                            try {
+                                                releaseYear = sc.nextInt();
+                                                validInput = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Please input a valid year.");
+                                                sc.next(); // Limpiar el buffer
+                                            }
+                                        } while (!validInput);
+
+                                        validInput = false;
+                                        do {
+                                            System.out.println("Input the duration of the movie you want to add (in minutes): ");
+                                            try {
+                                                duration = sc.nextInt();
+                                                validInput = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Please input a valid duration.");
+                                                sc.next(); // Limpiar el buffer
+                                            }
+                                        } while (!validInput);
                                         if (mc.addMovie(tittle, category, details, releaseYear, duration, categoriesList)) {
                                             System.out.println("Movie added successfully");
                                         } else {
@@ -165,30 +187,57 @@ public class Run {
                                         tittle = sc.nextLine();
                                         System.out.println("Input the category of the serie you want to add: ");
                                         details = sc.nextLine();
-                                        System.out.println("Input the release year of the serie you want to add:: ");
-                                        releaseYear = sc.nextInt();
-                                        System.out.println(
-                                                "Input the quantity of seasons of the serie ypu want to add: ");
-                                        int seasons = sc.nextInt();
 
+                                        do {
+                                            try {
+                                                System.out.println("Input the release year of the serie you want to add: ");
+                                                releaseYear = sc.nextInt();
+                                                validInput = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Please input a valid number.");
+                                                sc.nextLine(); // Limpiar el buffer
+                                            }
+                                        } while (!validInput);
+                                        validInput = false;
+                                        do {
+                                            try {
+                                                System.out.println("Input the quantity of seasons of the serie you want to add: ");
+                                                seasons = sc.nextInt();
+                                                validInput = true;
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Please input a valid number.");
+                                                sc.nextLine(); // Limpiar el buffer
+                                            }
+                                        } while (!validInput);
+                                        
+
+                                        
                                         Series newSerie = new Series(tittle, details, releaseYear, seasons);
                                         System.out.println("Input the quantity of chapters:");
                                         int cantidadCapitulos = sc.nextInt();
                                         sc.nextLine(); // Consume the new line
-
+                                        
                                         for (int i = 1; i <= cantidadCapitulos; i++) {
                                             System.out.println("Input chapter´s name: " + i + ":");
                                             String chapterName = sc.nextLine();
-
-                                            System.out.println(
-                                                    "Input the duration of the chapter " + i + " (in minutes):");
-                                            int chapterLenght = sc.nextInt();
-                                            sc.nextLine(); // Consume the new line
-
+                                        
+                                            int chapterLenght = 0;
+                                            validInput = false;
+                                            do {
+                                                try {
+                                                    System.out.println("Input the duration of the chapter " + i + " (in minutes):");
+                                                    chapterLenght = sc.nextInt();
+                                                    validInput = true;
+                                                } catch (InputMismatchException e) {
+                                                    System.out.println("Error: Please input a valid number.");
+                                                    sc.nextLine(); // Limpiar el buffer
+                                                }
+                                            } while (!validInput);
+                                        
                                             Chapter chapter = new Chapter(chapterName, chapterLenght);
                                             newSerie.addChapter(chapter);
                                         }
-
+                                        
                                         if (src.addSerie(newSerie)) { // Here is the correction
                                             System.out.println("Serie addedd successfully");
                                         } else {
@@ -199,7 +248,7 @@ public class Run {
                                         int opc2 = 0;
                                         do {
                                             System.out.println(src.showSeries());
-                                            System.out.println("enter the title of the series that you want delete");
+                                            System.out.println("Enter the title of the series that you want delete");
                                             String title = sc.nextLine();
 
                                             if (src.deleteSeries(title)) {
@@ -208,22 +257,29 @@ public class Run {
                                                 System.out.println("Series not found");
                                             }
 
-                                            try {
-                                                do {
+                                            validInput = false;
+                                            while (!validInput) {
+                                                try {
                                                     System.out.println("¿Do you want repeat the action?\n1. Sí\n2. No");
                                                     opc2 = sc.nextInt();
                                                     sc.nextLine();
 
                                                     if (opc2 != 1 && opc2 != 2) {
-                                                        System.out.println("unvalid option");
+                                                        System.out.println("Invalid option");
+                                                    } else {
+                                                        validInput = true;
                                                     }
-                                                } while (opc2 != 1 && opc2 != 2);
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("unvalid option");
-                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                                } catch (InputMismatchException e) {
+                                                    System.out.println("Invalid option");
+                                                    sc.nextLine(); // Limpiar el buffer de entrada
+                                                }
                                             }
 
-                                        } while (opc2 != 2);
+                                            if (opc2 == 2) {
+                                                break; // Rompe el bucle principal si el usuario no quiere repetir la acción
+                                            }
+
+                                        } while (true);
                                         break;
 
                                     case 6:
@@ -359,9 +415,7 @@ public class Run {
                                         if (movies.isEmpty()) {
                                             System.out.println("No hay películas para mostrar.");
                                         } else {
-                                            for (Multimedia moviess : movies) {
-                                                System.out.println(moviess.toString());
-                                            }
+                                            mc.showMovies();
                                         }
                                         break;
                                     case 3:
@@ -451,7 +505,14 @@ public class Run {
                         System.out.println("1. See avaliable movies");
                         System.out.println("2. See avaliable series");
                         System.out.println("3. Go back");
-                        opVisitante = sc.nextInt();
+                        try {
+                            opVisitante = sc.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Please enter a valid option");
+                            sc.next(); // Discards incorrect entry
+                            continue;
+                        }
+                        
 
                         switch (opVisitante) {
                             case 1:
