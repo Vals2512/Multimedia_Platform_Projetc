@@ -54,6 +54,14 @@ public class Run {
         src.addSerie(serie1);
         src.addSerie(serie2);
 
+        MoviesControl m1 = new MoviesControl();
+        try {
+            // Thread.sleep(3000);
+            m1.play();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
         int opc = 0;
         do {
             System.out.println("Welcome to the multimedy platform.");

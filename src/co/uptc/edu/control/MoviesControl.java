@@ -62,7 +62,7 @@ public class MoviesControl extends MultimediaAction {
         return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
     }
 
-    public boolean addMovie(Movies tittle){
+    public boolean addMovie(Movies tittle) {
         if (searchMovie(tittle.getTittle()) == -1) {
             movies.add(tittle);
             return true;
@@ -70,13 +70,30 @@ public class MoviesControl extends MultimediaAction {
         return false;
     }
 
+    public Movies updateMovie(String title, Movies updatedMovie) {
+        int movieIndex = searchMovie(title);
+        if (movieIndex != -1) {
+            movies.set(movieIndex, updatedMovie);
+            return updatedMovie;
+        }
+        return null;
+    }
+
+    public boolean deleteMovie(String title) {
+        int movieIndex = searchMovie(title);
+        if (movieIndex != -1) {
+            movies.remove(movieIndex);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void play() {
         try {
 
-            System.out.println("playing");// add seconds
-            Thread.sleep(duration);
+            System.out.println("playing");// agregar segundos
+            Thread.sleep(3000);
 
             // This gives the impression that it is executed from time to time
         } catch (InterruptedException e) {
