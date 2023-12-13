@@ -9,6 +9,7 @@ public class Multimedia {
     private List<Category> categories;
     private String details;
     private int releaseYear;
+    
 
     Timer timer = new Timer();
 
@@ -74,7 +75,7 @@ public class Multimedia {
 
     @Override
     public String toString() {
-        return "Titulo: " + tittle + ", categorias: " + categories + ", detalles: " + details + ", año de lanzamiento: "
+        return "Titulo: " + tittle + ", " + categories + ", detalles: " + details + ", año de lanzamiento: "
                 + releaseYear;
     }
 
