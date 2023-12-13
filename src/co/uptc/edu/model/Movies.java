@@ -1,5 +1,7 @@
 package co.uptc.edu.model;
 
+import java.util.List;
+
 public class Movies extends Multimedia {
 
     private int duration;
@@ -9,10 +11,10 @@ public class Movies extends Multimedia {
 
     }
 
-    public Movies(String tittle, String category, String details, int releaseYear, int duration) {
-        super(tittle, category, details, releaseYear);
+    public Movies(String tittle, List<Category> categories, String details, int releaseYear, int duration) {
+        super(tittle, categories, details, releaseYear);
         this.duration = duration;
-        multimedia = new Multimedia(tittle, category, details, releaseYear);
+        multimedia = new Multimedia(tittle, categories, details, releaseYear);
     }
 
     public int getDuration() {

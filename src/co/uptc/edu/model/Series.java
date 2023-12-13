@@ -13,12 +13,18 @@ public class Series extends Multimedia {
     private Chapter chap;
     private int releaseYear;
 
-
-    public Series( String tittle, String category, String details, int releaseYear, int seasons) {
-        super(tittle, category, details, releaseYear);
+    public Series(String tittle, List<Category> categories, String details, int releaseYear, int seasons) {
+        super(tittle, categories, details, releaseYear);
         this.seasons = seasons;
-        multimedia = new Multimedia( tittle, category, details, releaseYear);
-        this.chapters= new ArrayList<>();
+        multimedia = new Multimedia(tittle, categories, details, releaseYear);
+        this.chapters = new ArrayList<>();
+    }
+
+    public Series(String tittle, String details, int releaseYear, int seasons) {
+        super(tittle, details, releaseYear);
+        this.seasons = seasons;
+        multimedia = new Multimedia(tittle, details, releaseYear);
+        this.chapters = new ArrayList<>();
     }
 
     public Series(String chapterName, int chapterDuration) {
@@ -26,9 +32,8 @@ public class Series extends Multimedia {
         this.chapterDuration = chapterDuration;
         chap = new Chapter(chapterName, chapterDuration);
 
-
     }
-    
+
     public int getSeasons() {
         return seasons;
     }
@@ -57,10 +62,9 @@ public class Series extends Multimedia {
         this.setChapterDuration(chapterDuration);
     }
 
-
     @Override
     public String toString() {
-        return "Serie: " + multimedia + " seasons: " + seasons + chap ;
+        return "Serie: " + multimedia + " seasons: " + seasons + chap;
     }
 
     public Multimedia getMultimedia() {

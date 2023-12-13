@@ -1,25 +1,35 @@
 package co.uptc.edu.model;
 
+import java.util.List;
 import java.util.Timer;
 
 public class Multimedia {
 
     private String tittle;
-    private String category;
+    private List<Category> categories;
     private String details;
     private int releaseYear;
 
-
+    Timer timer = new Timer();
 
     public Multimedia() {
     }
 
-    public Multimedia( String tittle, String category, String details, int releaseYear) {
+    
+
+    public Multimedia(String tittle, String details, int releaseYear) {
         this.tittle = tittle;
-        this.category = category;
         this.details = details;
         this.releaseYear = releaseYear;
+    }
 
+
+
+    public Multimedia(String tittle, List<Category> categories, String details, int releaseYear) {
+        this.tittle = tittle;
+        this.categories = categories;
+        this.details = details;
+        this.releaseYear = releaseYear;
     }
 
     public String getTittle() {
@@ -30,12 +40,20 @@ public class Multimedia {
         this.tittle = tittle;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategories() {
+        StringBuilder categories = new StringBuilder();
+        for (int i = 0; i < this.categories.size(); i++) {
+            categories.append(this.categories.get(i).getName());
+            if (i < this.categories.size() - 1) {
+                categories.append(", ");
+            }
+
+        }
+        return categories.toString();
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public String getDetails() {
@@ -54,10 +72,9 @@ public class Multimedia {
         this.releaseYear = releaseYear;
     }
 
-
     @Override
     public String toString() {
-        return "Tittle: " + tittle + ", category: " + category + ", details: " + details + ", release year: "
+        return "Titulo: " + tittle + ", categorias: " + categories + ", detalles: " + details + ", año de lanzamiento: "
                 + releaseYear;
     }
 
