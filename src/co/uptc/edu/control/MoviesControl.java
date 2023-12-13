@@ -57,6 +57,12 @@ public class MoviesControl extends MultimediaAction {
         return false;
     }
 
+    public void showMovies(){
+        for (int i = 0; i < movies.size(); i++) {
+            System.out.println((i+1)+". "+movies.get(i).toString());
+        }
+    }
+
     @Override
     public void play() {
         try {
