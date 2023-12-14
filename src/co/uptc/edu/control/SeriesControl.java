@@ -2,9 +2,12 @@ package co.uptc.edu.control;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;
+
+import co.uptc.edu.model.Movies;
+import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
-public class SeriesControl {
+public class SeriesControl extends MultimediaAction {
     private ArrayList<Series> series;
 
     int chapterDuration = 0;
@@ -56,6 +59,43 @@ public class SeriesControl {
             }
         }
         return null;
+    }
+
+
+    @Override
+    public void play() {
+
+        try {
+
+            // System.out.println("playing");// add seconds
+            Thread.sleep(chapterDuration);
+
+            // This gives the impression that it is executed from time to time
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void restart() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'restart'");
+    }
+
+    @Override
+    public void continuePlaying() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'continuePlaying'");
+    }
+
+    @Override
+    public void stopPlay() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
+    }
+
+    public ArrayList<Series> getSeries() {
+        return series;
     }
 
 }

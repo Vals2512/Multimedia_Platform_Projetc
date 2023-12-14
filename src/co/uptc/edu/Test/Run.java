@@ -28,6 +28,7 @@ public class Run {
         String email = "";
         String password = "";
         List<Movies> movies = mc.getMovies();
+        List<Series> series = src.getSeries();
         ArrayList<Series> listAddedSeries = new ArrayList<>();
 
         // Crear instancias de Category
@@ -46,8 +47,8 @@ public class Run {
         Movies movie2 = new Movies("El padrino", Arrays.asList(action, crime), "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller), "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013, 7);
+        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller), "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4,60);
+        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013, 7,60);
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
@@ -167,11 +168,12 @@ public class Run {
                                         details = sc.nextLine();
                                         System.out.println("Input the release year of the serie you want to add:: ");
                                         releaseYear = sc.nextInt();
-                                        System.out.println(
-                                                "Input the quantity of seasons of the serie ypu want to add: ");
+                                        System.out.println("Input the quantity of seasons of the serie you want to add: ");
                                         int seasons = sc.nextInt();
+                                        System.out.println("Input the duration of chapter of the serie you want to add: ");
+                                        int chapterDuration = sc.nextInt();
 
-                                        Series newSerie = new Series(tittle, details, releaseYear, seasons);
+                                        Series newSerie = new Series(tittle, details, releaseYear, seasons, chapterDuration);
                                         System.out.println("Input the quantity of chapters:");
                                         int cantidadCapitulos = sc.nextInt();
                                         sc.nextLine(); // Consume the new line
@@ -458,7 +460,7 @@ public class Run {
                             case 1:
                                 System.out.println("The list of avaliable movies is:");
                                 if (movies.isEmpty()) {
-                                    System.out.println("No hay películas para mostrar.");
+                                    System.out.println("There is not movies to show.");
                                 } else {
                                     for (Multimedia moviess : movies) {
                                         System.out.println(moviess.toString());
@@ -468,13 +470,13 @@ public class Run {
 
                             case 2:
                                 System.out.println("The list of avaliable series is: ");
-                                for (Series serie : listAddedSeries) {
-                                    System.out.println("Tittle: " + serie.getTittle());
-                                    System.out.println("Categories: " + serie.getCategories());
-                                    System.out.println("Details: " + serie.getDetails());
-                                    System.out.println("Duration: " + serie.getReleaseYear());
-                                    System.out.println("Number of seasons: " + serie.getSeasons());
-                                    System.out.println("-----------------------");
+                                System.out.println("The list of avaliable series is:");
+                                if (series.isEmpty()) {
+                                    System.out.println("There is not series to show.");
+                                } else {
+                                    for (Multimedia seriess : series) {
+                                        System.out.println(seriess.toString());
+                                    }
                                 }
                                 break;
 
