@@ -5,10 +5,9 @@ import java.util.List;
 
 import co.uptc.edu.model.Category;
 import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
-public class MoviesControl extends MultimediaAction {
+public class MoviesControl {
     private ArrayList<Movies> movies;
     int duration = 0;
 
@@ -94,35 +93,10 @@ public class MoviesControl extends MultimediaAction {
         }
     }
 
-    @Override
-    public void play() {
-        try {
-
-            System.out.println("playing");// agregar segundos
-            Thread.sleep(3000);
-
-            // This gives the impression that it is executed from time to time
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public void showMoviesTittles(){
+        for (int i = 0; i < movies.size(); i++) {
+            System.out.println((i+1)+". "+movies.get(i).getTittle());
         }
-    }
-
-    @Override
-    public void restart() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'restart'");
-    }
-
-    @Override
-    public void continuePlaying() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'continuePlaying'");
-    }
-
-    @Override
-    public void stopPlay() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
     }
 
     public ArrayList<Movies> getMovies() {
