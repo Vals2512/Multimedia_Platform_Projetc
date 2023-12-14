@@ -527,24 +527,24 @@ public class Run {
                                             }
                                             System.out.println("The movie will last " + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutes");
                                             System.out.println("PLAYING: " + mc.getMovies().get(selectedMovie - 1).getTittle());
-                                            int numberOfSpaces = 50;
+                                            int Spaces = 50;
                                             long movieDuration = mc.getMovies().get(selectedMovie-1).getDuration() * 10; // Duración de la película en segundos
                                         
-                                            for (int currentPitch = 0; currentPitch <= numberOfSpaces; currentPitch++) {
-                                                int porcentaje = (currentPitch * 100) / numberOfSpaces;
+                                            for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
+                                                int Percentage = (Pitch * 100) / Spaces;
                                         
                                                 System.out.print("\r|");
-                                                for (int i = 0; i < currentPitch; i++) {
+                                                for (int i = 0; i < Pitch; i++) {
                                                     System.out.print("*");
                                                 }
                                         
-                                                for (int i = currentPitch; i < numberOfSpaces; i++) {
+                                                for (int i = Pitch; i < Spaces; i++) {
                                                     System.out.print(" ");
                                                 }
                                         
-                                                System.out.print("|" + porcentaje + " %");
+                                                System.out.print("|" + Percentage + " %");
                                                 try {
-                                                    Thread.sleep(movieDuration/numberOfSpaces); // Espera la cantidad de tiempo calculada
+                                                    Thread.sleep(movieDuration/Spaces); // Espera la cantidad de tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }
@@ -591,23 +591,23 @@ public class Run {
                                             }
                                             System.out.println("The series will last 5 minutes");
                                             System.out.println("PLAYING: " + src.getSeries().get(selectedSerie - 1).getTittle());
-                                            int numberOfSpaces = 50;
+                                            int Spaces = 50;
                                             long serieDuration = 5000; // Duración de la película en segundos                                        
-                                            for (int currentPitch = 0; currentPitch <= numberOfSpaces; currentPitch++) {
-                                                int porcentaje = (currentPitch * 100) / numberOfSpaces;
+                                            for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
+                                                int porcentaje = (Pitch * 100) / Spaces;
                                         
                                                 System.out.print("\r|");
-                                                for (int i = 0; i < currentPitch; i++) {
+                                                for (int i = 0; i < Pitch; i++) {
                                                     System.out.print("*");
                                                 }
                                         
-                                                for (int i = currentPitch; i < numberOfSpaces; i++) {
+                                                for (int i = Pitch; i < Spaces; i++) {
                                                     System.out.print(" ");
                                                 }
                                         
                                                 System.out.print("|" + porcentaje + " %");
                                                 try {
-                                                    Thread.sleep(serieDuration/numberOfSpaces); // Espera la cantidad de tiempo calculada
+                                                    Thread.sleep(serieDuration/Spaces); // Espera la cantidad de tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }
