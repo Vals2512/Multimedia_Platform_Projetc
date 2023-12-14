@@ -13,14 +13,14 @@ public class Series extends Multimedia {
     private Chapter chap;
     private int releaseYear;
 
-    public Series(String tittle, List<Category> categories, String details, int releaseYear, int seasons) {
+    public Series(String tittle, List<Category> categories, String details, int releaseYear, int seasons, int chapterDuration) {
         super(tittle, categories, details, releaseYear);
         this.seasons = seasons;
         multimedia = new Multimedia(tittle, categories, details, releaseYear);
         this.chapters = new ArrayList<>();
     }
 
-    public Series(String tittle, String details, int releaseYear, int seasons) {
+    public Series(String tittle, String details, int releaseYear, int seasons, int chapterDuration) {
         super(tittle, details, releaseYear);
         this.seasons = seasons;
         multimedia = new Multimedia(tittle, details, releaseYear);
