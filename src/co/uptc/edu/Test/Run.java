@@ -200,9 +200,22 @@ public class Run {
                                             System.out.println(
                                                     "Enter the new details (or press Enter to keep the existing details): ");
                                             String newDetails = sc.nextLine();
-                                            System.out.println(
-                                                    "Enter the new release year (or press 0 to keep the existing release year): ");
-                                            int newReleaseYear = sc.nextInt();
+                                            int newReleaseYear=0;
+                                            do {
+                                                System.out.println("Enter the new release year (or press 0 to keep the existing release year): ");
+                                                try {
+                                                newReleaseYear = sc.nextInt();
+                                                validInput=true;
+                                                if (newReleaseYear > java.time.Year.now().getValue()) {
+                                                    System.out.println(
+                                                            "Error: Release year cannot be greater than the current year.");
+                                                    validInput = false;
+                                                }
+                                            }catch (InputMismatchException e) {
+                                                    System.out.println("Error: Please input a valid year.");
+                                                    sc.next(); // Clear the buffer
+                                                }
+                                            } while (!validInput);
                                             System.out.println(
                                                     "Enter the new duration (or press 0 to keep the existing duration): ");
                                             int newDuration = sc.nextInt();
@@ -265,9 +278,21 @@ public class Run {
 
                                         System.out.println("Enter the details of the series: ");
                                         String seriesDetails = sc.nextLine();
-
-                                        System.out.println("Enter the release year of the series: ");
-                                        releaseYear = sc.nextInt();
+                                        do {
+                                            System.out.println("Enter the release year of the series: ");
+                                            try {
+                                            releaseYear = sc.nextInt();
+                                            validInput=true;
+                                            if (releaseYear > java.time.Year.now().getValue()) {
+                                                System.out.println(
+                                                        "Error: Release year cannot be greater than the current year.");
+                                                validInput = false;
+                                            }
+                                        } catch (InputMismatchException e) {
+                                            System.out.println("Error: Please input a valid year.");
+                                            sc.next(); // Clear the buffer
+                                        }
+                                        } while (!validInput);
 
                                         System.out.println("Enter the number of seasons of the series: ");
                                         seasons = sc.nextInt();
