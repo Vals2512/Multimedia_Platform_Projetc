@@ -9,7 +9,7 @@ import co.uptc.edu.model.Series;
 public class SeriesControl {
     private ArrayList<Series> series;
 
-    int chapterDuration = 0;
+    //int chapterDuration;
 
     public SeriesControl() {
         series = new ArrayList<>();
@@ -43,12 +43,16 @@ public class SeriesControl {
         if (series.remove(searchSeriesObject(tittle))){
             return true;
         }
-
-
         return false;
     }
-    public String showSeries() {
 
+    public void showSeriesTittles(){
+            for (int i = 0; i < series.size(); i++) {
+                System.out.println((i+1)+". "+series.get(i).getTittle());
+            }
+        }
+        
+    public String showSeries() {
         return series.toString();
     }
     public Series searchSeriesObject(String name){
@@ -62,5 +66,7 @@ public class SeriesControl {
      public ArrayList<Series> getSeries() {
         return series;
     }
+
+    
 
 }
