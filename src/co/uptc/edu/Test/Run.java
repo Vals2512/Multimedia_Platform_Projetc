@@ -33,6 +33,7 @@ public class Run {
         int opc3=0;
         boolean validInput = false;
         List<Movies> movies = mc.getMovies();
+        List<Series> series = src.getSeries();
         ArrayList<Series> listAddedSeries = new ArrayList<>();
 
         // Crear instancias de Category
@@ -51,21 +52,14 @@ public class Run {
         Movies movie2 = new Movies("El padrino", Arrays.asList(action, crime), "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller), "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013, 7);
+        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller), "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4,60);
+        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013, 7,60);
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
         src.addSerie(serie1);
         src.addSerie(serie2);
 
-        // MoviesControl m1 = new MoviesControl();
-        // try {
-        //     // Thread.sleep(3000);
-        //     m1.play();
-        // } catch (Exception e) {
-        //     // TODO: handle exception
-        // }
 
         int opc = 0;
         do {
@@ -187,32 +181,14 @@ public class Run {
                                         tittle = sc.nextLine();
                                         System.out.println("Input the category of the serie you want to add: ");
                                         details = sc.nextLine();
+                                        System.out.println("Input the release year of the serie you want to add:: ");
+                                        releaseYear = sc.nextInt();
+                                        System.out.println("Input the quantity of seasons of the serie you want to add: ");
+                                        seasons = sc.nextInt();
+                                        System.out.println("Input the duration of chapter of the serie you want to add: ");
+                                        int chapterDuration = sc.nextInt();
 
-                                        do {
-                                            try {
-                                                System.out.println("Input the release year of the serie you want to add: ");
-                                                releaseYear = sc.nextInt();
-                                                validInput = true;
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Error: Please input a valid number.");
-                                                sc.nextLine(); // Limpiar el buffer
-                                            }
-                                        } while (!validInput);
-                                        validInput = false;
-                                        do {
-                                            try {
-                                                System.out.println("Input the quantity of seasons of the serie you want to add: ");
-                                                seasons = sc.nextInt();
-                                                validInput = true;
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Error: Please input a valid number.");
-                                                sc.nextLine(); // Limpiar el buffer
-                                            }
-                                        } while (!validInput);
-                                        
-
-                                        
-                                        Series newSerie = new Series(tittle, details, releaseYear, seasons);
+                                        Series newSerie = new Series(tittle, details, releaseYear, seasons, chapterDuration);
                                         System.out.println("Input the quantity of chapters:");
                                         int cantidadCapitulos = sc.nextInt();
                                         sc.nextLine(); // Consume the new line
@@ -400,7 +376,7 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                switch (opc2) {
+                                inner:switch (opc2) {
                                     case 1:
 
                                         System.out.println("Enter the title of the movie you want to search for: ");
@@ -411,16 +387,16 @@ public class Run {
                                         } else {
                                             System.out.println("Movie not found");
                                         }
-                                        break;
+                                        break inner;
                                     case 2:
                                         if (movies.isEmpty()) {
                                             System.out.println("No hay películas para mostrar.");
                                         } else {
                                             mc.showMovies();
                                         }
-                                        break;
+                                        break inner;
                                     case 3:
-                                        opc2 = 10;
+                                         opc3 = 10;
                                         if (userControl.searchUserObject(email).getPlaylist().getName().isEmpty()) {
 
                                             System.out.println("input the playlist name");
@@ -439,12 +415,12 @@ public class Run {
                                                     """);
                                             try {
 
-                                                opc2 = sc.nextInt();
+                                                opc3 = sc.nextInt();
                                             } catch (InputMismatchException e) {
                                                 System.out.println("no valid option");
                                             }
                                             sc.nextLine();
-                                            switch (opc2) {
+                                            playlistoption:switch (opc3) {
 
                                                 case 1:
                                                     System.out.println(src.showSeries());
@@ -456,7 +432,7 @@ public class Run {
                                                     } else {
                                                         System.out.println("series not found");
                                                     }
-                                                    break;
+                                                    break playlistoption;
 
                                                 case 2:
                                                     System.out.println(src.showSeries());
@@ -468,14 +444,15 @@ public class Run {
                                                     } else {
                                                         System.out.println("movies not found");
                                                     }
-                                                    break;
+                                                    break playlistoption;
                                                 case 3:
                                                     userControl.clearPlaylist(email);
-                                                    break;
+                                                    break playlistoption;
                                                 case 0:
-                                                    break;
+                                                    break inner;
                                                 default:
                                                     System.out.println("no valid option");
+                                                    break playlistoption;
                                             }
                                         } while (opc2 != 0);
                                     break;
@@ -564,7 +541,7 @@ public class Run {
                             case 1:
                                 System.out.println("The list of avaliable movies is:");
                                 if (movies.isEmpty()) {
-                                    System.out.println("No hay películas para mostrar.");
+                                    System.out.println("There is not movies to show.");
                                 } else {
                                     for (Multimedia moviess : movies) {
                                         System.out.println(moviess.toString());
