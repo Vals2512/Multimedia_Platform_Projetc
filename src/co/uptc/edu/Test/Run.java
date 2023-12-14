@@ -407,14 +407,12 @@ public class Run {
 
                                         }
                                         do {
-                                            System.out.println("this is your playlist: "
-                                                    + userControl.searchUserObject(email).getPlaylist() + "\n");
+                                            System.out.println("this is your playlist: "+ userControl.searchUserObject(email).getPlaylist());
                                             System.out.println("""
                                                     1.add series to playlist
                                                     2.add movies to playlist
                                                     3.clear playlist
-                                                    0.back
-                                                    """);
+                                                    0.back""");
                                             try {
 
                                                 opc3 = sc.nextInt();
@@ -437,12 +435,12 @@ public class Run {
                                                     break playlistoption;
 
                                                 case 2:
-                                                    System.out.println(src.showSeries());
+                                                    mc.showMoviesTittles();
                                                     System.out.println("Input the movies name to be addded");
                                                     String moviesName = sc.nextLine();
                                                     if (mc.searchMoviesObject(moviesName) != null) {
-                                                        userControl.addSeriesToPlaylist(email,
-                                                                src.searchSeriesObject(moviesName));
+                                                        userControl.addMoviesToPlaylist(email,
+                                                                mc.searchMoviesObject(moviesName));
                                                     } else {
                                                         System.out.println("movies not found");
                                                     }
