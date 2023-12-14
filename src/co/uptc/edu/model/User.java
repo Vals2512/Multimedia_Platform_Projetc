@@ -1,6 +1,5 @@
 package co.uptc.edu.model;
 
-import java.util.ArrayList;
 
 /**
  * The User class represents a user in the platform

@@ -1,10 +1,8 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
-import java.util.SplittableRandom;
 
 import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.Playlist;
 import co.uptc.edu.model.Series;
 import co.uptc.edu.model.User;
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import co.uptc.edu.model.Category;
 import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.Series;
 
 public class MoviesControl {
     private ArrayList<Movies> movies;
