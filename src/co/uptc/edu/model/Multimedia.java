@@ -9,22 +9,17 @@ public class Multimedia {
     private List<Category> categories;
     private String details;
     private int releaseYear;
-    
 
     Timer timer = new Timer();
 
     public Multimedia() {
     }
 
-    
-
     public Multimedia(String tittle, String details, int releaseYear) {
         this.tittle = tittle;
         this.details = details;
         this.releaseYear = releaseYear;
     }
-
-
 
     public Multimedia(String tittle, List<Category> categories, String details, int releaseYear) {
         this.tittle = tittle;
@@ -41,16 +36,8 @@ public class Multimedia {
         this.tittle = tittle;
     }
 
-    public String getCategories() {
-        StringBuilder categories = new StringBuilder();
-        for (int i = 0; i < this.categories.size(); i++) {
-            categories.append(this.categories.get(i).getName());
-            if (i < this.categories.size() - 1) {
-                categories.append(", ");
-            }
-
-        }
-        return categories.toString();
+    public List<Category> getCategories() {
+        return categories;
     }
 
     public void setCategories(List<Category> categories) {

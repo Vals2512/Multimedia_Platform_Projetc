@@ -1,22 +1,23 @@
 package co.uptc.edu.control;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
+import co.uptc.edu.model.Chapter;
 import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
-public class SeriesControl extends MultimediaAction {
+public class SeriesControl {
     private ArrayList<Series> series;
 
-    //int chapterDuration;
+    int chapterDuration = 0;
 
     public SeriesControl() {
         series = new ArrayList<>();
     }
 
-    public int searchSerie(String tittle){
+    public int searchSerie(String tittle) {
         for (int i = 0; i < series.size(); i++) {
             if (series.get(i).getTittle().equals(tittle)) {
                 return i;
@@ -25,7 +26,7 @@ public class SeriesControl extends MultimediaAction {
         return -1;
     }
 
-    public Series getSerieTittle(String tittle){
+    public Series getSerieTittle(String tittle) {
         int serieIndex = searchSerie(tittle);
         if (serieIndex != -1) {
             return series.get(serieIndex);
@@ -33,75 +34,67 @@ public class SeriesControl extends MultimediaAction {
         return null;
     }
 
-    public boolean addSerie(Series tittle){
+    public boolean addSerie(Series tittle) {
         if (searchSerie(tittle.getTittle()) == -1) {
             series.add(tittle);
             return true;
         }
         return false;
     }
-    public boolean deleteSeries(String tittle){
-        if (series.remove(searchSeriesObject(tittle))){
+
+    public boolean deleteSeries(String tittle) {
+        if (series.remove(searchSeriesObject(tittle))) {
             return true;
         }
+
         return false;
     }
 
-    public void showSeriesTittles(){
-            for (int i = 0; i < series.size(); i++) {
-                System.out.println((i+1)+". "+series.get(i).getTittle());
-            }
-        }
-        
     public String showSeries() {
+
         return series.toString();
     }
-    public Series searchSeriesObject(String name){
-        for (Series s: series) {
-            if (s.getTittle().equals(name)){
-            return s;
+
+    public Series searchSeriesObject(String name) {
+        for (Series s : series) {
+            if (s.getTittle().equals(name)) {
+                return s;
             }
         }
         return null;
     }
 
+    public Series updateSerie(String title, String newTitle, int newSeasons, List<Chapter> newChapters,
+            int newReleaseYear) {
+        int index = searchSerie(title);
+        if (index != -1) {
+            Series seriesToUpdate = series.get(index);
 
-    @Override
-    public void play() {
+            if (!newTitle.isEmpty()) {
+                seriesToUpdate.getMultimedia().setTittle(newTitle);
+            }
 
-        try {
+            if (newSeasons > 0) {
+                seriesToUpdate.setSeasons(newSeasons);
+            }
 
-            // System.out.println("playing");// add seconds
-            Thread.sleep(chapterDuration);
+            if (newChapters != null && !newChapters.isEmpty()) {
+                seriesToUpdate.setChapters(newChapters);
+            }
 
-            // This gives the impression that it is executed from time to time
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            if (newReleaseYear > 0) {
+                seriesToUpdate.setReleaseYear(newReleaseYear);
+            }
+
+            series.set(index, seriesToUpdate);
+            return seriesToUpdate;
         }
-    }
 
-    @Override
-    public void restart() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'restart'");
-    }
-
-    @Override
-    public void continuePlaying() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'continuePlaying'");
-    }
-
-    @Override
-    public void stopPlay() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
+        return null;
     }
 
     public ArrayList<Series> getSeries() {
         return series;
     }
-
-    
 
 }
