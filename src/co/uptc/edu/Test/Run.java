@@ -343,7 +343,7 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                switch (opc2) {
+                                inner:switch (opc2) {
                                     case 1:
 
                                         System.out.println("Enter the title of the movie you want to search for: ");
@@ -354,7 +354,7 @@ public class Run {
                                         } else {
                                             System.out.println("Movie not found");
                                         }
-                                        break;
+                                        break inner;
                                     case 2:
                                         if (movies.isEmpty()) {
                                             System.out.println("No hay películas para mostrar.");
@@ -363,9 +363,9 @@ public class Run {
                                                 System.out.println(moviess.toString());
                                             }
                                         }
-                                        break;
+                                        break inner;
                                     case 3:
-                                        opc2 = 10;
+                                        int opc3 = 10;
                                         if (userControl.searchUserObject(email).getPlaylist().getName().isEmpty()) {
 
                                             System.out.println("input the playlist name");
@@ -384,12 +384,12 @@ public class Run {
                                                     """);
                                             try {
 
-                                                opc2 = sc.nextInt();
+                                                opc3 = sc.nextInt();
                                             } catch (InputMismatchException e) {
                                                 System.out.println("no valid option");
                                             }
                                             sc.nextLine();
-                                            switch (opc2) {
+                                            playlistoption:switch (opc3) {
 
                                                 case 1:
                                                     System.out.println(src.showSeries());
@@ -401,7 +401,7 @@ public class Run {
                                                     } else {
                                                         System.out.println("series not found");
                                                     }
-                                                    break;
+                                                    break playlistoption;
 
                                                 case 2:
                                                     System.out.println(src.showSeries());
@@ -413,20 +413,21 @@ public class Run {
                                                     } else {
                                                         System.out.println("movies not found");
                                                     }
-                                                    break;
+                                                    break playlistoption;
                                                 case 3:
                                                     userControl.clearPlaylist(email);
-                                                    break;
+                                                    break playlistoption;
                                                 case 0:
-                                                    break;
+                                                    break inner;
                                                 default:
                                                     System.out.println("no valid option");
+                                                    break playlistoption;
                                             }
                                         } while (opc2 != 0);
-                                        break;
+                                        break inner;
                                     default:
                                         System.out.println("Select a valid option");
-                                        break;
+                                        break inner;
                                 }
 
                             } while (opc2 != 0);

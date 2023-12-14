@@ -12,6 +12,8 @@ public class Playlist {
     private ArrayList<Object> content;
 
     public Playlist() {
+        this.name="";
+        this.content=new ArrayList<>();
     }
 
     public Playlist(String name, ArrayList<Object> content) {
