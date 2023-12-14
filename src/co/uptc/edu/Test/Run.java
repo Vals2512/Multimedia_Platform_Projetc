@@ -390,6 +390,7 @@ public class Run {
                                 System.out.println("1. Search for Movie");
                                 System.out.println("2. Show Available Movies");
                                 System.out.println("3. your list ");
+                                System.out.println("4. Play movies");
                                 System.out.println("0. Go Back");
                                 try {
                                     opc2 = sc.nextInt();
@@ -477,10 +478,55 @@ public class Run {
                                                     System.out.println("no valid option");
                                             }
                                         } while (opc2 != 0);
+                                    break;
+                                    case 4:
+                                        int opc4=0;
+                                        int selectedMovie = 0;
+                                        do {
+                                            System.out.println("Play Movie");
+                                            System.out.println("Select the movie you want to reproduce or enter 0 to return to the previous menu");
+                                            System.out.println("Press 0 if you want to return to the previous menu");
+                                            mc.showMoviesTittles();
+                                            //Solucionar validacion, me devuelve dos veces al menu anterior
+                                            try {
+                                                selectedMovie = sc.nextInt();
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Input a valid option");
+                                                continue;
+                                            }
+                                            
+                                            if (selectedMovie == 0) {
+                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú anterior
+                                            }
+                                            System.out.println("La película durará: " + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutos");
+                                            System.out.println("Reproduciendo: " + mc.getMovies().get(selectedMovie - 1).getTittle());
+                                            try {
+                                                Thread.sleep((mc.getMovies().get(selectedMovie - 1).getDuration() * 15));
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            System.out.println("La película " + mc.getMovies().get(selectedMovie - 1).getTittle() + " ha terminado de reproducirse.");
+                                            System.out.println("Desea reproducir otra pelicula? \n(0 para no, 1 para si)");
+
+                                            //Solucionar validacion, me devuelve dos veces al menu anterior y no me deja seleccionar si quiero reproducir otra pelicula
+                                            try {
+                                                opc4 = sc.nextInt();
+                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Input a valid option");
+                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                                opc4 = 1; // Establecer un valor por defecto para opc4
+                                            }
+                                            
+                                        } while (opc4 != 0);
                                         break;
+                                        
+                                    case 0:
+                                    System.out.println("Leaving menu");
+                                    break;
                                     default:
                                         System.out.println("Select a valid option");
-                                        break;
+                                    break;
                                 }
 
                             } while (opc2 != 0);
@@ -537,6 +583,9 @@ public class Run {
                                     System.out.println("-----------------------");
                                 }
                                 break;
+                            case 3:
+                            System.out.println("Leaving menu");
+                            break;
 
                             default:
                                 System.out.println("Option not avaliable");
