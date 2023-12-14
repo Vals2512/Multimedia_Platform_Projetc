@@ -3,7 +3,7 @@ package co.uptc.edu.control;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
-
+import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.MultimediaAction;
 import co.uptc.edu.model.Series;
 
@@ -92,6 +92,10 @@ public class SeriesControl extends MultimediaAction {
     public void stopPlay() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'stopPlay'");
+    }
+
+    public ArrayList<Series> getSeries() {
+        return series;
     }
 
 }
