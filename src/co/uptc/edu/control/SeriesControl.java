@@ -2,10 +2,8 @@ package co.uptc.edu.control;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import co.uptc.edu.model.Chapter;
-import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.Series;
 
 public class SeriesControl {

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import co.uptc.edu.Utilities.LoginUtilities;
 import co.uptc.edu.control.AdminControl;
@@ -14,7 +12,6 @@ import co.uptc.edu.control.MoviesControl;
 import co.uptc.edu.control.SeriesControl;
 import co.uptc.edu.control.UserControl;
 import co.uptc.edu.model.Category;
-import co.uptc.edu.model.Chapter;
 import co.uptc.edu.model.Movies;
 import co.uptc.edu.model.Multimedia;
 import co.uptc.edu.model.Series;
@@ -399,10 +396,9 @@ public class Run {
                             do {
                                 System.out.println("Welcome User");
                                 System.out.println("1. Search for Movie");
-                                System.out.println("2. Show Available Movies");
-                                System.out.println("3. your list ");
-                                System.out.println("4. Play movies");
-                                System.out.println("5. Play Series");
+                                System.out.println("2. your list ");
+                                System.out.println("3. Play movies");
+                                System.out.println("4. Play Series");
                                 System.out.println("0. Go Back");
                                 try {
                                     opc2 = sc.nextInt();
@@ -425,13 +421,6 @@ public class Run {
                                         }
                                         break inner;
                                     case 2:
-                                        if (movies.isEmpty()) {
-                                            System.out.println("No hay películas para mostrar.");
-                                        } else {
-                                            mc.showMovies();
-                                        }
-                                        break inner;
-                                    case 3:
                                         opc3 = 10;
                                         if (userControl.searchUserObject(email).getPlaylist().getName().isEmpty()) {
 
@@ -490,7 +479,7 @@ public class Run {
                                             }
                                         } while (opc2 != 0);
                                         break;
-                                    case 4:
+                                    case 3:
                                         int opc4 = 0;
                                         int selectedMovie = 0;
                                         do {
@@ -555,7 +544,7 @@ public class Run {
                                         } while (opc4 != 0);
                                         break;
 
-                                    case 5:
+                                    case 4:
                                         int opc5=0;
                                         int selectedSerie = 0;
                                         do {
