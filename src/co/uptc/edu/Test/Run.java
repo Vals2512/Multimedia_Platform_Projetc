@@ -33,8 +33,8 @@ public class Run {
         boolean validInput = false;
         List<Movies> movies = mc.getMovies();
         List<Series> series = src.getSeries();
-        //2Series seriees = new Series();
-        //ArrayList<Series> listAddedSeries = new ArrayList<>();
+        // 2Series seriees = new Series();
+        // ArrayList<Series> listAddedSeries = new ArrayList<>();
 
         // Crear instancias de Category
         Category drama = new Category("Drama", "Películas o series de género dramático");
@@ -54,9 +54,11 @@ public class Run {
                 "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller), "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4,190);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013, 7,188);
-        
+        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
+                "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
+        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
+                7, 188);
+
         mc.addMovie(movie1);
         mc.addMovie(movie2);
         src.addSerie(serie1);
@@ -111,7 +113,6 @@ public class Run {
                                         6. Add series
                                         7. Update serie
                                         8. Delete series
-                                        9. Add admin user
                                         0. Leave""");
                                 System.out.println("");
                                 System.out.println("**************************************************");
@@ -163,7 +164,7 @@ public class Run {
                                             try {
                                                 releaseYear = sc.nextInt();
                                                 validInput = true;
-                                                if (releaseYear > java.time.Year.now().getValue()) {
+                                                if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
                                                     System.out.println(
                                                             "Error: Release year cannot be greater than the current year.");
                                                     validInput = false;
@@ -173,10 +174,18 @@ public class Run {
                                                 sc.next(); // Clear the buffer
                                             }
                                         } while (!validInput);
-
-                                        System.out.println(
-                                                "Input the duration of the movie you want to add (in minutes): ");
-                                        duration = sc.nextInt();
+                                        do {
+                                            System.out.println(
+                                                    "Input the duration of the movie you want to add (in minutes): ");
+                                            try {
+                                                duration = sc.nextInt();
+                                                if (duration <= 0) {
+                                                    System.out.println("Input a valid duration");
+                                                }
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Input a valid value");
+                                            }
+                                        } while (duration <= 0);
 
                                         if (mc.addMovie(title, selectedCategories1, details, releaseYear,
                                                 duration, categoriesList)) {
@@ -200,18 +209,20 @@ public class Run {
                                             System.out.println(
                                                     "Enter the new details (or press Enter to keep the existing details): ");
                                             String newDetails = sc.nextLine();
-                                            int newReleaseYear=0;
+                                            int newReleaseYear = 0;
                                             do {
-                                                System.out.println("Enter the new release year (or press 0 to keep the existing release year): ");
+                                                System.out.println(
+                                                        "Enter the new release year (or press 0 to keep the existing release year): ");
                                                 try {
-                                                newReleaseYear = sc.nextInt();
-                                                validInput=true;
-                                                if (newReleaseYear > java.time.Year.now().getValue()) {
-                                                    System.out.println(
-                                                            "Error: Release year cannot be greater than the current year.");
-                                                    validInput = false;
-                                                }
-                                            }catch (InputMismatchException e) {
+                                                    newReleaseYear = sc.nextInt();
+                                                    validInput = true;
+                                                    if (newReleaseYear > java.time.Year.now().getValue()
+                                                            || newReleaseYear <= 0) {
+                                                        System.out.println(
+                                                                "Error: Release year cannot be greater than the current year.");
+                                                        validInput = false;
+                                                    }
+                                                } catch (InputMismatchException e) {
                                                     System.out.println("Error: Please input a valid year.");
                                                     sc.next(); // Clear the buffer
                                                 }
@@ -281,22 +292,32 @@ public class Run {
                                         do {
                                             System.out.println("Enter the release year of the series: ");
                                             try {
-                                            releaseYear = sc.nextInt();
-                                            validInput=true;
-                                            if (releaseYear > java.time.Year.now().getValue()) {
-                                                System.out.println(
-                                                        "Error: Release year cannot be greater than the current year.");
-                                                validInput = false;
+                                                releaseYear = sc.nextInt();
+                                                validInput = true;
+                                                if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
+                                                    System.out.println(
+                                                            "Error: Release year cannot be greater than the current year.");
+                                                    validInput = false;
+                                                }
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Please input a valid year.");
+                                                sc.next(); // Clear the buffer
                                             }
-                                        } catch (InputMismatchException e) {
-                                            System.out.println("Error: Please input a valid year.");
-                                            sc.next(); // Clear the buffer
-                                        }
                                         } while (!validInput);
 
-                                        System.out.println("Enter the number of seasons of the series: ");
-                                        seasons = sc.nextInt();
-                                        sc.nextLine(); // Consume the newline character left by nextInt()
+                                        do {
+                                            try {
+                                                System.out.println("Enter the number of seasons of the series: ");
+                                                seasons = sc.nextInt();
+                                                if (seasons <= 0) {
+                                                    System.out.println("Input a valid value");
+                                                }
+                                                sc.nextLine(); // Consume the newline character left by nextInt()
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Input a valid value");
+                                            }
+
+                                        } while (seasons <= 0);
 
                                         // Crear la nueva serie con una lista vacía de capítulos
                                         Series newSeries = new Series(seriesTitle, selectedCategories, seriesDetails,
@@ -333,19 +354,19 @@ public class Run {
                                         }
                                         break;
 
-                                    case 9:
-                                        System.out.println(
-                                                "Enter the title of the series you want to add a chapter to: ");
-                                        String seriesTitleToAddChapter = sc.nextLine();
-                                        Series seriesToAddChapter = src
-                                                .getSerieTittle(seriesTitleToAddChapter);
+                                    // case 9:
+                                    // System.out.println(
+                                    // "Enter the title of the series you want to add a chapter to: ");
+                                    // String seriesTitleToAddChapter = sc.nextLine();
+                                    // Series seriesToAddChapter = src
+                                    // .getSerieTittle(seriesTitleToAddChapter);
 
-                                        if (seriesToAddChapter != null) {
-                                            // Resto del código para agregar un capítulo a la serie
-                                        } else {
-                                            System.out.println("Series not found");
-                                        }
-                                        break;
+                                    // if (seriesToAddChapter != null) {
+                                    // // Resto del código para agregar un capítulo a la serie
+                                    // } else {
+                                    // System.out.println("Series not found");
+                                    // }
+                                    // break;
 
                                     case 0:
                                         System.out.println("Exiting.");
@@ -455,7 +476,8 @@ public class Run {
 
                                         }
                                         do {
-                                            System.out.println("this is your playlist: "+ userControl.searchUserObject(email).getPlaylist());
+                                            System.out.println("this is your playlist: "
+                                                    + userControl.searchUserObject(email).getPlaylist());
                                             System.out.println("""
                                                     1.add series to playlist
                                                     2.add movies to playlist
@@ -525,35 +547,42 @@ public class Run {
                                                 break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
                                                        // anterior
                                             }
-                                            System.out.println("The movie will last " + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutes");
-                                            System.out.println("PLAYING: " + mc.getMovies().get(selectedMovie - 1).getTittle());
+                                            System.out.println("The movie will last "
+                                                    + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutes");
+                                            System.out.println(
+                                                    "PLAYING: " + mc.getMovies().get(selectedMovie - 1).getTittle());
                                             int Spaces = 50;
-                                            long movieDuration = mc.getMovies().get(selectedMovie-1).getDuration() * 10; // Duración de la película en segundos
-                                        
+                                            long movieDuration = mc.getMovies().get(selectedMovie - 1).getDuration()
+                                                    * 10; // Duración de la película en segundos
+
                                             for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
                                                 int Percentage = (Pitch * 100) / Spaces;
-                                        
+
                                                 System.out.print("\r|");
                                                 for (int i = 0; i < Pitch; i++) {
                                                     System.out.print("*");
                                                 }
-                                        
+
                                                 for (int i = Pitch; i < Spaces; i++) {
                                                     System.out.print(" ");
                                                 }
-                                        
+
                                                 System.out.print("|" + Percentage + " %");
                                                 try {
-                                                    Thread.sleep(movieDuration/Spaces); // Espera la cantidad de tiempo calculada
+                                                    Thread.sleep(movieDuration / Spaces); // Espera la cantidad de
+                                                                                          // tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }
-                                                
+
                                             }
                                             System.out.println();
 
-                                            System.out.println("The movie " + mc.getMovies().get(selectedMovie - 1).getTittle() + " has finished playing.");
-                                            System.out.println("Do you want to reproduce another movie? \n(0 for no, 1 for yes)");
+                                            System.out.println(
+                                                    "The movie " + mc.getMovies().get(selectedMovie - 1).getTittle()
+                                                            + " has finished playing.");
+                                            System.out.println(
+                                                    "Do you want to reproduce another movie? \n(0 for no, 1 for yes)");
 
                                             // Solucionar validacion, me devuelve dos veces al menu anterior y no me
                                             // deja seleccionar si quiero reproducir otra pelicula
@@ -570,54 +599,62 @@ public class Run {
                                         break;
 
                                     case 4:
-                                        int opc5=0;
+                                        int opc5 = 0;
                                         int selectedSerie = 0;
                                         do {
                                             System.out.println("Play Serie");
-                                            System.out.println("Select the serie you want to reproduce or enter 0 to return to the previous menu");
+                                            System.out.println(
+                                                    "Select the serie you want to reproduce or enter 0 to return to the previous menu");
                                             System.out.println("Press 0 if you want to return to the previous menu");
                                             src.showSeriesTittles();
-                                            
-                                            //Solucionar validacion, me devuelve dos veces al menu anterior
+
+                                            // Solucionar validacion, me devuelve dos veces al menu anterior
                                             try {
                                                 selectedSerie = sc.nextInt();
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Input a valid option");
                                                 continue;
                                             }
-                                            
+
                                             if (selectedSerie == 0) {
-                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú anterior
+                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
+                                                       // anterior
                                             }
                                             System.out.println("The series will last 5 minutes");
-                                            System.out.println("PLAYING: " + src.getSeries().get(selectedSerie - 1).getTittle());
+                                            System.out.println(
+                                                    "PLAYING: " + src.getSeries().get(selectedSerie - 1).getTittle());
                                             int Spaces = 50;
-                                            long serieDuration = 5000; // Duración de la película en segundos                                        
+                                            long serieDuration = 5000; // Duración de la película en segundos
                                             for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
                                                 int porcentaje = (Pitch * 100) / Spaces;
-                                        
+
                                                 System.out.print("\r|");
                                                 for (int i = 0; i < Pitch; i++) {
                                                     System.out.print("*");
                                                 }
-                                        
+
                                                 for (int i = Pitch; i < Spaces; i++) {
                                                     System.out.print(" ");
                                                 }
-                                        
+
                                                 System.out.print("|" + porcentaje + " %");
                                                 try {
-                                                    Thread.sleep(serieDuration/Spaces); // Espera la cantidad de tiempo calculada
+                                                    Thread.sleep(serieDuration / Spaces); // Espera la cantidad de
+                                                                                          // tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }
-                                                
+
                                             }
                                             System.out.println();
-                                            System.out.println("The series " + src.getSeries().get(selectedSerie - 1).getTittle() + " has finished playing.");
-                                            System.out.println("Do you want to reproduce another serie? \n(0 for no, 1 for yes)");
+                                            System.out.println(
+                                                    "The series " + src.getSeries().get(selectedSerie - 1).getTittle()
+                                                            + " has finished playing.");
+                                            System.out.println(
+                                                    "Do you want to reproduce another serie? \n(0 for no, 1 for yes)");
 
-                                            //Solucionar validacion, me devuelve dos veces al menu anterior y no me deja seleccionar si quiero reproducir otra pelicula
+                                            // Solucionar validacion, me devuelve dos veces al menu anterior y no me
+                                            // deja seleccionar si quiero reproducir otra pelicula
                                             try {
                                                 opc5 = sc.nextInt();
                                                 sc.nextLine(); // Limpiar el buffer de entrada
@@ -626,10 +663,10 @@ public class Run {
                                                 sc.nextLine(); // Limpiar el buffer de entrada
                                                 opc5 = 1; // Establecer un valor por defecto para opc5
                                             }
-                                            
+
                                         } while (opc5 != 0);
-                                    break;
-                                      
+                                        break;
+
                                     case 0:
                                         System.out.println("Leaving menu");
                                         break;
@@ -681,15 +718,15 @@ public class Run {
                                 break;
 
                             case 2:
-                            System.out.println("The list of avaliable series is: ");
-                            if (series.isEmpty()) {
-                                System.out.println("There is not series to show.");
-                            } else {
-                                for (Multimedia seriess : series) {
-                                    System.out.println(seriess.toString());
+                                System.out.println("The list of avaliable series is: ");
+                                if (series.isEmpty()) {
+                                    System.out.println("There is not series to show.");
+                                } else {
+                                    for (Multimedia seriess : series) {
+                                        System.out.println(seriess.toString());
+                                    }
                                 }
-                            }
-                            break;
+                                break;
 
                             case 3:
                                 System.out.println("Leaving menu");
