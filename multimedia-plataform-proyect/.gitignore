@@ -1,0 +1,21 @@
+# Ignorar directorios y archivos generados por Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Configuración específica para Eclipse (si estás usando Eclipse)
+.classpath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# Configuración específica para IntelliJ IDEA
+.idea/
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Configuración específica para Visual Studio Code (VSCode)
+.vscode/
+#test
+src/test
