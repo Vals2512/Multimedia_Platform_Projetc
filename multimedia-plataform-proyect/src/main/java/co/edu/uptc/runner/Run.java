@@ -1,4 +1,4 @@
-package co.uptc.edu.Test;
+package co.edu.uptc.runner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,16 +6,16 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import co.uptc.edu.Utilities.LoginUtilities;
-import co.uptc.edu.control.AdminControl;
-import co.uptc.edu.control.MoviesControl;
-import co.uptc.edu.control.SeriesControl;
-import co.uptc.edu.control.UserControl;
-import co.uptc.edu.model.Category;
-import co.uptc.edu.model.Movies;
-import co.uptc.edu.model.Multimedia;
-import co.uptc.edu.model.Series;
-import co.uptc.edu.model.User;
+
+import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.MoviesControl;
+import co.edu.uptc.controller.SeriesControl;
+import co.edu.uptc.controller.UserControl;
+import co.edu.uptc.model.Category;
+import co.edu.uptc.model.Movies;
+import co.edu.uptc.model.Multimedia;
+import co.edu.uptc.model.Series;
+import co.edu.uptc.model.User;
 
 public class Run {
     public static void main(String[] args) {
@@ -23,7 +23,6 @@ public class Run {
         UserControl userControl = new UserControl();
         MoviesControl mc = new MoviesControl();
         SeriesControl src = new SeriesControl();
-        LoginUtilities lu = new LoginUtilities();
         String email = "";
         String password = "";
         int releaseYear = 0;
