@@ -18,6 +18,8 @@ public class Main extends Application {
         StackPane sp=new StackPane();
         sp.getChildren().add(label);
         Scene sc=new Scene(sp,300,400);
+        stage.setScene(sc);
         stage.setTitle("prueba");
+        stage.show();
     }
 }

@@ -3,7 +3,6 @@ co\edu\uptc\model\Series.class
 co\edu\uptc\controller\AdminControl.class
 co\edu\uptc\Main.class
 co\edu\uptc\util\FileManager.class
-co\edu\uptc\view\LoginScene.class
 co\edu\uptc\controller\CategoryController.class
 co\edu\uptc\model\Chapter.class
 co\edu\uptc\controller\MoviesControl.class
