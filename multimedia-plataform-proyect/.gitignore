@@ -18,4 +18,4 @@
 # Configuración específica para Visual Studio Code (VSCode)
 .vscode/
 #test
-src/test
+test/

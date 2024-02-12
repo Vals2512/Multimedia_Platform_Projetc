@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/mavenproyecto.iml" filepath="$PROJECT_DIR$/.idea/mavenproyecto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multimedia-plataform-proyect/multimedia-plataform-proyect.iml" filepath="$PROJECT_DIR$/multimedia-plataform-proyect/multimedia-plataform-proyect.iml" />
     </modules>
   </component>
 </project>

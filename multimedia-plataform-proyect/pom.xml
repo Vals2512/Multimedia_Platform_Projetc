@@ -20,7 +20,7 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>
-                        src/main/java/co/edu/uptc/Main.java
+                        src/main/java/co/edu/uptc/view/Main.java
                     </mainClass>
                 </configuration>
             </plugin>
@@ -35,7 +35,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21.0.2</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

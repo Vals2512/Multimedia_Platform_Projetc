@@ -1,7 +1,9 @@
-package co.edu.uptc;
+package co.edu.uptc.view;
 
 import javafx.application.Application;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -14,10 +16,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Label label=new Label("esta perra mamada que");
-        StackPane sp=new StackPane();
-        sp.getChildren().add(label);
-        Scene sc=new Scene(sp,300,400);
+//        FXMLLoader loader= new FXMLLoader(getClass().getResource("main.fxml"));
+//        Group root=loader.load();
+        Group root=new Group();
+        MainView sc=new MainView(root,300,400);
         stage.setScene(sc);
         stage.setTitle("prueba");
         stage.show();
