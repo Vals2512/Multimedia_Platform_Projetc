@@ -304,7 +304,7 @@ public class Run {
                                                 sc.next(); // Clear the buffer
                                             }
                                         } while (!validInput);
-
+                                        /* */
                                         do {
                                             try {
                                                 System.out.println("Enter the number of seasons of the series: ");
