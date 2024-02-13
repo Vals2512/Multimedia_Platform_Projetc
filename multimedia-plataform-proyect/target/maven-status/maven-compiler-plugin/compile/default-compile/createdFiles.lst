@@ -1,4 +1,5 @@
 co\edu\uptc\model\Movies.class
+co\edu\uptc\view\MainView.class
 co\edu\uptc\model\Series.class
 co\edu\uptc\view\Main.class
 co\edu\uptc\controller\AdminControl.class
@@ -13,5 +14,4 @@ co\edu\uptc\model\Multimedia.class
 co\edu\uptc\model\User.class
 co\edu\uptc\model\Category.class
 co\edu\uptc\controller\SeriesControl.class
-co\edu\uptc\model\database\CategoryDatabase.class
 co\edu\uptc\model\Admin.class
