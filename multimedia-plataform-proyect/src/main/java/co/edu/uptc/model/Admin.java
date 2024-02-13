@@ -1,7 +1,7 @@
 package co.edu.uptc.model;
 
 public class Admin {
-    private String username, password= "", email;
+    private String username, password, email;
 
     public String getEmail() {
         return email;

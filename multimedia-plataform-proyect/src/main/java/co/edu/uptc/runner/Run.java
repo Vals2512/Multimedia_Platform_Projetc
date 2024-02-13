@@ -394,15 +394,15 @@ public class Run {
                     System.out.print("Enter your email: ");
                     email = sc.next();
                     while (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) { // Line to validate that the email
-                                                                                      // contains the necessary security
+                        // contains the necessary security
                         System.out.println("Invalid email. Please enter a valid email: ");
                         email = sc.next();
                     }
                     System.out.print("Enter your password: ");
                     password = sc.next();
                     while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Line to validate that the
-                                                                                            // password contains the
-                                                                                            // necessary security
+                        // password contains the
+                        // necessary security
                         System.out.println(
                                 "Invalid password. Please enter a password with at least 8 characters, one uppercase letter, one lowercase letter, and one number: ");
                         password = sc.next();
@@ -417,9 +417,9 @@ public class Run {
                     } while (!password.equals(passwordConfirmation));
 
                     if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
-                                                                                                // list of users,
-                                                                                                // validating that the
-                                                                                                // data matches
+                        // list of users,
+                        // validating that the
+                        // data matches
                         System.out.println("User registered successfully");
                     } else {
                         System.out.println("Error registering the user");
@@ -453,7 +453,8 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                inner: switch (opc2) {
+                                inner:
+                                switch (opc2) {
                                     case 1:
 
                                         System.out.println("Enter the title of the movie you want to search for: ");
@@ -489,7 +490,8 @@ public class Run {
                                                 System.out.println("no valid option");
                                             }
                                             sc.nextLine();
-                                            playlistoption: switch (opc3) {
+                                            playlistoption:
+                                            switch (opc3) {
 
                                                 case 1:
                                                     System.out.println(src.showSeries());
@@ -544,7 +546,7 @@ public class Run {
 
                                             if (selectedMovie == 0) {
                                                 break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
-                                                       // anterior
+                                                // anterior
                                             }
                                             System.out.println("The movie will last "
                                                     + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutes");
@@ -569,7 +571,7 @@ public class Run {
                                                 System.out.print("|" + Percentage + " %");
                                                 try {
                                                     Thread.sleep(movieDuration / Spaces); // Espera la cantidad de
-                                                                                          // tiempo calculada
+                                                    // tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }
@@ -617,7 +619,7 @@ public class Run {
 
                                             if (selectedSerie == 0) {
                                                 break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
-                                                       // anterior
+                                                // anterior
                                             }
                                             System.out.println("The series will last 5 minutes");
                                             System.out.println(
@@ -639,7 +641,7 @@ public class Run {
                                                 System.out.print("|" + porcentaje + " %");
                                                 try {
                                                     Thread.sleep(serieDuration / Spaces); // Espera la cantidad de
-                                                                                          // tiempo calculada
+                                                    // tiempo calculada
                                                 } catch (InterruptedException e) {
                                                     e.printStackTrace();
                                                 }

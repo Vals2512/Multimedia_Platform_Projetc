@@ -1,12 +1,17 @@
 package co.edu.uptc.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * The User class represents a user in the platform
  */
 public class User {
+    @SerializedName("email")
     private String email;
+    @SerializedName("password")
     private String password;
+    @SerializedName("playlist")
     private Playlist playlist;
 
     /**
