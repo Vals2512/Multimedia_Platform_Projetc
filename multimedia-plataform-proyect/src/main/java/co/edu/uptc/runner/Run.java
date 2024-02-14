@@ -170,8 +170,10 @@ public class Run {
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Error: Please input a valid year.");
                                                 sc.next(); // Clear the buffer
+                                                validInput = false;
                                             }
                                         } while (!validInput);
+
                                         do {
                                             System.out.println(
                                                     "Input the duration of the movie you want to add (in minutes): ");
@@ -182,16 +184,20 @@ public class Run {
                                                 }
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Input a valid value");
+                                                sc.next(); // Clear the buffer
                                             }
                                         } while (duration <= 0);
 
-                                        if (mc.addMovie(title, selectedCategories1, details, releaseYear,
-                                                duration, categoriesList)) {
+                                        String fileName = "movies.json"; // Replace with your desired file name
+                                        if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
+                                                categoriesList, fileName)) {
                                             System.out.println("Movie added successfully");
                                         } else {
                                             System.out.println("Error adding movie");
                                         }
+
                                         break;
+
                                     case 4:
                                         System.out.println("Enter the title of the movie you want to update: ");
                                         String movieToUpdateTitle = sc.nextLine();

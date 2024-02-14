@@ -79,7 +79,7 @@ public class MoviesControl {
             return false;
         }
         // check if the movie already exists
-        if (searchMovie(existingMovies, tittle) == -1) {
+        if (searchMovie(tittle, fileName) == -1) {
             existingMovies.add(movie);
 
             return fileManager.addObject(fileName, existingMovies, new TypeToken<ArrayList<Movies>>() {
