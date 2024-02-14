@@ -5,8 +5,10 @@ import java.util.List;
 
 import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Movies;
+import co.edu.uptc.util.FileManager;
 
 public class MoviesControl {
+    private FileManager fileManager;
     private ArrayList<Movies> movies;
     int duration = 0;
 
@@ -86,15 +88,15 @@ public class MoviesControl {
         return false;
     }
 
-    public void showMovies(){
+    public void showMovies() {
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println((i+1)+". "+movies.get(i).toString());
+            System.out.println((i + 1) + ". " + movies.get(i).toString());
         }
     }
 
-    public void showMoviesTittles(){
+    public void showMoviesTittles() {
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println((i+1)+". "+movies.get(i).getTittle());
+            System.out.println((i + 1) + ". " + movies.get(i).getTittle());
         }
     }
 

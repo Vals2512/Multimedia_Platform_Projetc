@@ -1,4 +1,4 @@
-package co.uptc.edu.model;
+package co.edu.uptc.model;
 
 /**
  * The MultimediaAction abstract class defines common actions that can be

@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-
 import co.edu.uptc.controller.AdminControl;
 import co.edu.uptc.controller.MoviesControl;
 import co.edu.uptc.controller.SeriesControl;
@@ -218,7 +217,7 @@ public class Run {
                                                     if (newReleaseYear > java.time.Year.now().getValue()
                                                             || newReleaseYear <= 0) {
                                                         System.out.println(
-                                                                "Error: Release year cannot be greater than the current year.");
+                                                                "Error: Release year cannot be greater than the current year and doesn't can be negative.");
                                                         validInput = false;
                                                     }
                                                 } catch (InputMismatchException e) {
@@ -453,8 +452,7 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                inner:
-                                switch (opc2) {
+                                inner: switch (opc2) {
                                     case 1:
 
                                         System.out.println("Enter the title of the movie you want to search for: ");
@@ -490,8 +488,7 @@ public class Run {
                                                 System.out.println("no valid option");
                                             }
                                             sc.nextLine();
-                                            playlistoption:
-                                            switch (opc3) {
+                                            playlistoption: switch (opc3) {
 
                                                 case 1:
                                                     System.out.println(src.showSeries());
