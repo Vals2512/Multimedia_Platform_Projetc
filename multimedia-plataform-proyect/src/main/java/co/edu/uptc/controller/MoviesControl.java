@@ -29,22 +29,31 @@ public class MoviesControl {
         return null;
     }
 
-    public int searchMovie(String tittle) {
-        for (int i = 0; i < movies.size(); i++) {
-            if (movies.get(i).getTittle().equals(tittle)) {
-                return i;
+    public int searchMovie(String tittle, String fileName) {
+        // Load existing movies from file
+        ArrayList<Movies> existingMovies = fileManager.readFile(fileName, new TypeToken<ArrayList<Movies>>() {
+        }.getType());
+
+        if (existingMovies != null) {
+            for (int i = 0; i < existingMovies.size(); i++) {
+                if (existingMovies.get(i).getTittle().equals(tittle)) {
+                    return i;
+                }
             }
         }
+
         return -1;
     }
 
-    public Movies getMovieTittle(String tittle) {
-        int movieIndex = searchMovie(tittle);
-        if (movieIndex != -1) {
-            return movies.get(movieIndex);
-        }
-        return null;
-    }
+    /*
+     * public Movies getMovieTittle(String tittle) {
+     * int movieIndex = searchMovie(tittle);
+     * if (movieIndex != -1) {
+     * return movies.get(movieIndex);
+     * }
+     * return null;
+     * }
+     */
 
     public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
             List<Category> categoriesList, String fileName) {
@@ -73,7 +82,7 @@ public class MoviesControl {
         if (searchMovie(existingMovies, tittle) == -1) {
             existingMovies.add(movie);
 
-            return fileManager.addObject(fileName, existingMovies, new TypeToke<ArrayList<Movies>>() {
+            return fileManager.addObject(fileName, existingMovies, new TypeToken<ArrayList<Movies>>() {
             }.getType());
 
         }
