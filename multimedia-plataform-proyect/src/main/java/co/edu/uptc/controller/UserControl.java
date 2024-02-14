@@ -1,16 +1,23 @@
 package co.edu.uptc.controller;
 
+import java.io.File;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
+import co.edu.uptc.util.FileManager;
+import com.google.gson.reflect.TypeToken;
 
 public class UserControl {
     private ArrayList<User> users;
-
+    private final static String FILE="users";
+    private FileManager fm;
     public UserControl() {
         users = new ArrayList<>();
+        fm=new FileManager();
+        fm.createFile(FILE);
     }
 
     public int searchUser(String email) {
@@ -48,6 +55,8 @@ public class UserControl {
     public boolean addUser(User user, String passwordConfirmation) {
         if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(passwordConfirmation)) {
             users.add(user);
+            Type type= new TypeToken<ArrayList<User>>(){}.getType();
+            fm.addObject(FILE,users,type);
             return true;
         }
         return false;

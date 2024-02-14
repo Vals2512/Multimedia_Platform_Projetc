@@ -16,9 +16,10 @@ import java.util.List;
 public class FileManager {
      private Gson gson;
      private File file;
-//     private BufferedReader br;
-     private FileReader fr;
+     private BufferedReader br;
+
      private PrintWriter pw;
+//     private JsonParser jp=new JsonParser();
 
      public static final String PATH="src\\main\\java\\co\\edu\\uptc\\persistence\\",EXTENSION=".json";
      public FileManager() {
@@ -63,19 +64,35 @@ public class FileManager {
                return false;
           }
      }
-     public void readFile(String fileName,Type typeobjs){
+
+     /***
+      *
+      *
+      * @param fileName
+      * @param type el tipo de array con el tipo de
+      * @return
+      * @param <T>
+      */
+     public <T> ArrayList<T> readFile(String fileName,Type type){
           try {
+
+               ArrayList<T> typeArrayList;
                file = new File(fileName);
-               fr=new FileReader(PATH+file+EXTENSION);
-//               JsonParser parser=new JsonParser();
-//               Object obj= parser.parse(fr);
-//               JsonObject jo=(JsonObject) obj;
-//               JsonArray ja=jo.getAsJsonArray();
-//               Type arrayType=
+              br=new BufferedReader(new FileReader(PATH+file+EXTENSION));
+              StringBuilder content=new StringBuilder();
+              String line= br.readLine();
+              while(line!=null) {
 
-          }catch(IOException e){
-
+                   content.append(line);
+                   line= br.readLine();
+              }
+              typeArrayList=gson.fromJson(content.toString(),type);
+               return typeArrayList;
+          } catch(IOException e){
+               return null;
           }
      }
+     //borrar solo es no leer el objeto
+
      public void deleteFile(){}
 }
