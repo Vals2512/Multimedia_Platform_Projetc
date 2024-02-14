@@ -1,7 +1,10 @@
 package co.edu.uptc.controller;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.reflect.TypeToken;
 
 import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Movies;
@@ -14,6 +17,7 @@ public class MoviesControl {
 
     public MoviesControl() {
         movies = new ArrayList<>();
+        fileManager = new FileManager();
     }
 
     public Movies searchMoviesObject(String name) {
@@ -43,7 +47,7 @@ public class MoviesControl {
     }
 
     public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
-            List<Category> categoriesList) {
+            List<Category> categoriesList, String fileName) {
         String[] selectedIndices = categories.split(",");
         List<Category> selectedCategories = new ArrayList<>();
         for (String index : selectedIndices) {
@@ -58,8 +62,22 @@ public class MoviesControl {
                 return false;
             }
         }
+        Movies movie = new Movies(tittle, selectedCategories, details, releaseYear, duration);
+        // load existing movies from file
+        ArrayList<Movies> existingMovies = fileManager.readFile(fileName, new TypeToken<ArrayList<Movies>>() {
+        }.getType());
+        if (existingMovies == null) {
+            return false;
+        }
+        // check if the movie already exists
+        if (searchMovie(existingMovies, tittle) == -1) {
+            existingMovies.add(movie);
 
-        return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
+            return fileManager.addObject(fileName, existingMovies, new TypeToke<ArrayList<Movies>>() {
+            }.getType());
+
+        }
+        return false;
     }
 
     public boolean addMovie(Movies tittle) {
