@@ -94,5 +94,7 @@ public class FileManager {
      }
      //borrar solo es no leer el objeto
 
-     public void deleteFile(){}
+     public void deleteFile(){
+
+     }
 }
