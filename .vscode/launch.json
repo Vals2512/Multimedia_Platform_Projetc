@@ -4,6 +4,13 @@
             "type": "java",
             "name": "Run",
             "request": "launch",
+            "mainClass": "co.edu.uptc.runner.Run",
+            "projectName": "multimedia-plataform-proyect"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
             "mainClass": "co.uptc.edu.Test.Run",
             "projectName": "Multimedia_Platform_Projetc_7c3eea2f"
         },

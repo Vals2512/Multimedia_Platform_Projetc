@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-
 import co.edu.uptc.controller.AdminControl;
 import co.edu.uptc.controller.MoviesControl;
 import co.edu.uptc.controller.SeriesControl;
@@ -171,8 +170,10 @@ public class Run {
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Error: Please input a valid year.");
                                                 sc.next(); // Clear the buffer
+                                                validInput = false;
                                             }
                                         } while (!validInput);
+
                                         do {
                                             System.out.println(
                                                     "Input the duration of the movie you want to add (in minutes): ");
@@ -183,16 +184,20 @@ public class Run {
                                                 }
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Input a valid value");
+                                                sc.next(); // Clear the buffer
                                             }
                                         } while (duration <= 0);
 
-                                        if (mc.addMovie(title, selectedCategories1, details, releaseYear,
-                                                duration, categoriesList)) {
+                                        String fileName = "movies.json"; // Replace with your desired file name
+                                        if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
+                                                categoriesList, fileName)) {
                                             System.out.println("Movie added successfully");
                                         } else {
                                             System.out.println("Error adding movie");
                                         }
+
                                         break;
+
                                     case 4:
                                         System.out.println("Enter the title of the movie you want to update: ");
                                         String movieToUpdateTitle = sc.nextLine();
@@ -218,7 +223,7 @@ public class Run {
                                                     if (newReleaseYear > java.time.Year.now().getValue()
                                                             || newReleaseYear <= 0) {
                                                         System.out.println(
-                                                                "Error: Release year cannot be greater than the current year.");
+                                                                "Error: Release year cannot be greater than the current year and doesn't can be negative.");
                                                         validInput = false;
                                                     }
                                                 } catch (InputMismatchException e) {
@@ -303,7 +308,7 @@ public class Run {
                                                 sc.next(); // Clear the buffer
                                             }
                                         } while (!validInput);
-
+                                        /* */
                                         do {
                                             try {
                                                 System.out.println("Enter the number of seasons of the series: ");
@@ -453,8 +458,7 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                inner:
-                                switch (opc2) {
+                                inner: switch (opc2) {
                                     case 1:
 
                                         System.out.println("Enter the title of the movie you want to search for: ");
@@ -490,8 +494,7 @@ public class Run {
                                                 System.out.println("no valid option");
                                             }
                                             sc.nextLine();
-                                            playlistoption:
-                                            switch (opc3) {
+                                            playlistoption: switch (opc3) {
 
                                                 case 1:
                                                     System.out.println(src.showSeries());
