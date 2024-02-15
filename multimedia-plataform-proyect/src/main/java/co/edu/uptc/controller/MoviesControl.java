@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 
 import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Movies;
+import co.edu.uptc.model.Multimedia;
 import co.edu.uptc.util.FileManager;
 
 public class MoviesControl {
@@ -29,10 +30,10 @@ public class MoviesControl {
         return null;
     }
 
-    public int searchMovie(String tittle, String fileName) {
+    public int searchMovie(String tittle) {
         // Load existing movies from file
-        ArrayList<Movies> existingMovies = fileManager.readFile(fileName, new TypeToken<ArrayList<Movies>>() {
-        }.getType());
+        ArrayList<Movies> existingMovies = new ArrayList<>();
+        
 
         if (existingMovies != null) {
             for (int i = 0; i < existingMovies.size(); i++) {
@@ -45,18 +46,18 @@ public class MoviesControl {
         return -1;
     }
 
-    /*
-     * public Movies getMovieTittle(String tittle) {
-     * int movieIndex = searchMovie(tittle);
-     * if (movieIndex != -1) {
-     * return movies.get(movieIndex);
-     * }
-     * return null;
-     * }
-     */
+    
+      public Movies getMovieTittle(String tittle) {
+     int movieIndex = searchMovie(tittle);
+      if (movieIndex != -1) {
+      return movies.get(movieIndex);
+      }
+      return null;
+     }
+     
 
-    public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
-            List<Category> categoriesList, String fileName) {
+        public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
+        List<Category> categoriesList) {
         String[] selectedIndices = categories.split(",");
         List<Category> selectedCategories = new ArrayList<>();
         for (String index : selectedIndices) {
@@ -71,31 +72,17 @@ public class MoviesControl {
                 return false;
             }
         }
-        Movies movie = new Movies(tittle, selectedCategories, details, releaseYear, duration);
-        // load existing movies from file
-        ArrayList<Movies> existingMovies = fileManager.readFile(fileName, new TypeToken<ArrayList<Movies>>() {
-        }.getType());
-        if (existingMovies == null) {
-            return false;
+
+        return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
         }
-        // check if the movie already exists
-        if (searchMovie(tittle, fileName) == -1) {
-            existingMovies.add(movie);
 
-            return fileManager.addObject(fileName, existingMovies, new TypeToken<ArrayList<Movies>>() {
-            }.getType());
-
-        }
-        return false;
-    }
-
-    public boolean addMovie(Movies tittle) {
+        public boolean addMovie(Movies tittle) {
         if (searchMovie(tittle.getTittle()) == -1) {
             movies.add(tittle);
             return true;
         }
         return false;
-    }
+        }
 
     public Movies updateMovie(String title, Movies updatedMovie) {
         int movieIndex = searchMovie(title);
@@ -130,5 +117,13 @@ public class MoviesControl {
     public ArrayList<Movies> getMovies() {
         return movies;
     }
+
+    // public Multimedia getMovieTittle(String tittle) {
+    //     int movieIndex = searchMovie(tittle);
+    //     if (movieIndex != -1) {
+    //         return movies.get(movieIndex);
+    //     }
+    //     return null;
+    // }
 
 }

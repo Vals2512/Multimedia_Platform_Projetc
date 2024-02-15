@@ -18,6 +18,11 @@ public class Series extends Multimedia {
     public Series() {
     }
 
+    public Series(String tittle){
+        super(tittle);
+        this.chapters=new ArrayList<>();
+    }
+
     public Series(String tittle, String details, int releaseYear) {
         super(tittle, details, releaseYear);
     }
@@ -92,7 +97,7 @@ public class Series extends Multimedia {
     }
 
     public void addChapter(Chapter chapter) {
-        this.chapters.add(chapter);
+        chapters.add(chapter);
     }
 
     public String getChapterName() {

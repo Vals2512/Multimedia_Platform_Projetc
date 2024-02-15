@@ -15,6 +15,10 @@ public class Multimedia {
     public Multimedia() {
     }
 
+    public Multimedia(String tittle){
+        this.tittle = tittle;
+    }
+
     public Multimedia(String tittle, String details, int releaseYear) {
         this.tittle = tittle;
         this.details = details;
