@@ -66,7 +66,7 @@ public class SeriesControl {
         return null;
     }
 
-    public Series updateSerie(String title, String newTitle, int newSeasons, List<Chapter> newChapters,
+    public Series updateSerie(String title, String newTitle, int newSeasonss, List<Chapter> newChapters,
             int newReleaseYear) {
         int index = searchSerie(title);
         if (index != -1) {
@@ -76,9 +76,9 @@ public class SeriesControl {
                 seriesToUpdate.getMultimedia().setTittle(newTitle);
             }
 
-            if (newSeasons > 0) {
-                seriesToUpdate.setSeasons(newSeasons);
-            }
+            // if (newSeasonss > 0) {
+            //     seriesToUpdate.setSeasonss(newSeasonss);
+            // }
 
             if (newChapters != null && !newChapters.isEmpty()) {
                 seriesToUpdate.setChapters(newChapters);

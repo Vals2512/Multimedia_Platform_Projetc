@@ -14,6 +14,7 @@ import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Chapter;
 import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Multimedia;
+import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
 
@@ -54,15 +55,17 @@ public class Run {
                 "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
-                "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
-                7, 188);
+        // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
+        //         "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
+        // Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
+        //         7, 188);
+
+        
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
-        src.addSerie(serie1);
-        src.addSerie(serie2);
+        // src.addSerie(serie1);
+        // src.addSerie(serie2);
 
         int opc = 0;
         do {
@@ -287,26 +290,34 @@ public class Run {
                                         }
                                         break;
                                     case 6:
-                                        System.out.println("Input the serie´s tittle");
-                                        String tittle=sc.next();
+                                        System.out.println("Input the series tittle");
+                                        String tittle=sc.nextLine();
                                         Series sr=new Series(tittle);
-                                        sc.nextLine();
-                                        System.out.println("How many chapters do you want to add?");
-                                        int numChapters=sc.nextInt();
-                                        sc.nextLine();
-                                        for (int i = 1; i <= numChapters; i++) {
-                                            System.out.print("Input the chapter´s name " + i + ": ");
-                                            String episodeName = sc.nextLine();
-                        
-                                            System.out.print("Enter the duration of the episode " + i + " (in minutes): ");
-                                            int episodeDuration = sc.nextInt();
-                                            sc.nextLine(); // Consumir la nueva línea
-                        
-                                            Chapter chapter = new Chapter(episodeName, episodeDuration);
-                                            sr.addChapter(chapter);
+
+                                        System.out.print("How many seasons do you want to add? ");
+                                        int numSeasons = sc.nextInt();
+
+                                        for (int i = 1; i <= numSeasons; i++) {
+                                            Season season = new Season();
+                                            System.out.print("How many episodes does season " + i + " have? ");                                        
+                                            int numChapters=sc.nextInt();
+                                            sc.nextLine();
+                                            for (int j = 1;j <= numChapters; j++) {
+                                                System.out.print("Input the chapter´s name " + j + ": ");
+                                                String episodeName = sc.nextLine();
+                            
+                                                System.out.print("Enter the duration of the episode " + j + " (in minutes): ");
+                                                int episodeDuration = sc.nextInt();
+                                                sc.nextLine(); // Consumir la nueva línea
+                            
+                                                Chapter chapter = new Chapter(episodeName, episodeDuration);
+                                                season.addChapters(chapter);
+                                            }
+
+                                            sr.addSeason(season);
+
                                         }
-                        
-                                        series.add(sr); // Agregar la serie a la lista
+                                        series.add(sr);
 
                                     break;
 
@@ -747,14 +758,19 @@ public class Run {
                                 break;
 
                             case 2:
-                                System.out.println("The list of avaliable series is: ");
-                                if (series.isEmpty()) {
-                                    System.out.println("There is not series to show.");
-                                } else {
-                                    for (Multimedia seriess : series) {
-                                        System.out.println(seriess.toString());
+                            System.out.println("The list of avaliable series is: ");
+                            for (Series sr : series) { // Iterar sobre todas las series
+                                System.out.println("--Serie: " + sr.getTittle());
+                                int numTemporada = 1;
+                                for (Season season : sr.getSeasons()) { // Iterar sobre todas las temporadas
+                                    System.out.println("----Season " + numTemporada + ":");
+                                    System.out.println("Chapters:");
+                                    for (Chapter chapter : season.getChapters()) { // Iterar sobre todos los capítulos
+                                        System.out.println(" - " + chapter.getName() + ": " + chapter.getDuration() + " minutes");
                                     }
+                                    numTemporada++;
                                 }
+                            }
                                 break;
 
                             case 3:
