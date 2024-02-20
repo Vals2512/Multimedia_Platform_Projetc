@@ -63,7 +63,20 @@ public class FileManager {
                return false;
           }
      }
-
+     public <T> boolean saveObjectToFile(String fileName, List<T> objs, Type type, ExclusionStrategy ex) {
+          try {
+               gson = new GsonBuilder().setPrettyPrinting().setExclusionStrategies(ex).create();
+               file = new File(fileName);
+               pw = new PrintWriter(new FileWriter(PATH + file + EXTENSION));
+               String json = gson.toJson(objs, type);
+               pw.print(json);
+               pw.close();
+               return true;
+          } catch (IOException e) {
+               e.printStackTrace();
+               return false;
+          }
+     }
      /***
       *
       *
