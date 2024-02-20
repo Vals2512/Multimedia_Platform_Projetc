@@ -14,6 +14,7 @@ import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Chapter;
 import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Multimedia;
+import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
 
@@ -54,15 +55,17 @@ public class Run {
                 "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
-                "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
-                7, 188);
+        // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction,
+        // thriller),
+        // "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
+        // Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama),
+        // "Serie de mafiosos de época", 2013,
+        // 7, 188);
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
-        src.addSerie(serie1);
-        src.addSerie(serie2);
+        // src.addSerie(serie1);
+        // src.addSerie(serie2);
 
         int opc = 0;
         do {
@@ -749,11 +752,18 @@ public class Run {
 
                             case 2:
                                 System.out.println("The list of avaliable series is: ");
-                                if (series.isEmpty()) {
-                                    System.out.println("There is not series to show.");
-                                } else {
-                                    for (Multimedia seriess : series) {
-                                        System.out.println(seriess.toString());
+                                for (Series sr : series) { // Iterar sobre todas las series
+                                    System.out.println("--Serie: " + sr.getTittle());
+                                    int numTemporada = 1;
+                                    for (Season season : sr.getSeasons()) { // Iterar sobre todas las temporadas
+                                        System.out.println("----Season " + numTemporada + ":");
+                                        System.out.println("Chapters:");
+                                        for (Chapter chapter : season.getChapters()) { // Iterar sobre todos los
+                                                                                       // capítulos
+                                            System.out.println(" - " + chapter.getName() + ": " + chapter.getDuration()
+                                                    + " minutes");
+                                        }
+                                        numTemporada++;
                                     }
                                 }
                                 break;

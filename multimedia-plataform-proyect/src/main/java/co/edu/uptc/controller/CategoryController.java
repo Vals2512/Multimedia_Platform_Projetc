@@ -32,7 +32,7 @@ public class CategoryController {
         Category category = new Category(name, description);
         categories.add(category);
         Type type =new TypeToken<ArrayList<Category>>(){}.getType();
-        fm.addObject(FILE,categories,type);
+        fm.saveObjectToFile(FILE,categories,type);
         return category; 
     }
 }

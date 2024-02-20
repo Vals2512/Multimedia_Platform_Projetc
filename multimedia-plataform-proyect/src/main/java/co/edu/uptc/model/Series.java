@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Series extends Multimedia {
-
-    private int seasons;
     private Multimedia multimedia;
     private List<Chapter> chapters;
     private String chapterName;
     private int chapterDuration;
     private Chapter chap;
     private int releaseYear;
+    private List<Season> seasons;
 
     
     
@@ -20,7 +19,7 @@ public class Series extends Multimedia {
 
     public Series(String tittle){
         super(tittle);
-        this.chapters=new ArrayList<>();
+        this.seasons = new ArrayList<>();
     }
 
     public Series(String tittle, String details, int releaseYear) {
@@ -31,55 +30,6 @@ public class Series extends Multimedia {
         super(tittle, categories, details, releaseYear);
     }
 
-    public Series(int seasons, Multimedia multimedia, List<Chapter> chapters, String chapterName, int chapterDuration,
-            Chapter chap, int releaseYear) {
-        this.seasons = seasons;
-        this.multimedia = multimedia;
-        this.chapters = chapters;
-        this.chapterName = chapterName;
-        this.chapterDuration = chapterDuration;
-        this.chap = chap;
-        this.releaseYear = releaseYear;
-    }
-
-    public Series(String tittle, String details, int releaseYear, int seasons, Multimedia multimedia,
-            List<Chapter> chapters, String chapterName, int chapterDuration, Chapter chap, int releaseYear2) {
-        super(tittle, details, releaseYear);
-        this.seasons = seasons;
-        this.multimedia = multimedia;
-        this.chapters = chapters;
-        this.chapterName = chapterName;
-        this.chapterDuration = chapterDuration;
-        this.chap = chap;
-        releaseYear = releaseYear2;
-    }
-
-    public Series(String tittle, List<Category> categories, String details, int releaseYear, int seasons,
-            Multimedia multimedia, List<Chapter> chapters, String chapterName, int chapterDuration, Chapter chap,
-            int releaseYear2) {
-        super(tittle, categories, details, releaseYear);
-        this.seasons = seasons;
-        this.multimedia = multimedia;
-        this.chapters = chapters;
-        this.chapterName = chapterName;
-        this.chapterDuration = chapterDuration;
-        this.chap = chap;
-        releaseYear = releaseYear2;
-    }
-
-    public Series(String tittle, List<Category> categories, String details, int releaseYear, int seasons, int chapterDuration) {
-        super(tittle, categories, details, releaseYear);
-        this.seasons = seasons;
-        multimedia = new Multimedia(tittle, categories, details, releaseYear);
-        this.chapters = new ArrayList<>();
-    }
-
-    public Series(String tittle, String details, int releaseYear, int seasons, int chapterDuration) {
-        super(tittle, details, releaseYear);
-        this.seasons = seasons;
-        multimedia = new Multimedia(tittle, details, releaseYear);
-        this.chapters = new ArrayList<>();
-    }
 
     public Series(String chapterName, int chapterDuration) {
         this.chapterName = chapterName;
@@ -88,13 +38,14 @@ public class Series extends Multimedia {
 
     }
 
-    public int getSeasons() {
-        return seasons;
+    public void addSeason(Season season) {
+        this.seasons.add(season);
     }
 
-    public void setSeasons(int seasons) {
-        this.seasons = seasons;
+    public List<Season> getSeasons(){
+        return this.seasons;
     }
+
 
     public void addChapter(Chapter chapter) {
         chapters.add(chapter);

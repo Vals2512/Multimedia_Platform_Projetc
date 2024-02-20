@@ -1,6 +1,5 @@
 package co.edu.uptc.controller;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -56,7 +55,7 @@ public class UserControl {
         if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(passwordConfirmation)) {
             users.add(user);
             Type type= new TypeToken<ArrayList<User>>(){}.getType();
-            fm.addObject(FILE,users,type);
+            fm.saveObjectToFile(FILE,users,type);
             return true;
         }
         return false;
