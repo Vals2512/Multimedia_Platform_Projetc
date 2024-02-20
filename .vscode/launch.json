@@ -1,0 +1,52 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Try",
+            "request": "launch",
+            "mainClass": "co.edu.uptc.runner.Try",
+            "projectName": "multimedia-plataform-proyect"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.edu.uptc.runner.Run",
+            "projectName": "multimedia-plataform-proyect"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.uptc.edu.Test.Run",
+            "projectName": "Multimedia_Platform_Projetc_7c3eea2f"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.uptc.edu.Test.Run",
+            "projectName": "Multimedia_Platform_Projetc_c9d3ef5d"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.uptc.edu.Test.Run",
+            "projectName": "Multimedia_Platform_Projetc_5b878613"
+        },
+        {
+            "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "co.uptc.edu.Test.Run",
+            "projectName": "Multimedia_Platform_Projetc_f3aea87d"
+        },
+        {
+            "type": "java",
+            "name": "Launch",
+            "request": "launch",
+            "mainClass": "${fileBasename}"
+        }
+    ]
+}
