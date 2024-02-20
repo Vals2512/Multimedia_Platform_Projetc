@@ -1,7 +1,6 @@
 package co.edu.uptc.util;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -50,7 +49,7 @@ public class FileManager {
       * @return falso si hay un error dentro del proceso del metodo
       * @param <T> el tipo de dato en la lista
       */
-     public <T> boolean addObject(String fileName, List<T> objList, Type type){
+     public <T> boolean saveObjectToFile(String fileName, List<T> objList, Type type){
           try{
                file = new File(fileName);
                pw = new PrintWriter(new FileWriter(PATH + file + EXTENSION));
@@ -94,7 +93,5 @@ public class FileManager {
      }
      //borrar solo es no leer el objeto
 
-     public void deleteFile(){
 
-     }
 }
