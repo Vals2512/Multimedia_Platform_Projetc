@@ -66,34 +66,34 @@ public class SeriesControl {
         return null;
     }
 
-    public Series updateSerie(String title, String newTitle, int newSeasonss, List<Chapter> newChapters,
-            int newReleaseYear) {
-        int index = searchSerie(title);
-        if (index != -1) {
-            Series seriesToUpdate = series.get(index);
+    // public Series updateSerie(String title, String newTitle, int newSeasonss, List<Chapter> newChapters,
+    //         int newReleaseYear) {
+    //     int index = searchSerie(title);
+    //     if (index != -1) {
+    //         Series seriesToUpdate = series.get(index);
 
-            if (!newTitle.isEmpty()) {
-                seriesToUpdate.getMultimedia().setTittle(newTitle);
-            }
+    //         if (!newTitle.isEmpty()) {
+    //             seriesToUpdate.getMultimedia().setTittle(newTitle);
+    //         }
 
-            // if (newSeasonss > 0) {
-            //     seriesToUpdate.setSeasonss(newSeasonss);
-            // }
+    //         // if (newSeasonss > 0) {
+    //         //     seriesToUpdate.setSeasonss(newSeasonss);
+    //         // }
 
-            if (newChapters != null && !newChapters.isEmpty()) {
-                seriesToUpdate.setChapters(newChapters);
-            }
+    //         if (newChapters != null && !newChapters.isEmpty()) {
+    //             seriesToUpdate.setChapters(newChapters);
+    //         }
 
-            if (newReleaseYear > 0) {
-                seriesToUpdate.setReleaseYear(newReleaseYear);
-            }
+    //         if (newReleaseYear > 0) {
+    //             seriesToUpdate.setReleaseYear(newReleaseYear);
+    //         }
 
-            series.set(index, seriesToUpdate);
-            return seriesToUpdate;
-        }
+    //         series.set(index, seriesToUpdate);
+    //         return seriesToUpdate;
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
     public ArrayList<Series> getSeries() {
         return series;

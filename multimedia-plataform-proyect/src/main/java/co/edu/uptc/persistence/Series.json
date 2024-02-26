@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Rick y Morty",
+    "seasons": [
+      {
+        "name": "Temporada 1",
+        "chapters": [
+          {
+            "name": "Capitulo 1",
+            "duration": 19
+          }
+        ]
+      },
+      {
+        "name": "Temporada 2",
+        "chapters": [
+          {
+            "name": "Cap 1",
+            "duration": 22
+          }
+        ]
+      }
+    ],
+    "releaseYear": 0
+  }
+]

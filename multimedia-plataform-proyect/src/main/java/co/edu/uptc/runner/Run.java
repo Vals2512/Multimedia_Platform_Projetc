@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.FileManagement;
 import co.edu.uptc.controller.MoviesControl;
 import co.edu.uptc.controller.SeriesControl;
 import co.edu.uptc.controller.UserControl;
@@ -24,11 +25,11 @@ public class Run {
         UserControl userControl = new UserControl();
         MoviesControl mc = new MoviesControl();
         SeriesControl src = new SeriesControl();
+        FileManagement fm = new FileManagement();
 
         String email = "";
         String password = "";
         int releaseYear = 0;
-        int seasons = 0;
         int duration = 0;
         int opc3 = 0;
         boolean validInput = false;
@@ -299,25 +300,32 @@ public class Run {
 
                                         for (int i = 1; i <= numSeasons; i++) {
                                             Season season = new Season();
-                                            System.out.print("How many episodes does season " + i + " have? ");                                        
-                                            int numChapters=sc.nextInt();
-                                            sc.nextLine();
-                                            for (int j = 1;j <= numChapters; j++) {
-                                                System.out.print("Input the chapter´s name " + j + ": ");
+                                            System.out.print("Enter the name of season " + i + ": ");
+                                            sc.nextLine(); // Consume the new line
+                                            String seasonName = sc.nextLine();
+                                            season.setName(seasonName);
+                                        
+                                            System.out.print("How many episodes does season " + i + " have? ");
+                                            int numEpisodes = sc.nextInt();
+                                            sc.nextLine(); // Consume the new line
+                                        
+                                            for (int j = 1; j <= numEpisodes; j++) {
+                                                System.out.print("Enter the name of episode " + j + ": ");
                                                 String episodeName = sc.nextLine();
-                            
-                                                System.out.print("Enter the duration of the episode " + j + " (in minutes): ");
+                                        
+                                                System.out.print("Enter the duration of episode " + j + " (in minutes): ");
                                                 int episodeDuration = sc.nextInt();
-                                                sc.nextLine(); // Consumir la nueva línea
-                            
+                                                sc.nextLine(); // Consume the new line
+                                        
                                                 Chapter chapter = new Chapter(episodeName, episodeDuration);
                                                 season.addChapters(chapter);
                                             }
-
                                             sr.addSeason(season);
-
                                         }
+
                                         series.add(sr);
+                                        fm.saveSerie(sr);
+                                        System.out.println("Serie added succesfully");
 
                                     break;
 
@@ -465,7 +473,8 @@ public class Run {
                     } else {
                         System.out.println("Error registering the user");
                     }
-                    break;
+                    
+                break;
 
                 case 3:
                     String continueOption = "";
@@ -758,19 +767,8 @@ public class Run {
                                 break;
 
                             case 2:
-                            System.out.println("The list of avaliable series is: ");
-                            for (Series sr : series) { // Iterar sobre todas las series
-                                System.out.println("--Serie: " + sr.getTittle());
-                                int numTemporada = 1;
-                                for (Season season : sr.getSeasons()) { // Iterar sobre todas las temporadas
-                                    System.out.println("----Season " + numTemporada + ":");
-                                    System.out.println("Chapters:");
-                                    for (Chapter chapter : season.getChapters()) { // Iterar sobre todos los capítulos
-                                        System.out.println(" - " + chapter.getName() + ": " + chapter.getDuration() + " minutes");
-                                    }
-                                    numTemporada++;
-                                }
-                            }
+                                System.out.println("The list of avaliable series is: ");
+                                fm.displaySeries();
                                 break;
 
                             case 3:
