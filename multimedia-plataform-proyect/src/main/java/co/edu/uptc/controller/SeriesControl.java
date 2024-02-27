@@ -9,7 +9,7 @@ import co.edu.uptc.model.Series;
 public class SeriesControl {
     private ArrayList<Series> series;
 
-    //int chapterDuration;
+    // int chapterDuration;
 
     public SeriesControl() {
         series = new ArrayList<>();
@@ -47,12 +47,14 @@ public class SeriesControl {
         return false;
     }
 
-    public void showSeriesTittles(){
-            for (int i = 0; i < series.size(); i++) {
-                System.out.println((i+1)+". "+series.get(i).getTittle());
-            }
+    public List<String> showSeriesTittles() {
+        List<String> titles = new ArrayList<>();
+        for (int i = 0; i < series.size(); i++) {
+            titles.add((i + 1) + ". " + series.get(i).getTittle());
         }
-        
+        return titles;
+    }
+
     public String showSeries() {
         return series.toString();
     }
@@ -66,39 +68,38 @@ public class SeriesControl {
         return null;
     }
 
-    // public Series updateSerie(String title, String newTitle, int newSeasonss, List<Chapter> newChapters,
-    //         int newReleaseYear) {
-    //     int index = searchSerie(title);
-    //     if (index != -1) {
-    //         Series seriesToUpdate = series.get(index);
+    // public Series updateSerie(String title, String newTitle, int newSeasonss,
+    // List<Chapter> newChapters,
+    // int newReleaseYear) {
+    // int index = searchSerie(title);
+    // if (index != -1) {
+    // Series seriesToUpdate = series.get(index);
 
-    //         if (!newTitle.isEmpty()) {
-    //             seriesToUpdate.getMultimedia().setTittle(newTitle);
-    //         }
+    // if (!newTitle.isEmpty()) {
+    // seriesToUpdate.getMultimedia().setTittle(newTitle);
+    // }
 
-    //         // if (newSeasonss > 0) {
-    //         //     seriesToUpdate.setSeasonss(newSeasonss);
-    //         // }
+    // // if (newSeasonss > 0) {
+    // // seriesToUpdate.setSeasonss(newSeasonss);
+    // // }
 
-    //         if (newChapters != null && !newChapters.isEmpty()) {
-    //             seriesToUpdate.setChapters(newChapters);
-    //         }
+    // if (newChapters != null && !newChapters.isEmpty()) {
+    // seriesToUpdate.setChapters(newChapters);
+    // }
 
-    //         if (newReleaseYear > 0) {
-    //             seriesToUpdate.setReleaseYear(newReleaseYear);
-    //         }
+    // if (newReleaseYear > 0) {
+    // seriesToUpdate.setReleaseYear(newReleaseYear);
+    // }
 
-    //         series.set(index, seriesToUpdate);
-    //         return seriesToUpdate;
-    //     }
+    // series.set(index, seriesToUpdate);
+    // return seriesToUpdate;
+    // }
 
-    //     return null;
+    // return null;
     // }
 
     public ArrayList<Series> getSeries() {
         return series;
     }
-
-    
 
 }

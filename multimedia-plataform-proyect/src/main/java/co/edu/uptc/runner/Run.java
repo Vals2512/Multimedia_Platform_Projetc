@@ -56,12 +56,12 @@ public class Run {
                 "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
-        //         "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
-        // Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
-        //         7, 188);
-
-        
+        // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction,
+        // thriller),
+        // "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
+        // Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama),
+        // "Serie de mafiosos de época", 2013,
+        // 7, 188);
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
@@ -292,8 +292,8 @@ public class Run {
                                         break;
                                     case 6:
                                         System.out.println("Input the series tittle");
-                                        String tittle=sc.nextLine();
-                                        Series sr=new Series(tittle);
+                                        String tittle = sc.nextLine();
+                                        Series sr = new Series(tittle);
 
                                         System.out.print("How many seasons do you want to add? ");
                                         int numSeasons = sc.nextInt();
@@ -304,19 +304,20 @@ public class Run {
                                             sc.nextLine(); // Consume the new line
                                             String seasonName = sc.nextLine();
                                             season.setName(seasonName);
-                                        
+
                                             System.out.print("How many episodes does season " + i + " have? ");
                                             int numEpisodes = sc.nextInt();
                                             sc.nextLine(); // Consume the new line
-                                        
+
                                             for (int j = 1; j <= numEpisodes; j++) {
                                                 System.out.print("Enter the name of episode " + j + ": ");
                                                 String episodeName = sc.nextLine();
-                                        
-                                                System.out.print("Enter the duration of episode " + j + " (in minutes): ");
+
+                                                System.out.print(
+                                                        "Enter the duration of episode " + j + " (in minutes): ");
                                                 int episodeDuration = sc.nextInt();
                                                 sc.nextLine(); // Consume the new line
-                                        
+
                                                 Chapter chapter = new Chapter(episodeName, episodeDuration);
                                                 season.addChapters(chapter);
                                             }
@@ -327,57 +328,57 @@ public class Run {
                                         fm.saveSerie(sr);
                                         System.out.println("Serie added succesfully");
 
-                                    break;
+                                        break;
 
                                     // case 6:
-                                        // System.out.println("Enter the title of the serie: ");
-                                        // String seriesTitle = sc.nextLine();
+                                    // System.out.println("Enter the title of the serie: ");
+                                    // String seriesTitle = sc.nextLine();
 
-                                        // List<Category> selectedCategories = selectCategories(categoriesList);
+                                    // List<Category> selectedCategories = selectCategories(categoriesList);
 
-                                        // System.out.println("Enter the details of the series: ");
-                                        // String seriesDetails = sc.nextLine();
-                                        // do {
-                                        //     System.out.println("Enter the release year of the series: ");
-                                        //     try {
-                                        //         releaseYear = sc.nextInt();
-                                        //         validInput = true;
-                                        //         if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
-                                        //             System.out.println(
-                                        //                     "Error: Release year cannot be greater than the current year.");
-                                        //             validInput = false;
-                                        //         }
-                                        //     } catch (InputMismatchException e) {
-                                        //         System.out.println("Error: Please input a valid year.");
-                                        //         sc.next(); // Clear the buffer
-                                        //     }
-                                        // } while (!validInput);
-                                        // /* */
-                                        // do {
-                                        //     try {
-                                        //         System.out.println("Enter the number of seasons of the series: ");
-                                        //         seasons = sc.nextInt();
-                                        //         if (seasons <= 0) {
-                                        //             System.out.println("Input a valid value");
-                                        //         }
-                                        //         sc.nextLine(); // Consume the newline character left by nextInt()
-                                        //     } catch (InputMismatchException e) {
-                                        //         System.out.println("Input a valid value");
-                                        //     }
+                                    // System.out.println("Enter the details of the series: ");
+                                    // String seriesDetails = sc.nextLine();
+                                    // do {
+                                    // System.out.println("Enter the release year of the series: ");
+                                    // try {
+                                    // releaseYear = sc.nextInt();
+                                    // validInput = true;
+                                    // if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
+                                    // System.out.println(
+                                    // "Error: Release year cannot be greater than the current year.");
+                                    // validInput = false;
+                                    // }
+                                    // } catch (InputMismatchException e) {
+                                    // System.out.println("Error: Please input a valid year.");
+                                    // sc.next(); // Clear the buffer
+                                    // }
+                                    // } while (!validInput);
+                                    // /* */
+                                    // do {
+                                    // try {
+                                    // System.out.println("Enter the number of seasons of the series: ");
+                                    // seasons = sc.nextInt();
+                                    // if (seasons <= 0) {
+                                    // System.out.println("Input a valid value");
+                                    // }
+                                    // sc.nextLine(); // Consume the newline character left by nextInt()
+                                    // } catch (InputMismatchException e) {
+                                    // System.out.println("Input a valid value");
+                                    // }
 
-                                        // } while (seasons <= 0);
+                                    // } while (seasons <= 0);
 
-                                        // // Crear la nueva serie con una lista vacía de capítulos
-                                        // Series newSeries = new Series(seriesTitle, selectedCategories, seriesDetails,
-                                        //         releaseYear, seasons, 0);
+                                    // // Crear la nueva serie con una lista vacía de capítulos
+                                    // Series newSeries = new Series(seriesTitle, selectedCategories, seriesDetails,
+                                    // releaseYear, seasons, 0);
 
-                                        // // Agregar la nueva serie
-                                        // if (src.addSerie(newSeries)) {
-                                        //     System.out.println("Series added successfully");
-                                        // } else {
-                                        //     System.out.println("Error adding series");
-                                        // }
-                                        // break;
+                                    // // Agregar la nueva serie
+                                    // if (src.addSerie(newSeries)) {
+                                    // System.out.println("Series added successfully");
+                                    // } else {
+                                    // System.out.println("Error adding series");
+                                    // }
+                                    // break;
 
                                     case 7:
                                         System.out.println("Enter the title of the series you want to update: ");
@@ -473,8 +474,8 @@ public class Run {
                     } else {
                         System.out.println("Error registering the user");
                     }
-                    
-                break;
+
+                    break;
 
                 case 3:
                     String continueOption = "";

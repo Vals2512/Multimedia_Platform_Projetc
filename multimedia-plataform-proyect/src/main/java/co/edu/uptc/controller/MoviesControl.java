@@ -74,9 +74,11 @@ public class MoviesControl {
         return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
     }
 
-    public boolean addMovie(Movies tittle) {
-        if (searchMovie(tittle.getTittle()) == -1) {
-            movies.add(tittle);
+    public boolean addMovie(Movies movie) {
+        if (searchMovie(movie.getTittle()) == -1) {
+            movies.add(movie);
+            fileManager.saveObjectToFile("movies", movies, new TypeToken<ArrayList<Movies>>() {
+            }.getType());
             return true;
         }
         return false;
@@ -100,16 +102,20 @@ public class MoviesControl {
         return false;
     }
 
-    public void showMovies() {
+    public List<String> showMovies() {
+        List<String> movieDetails = new ArrayList<>();
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println((i + 1) + ". " + movies.get(i).toString());
+            movieDetails.add((i + 1) + ". " + movies.get(i).toString());
         }
+        return movieDetails;
     }
 
-    public void showMoviesTittles() {
+    public List<String> showMoviesTittles() {
+        List<String> movieTitles = new ArrayList<>();
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println((i + 1) + ". " + movies.get(i).getTittle());
+            movieTitles.add((i + 1) + ". " + movies.get(i).getTittle());
         }
+        return movieTitles;
     }
 
     public ArrayList<Movies> getMovies() {
