@@ -26,6 +26,7 @@ public class AdminControl {
         return false;
     }
 
+
     public ArrayList<Admin> getAdmins() {
         return admins;
     }

@@ -88,6 +88,7 @@ public class MoviesControl {
         int movieIndex = searchMovie(title);
         if (movieIndex != -1) {
             movies.set(movieIndex, updatedMovie);
+
             return updatedMovie;
         }
         return null;
@@ -97,6 +98,7 @@ public class MoviesControl {
         int movieIndex = searchMovie(title);
         if (movieIndex != -1) {
             movies.remove(movieIndex);
+            fileManager.saveObjectToFile("movies",movies, new TypeToken<ArrayList<Movies>>(){}.getType());
             return true;
         }
         return false;
