@@ -32,8 +32,8 @@ public class MoviesControl {
 
     public int searchMovie(String tittle) {
         // Load existing movies from file
-        ArrayList<Movies> existingMovies = new ArrayList<>();
-        
+        ArrayList<Movies> existingMovies = fileManager.readFile("movies", new TypeToken<ArrayList<Movies>>() {
+        }.getType());
 
         if (existingMovies != null) {
             for (int i = 0; i < existingMovies.size(); i++) {
@@ -46,18 +46,16 @@ public class MoviesControl {
         return -1;
     }
 
-    
-      public Movies getMovieTittle(String tittle) {
-     int movieIndex = searchMovie(tittle);
-      if (movieIndex != -1) {
-      return movies.get(movieIndex);
-      }
-      return null;
-     }
-     
+    public Movies getMovieTittle(String tittle) {
+        int movieIndex = searchMovie(tittle);
+        if (movieIndex != -1) {
+            return movies.get(movieIndex);
+        }
+        return null;
+    }
 
-        public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
-        List<Category> categoriesList) {
+    public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
+            List<Category> categoriesList) {
         String[] selectedIndices = categories.split(",");
         List<Category> selectedCategories = new ArrayList<>();
         for (String index : selectedIndices) {
@@ -74,15 +72,15 @@ public class MoviesControl {
         }
 
         return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
-        }
+    }
 
-        public boolean addMovie(Movies tittle) {
+    public boolean addMovie(Movies tittle) {
         if (searchMovie(tittle.getTittle()) == -1) {
             movies.add(tittle);
             return true;
         }
         return false;
-        }
+    }
 
     public Movies updateMovie(String title, Movies updatedMovie) {
         int movieIndex = searchMovie(title);
@@ -119,11 +117,11 @@ public class MoviesControl {
     }
 
     // public Multimedia getMovieTittle(String tittle) {
-    //     int movieIndex = searchMovie(tittle);
-    //     if (movieIndex != -1) {
-    //         return movies.get(movieIndex);
-    //     }
-    //     return null;
+    // int movieIndex = searchMovie(tittle);
+    // if (movieIndex != -1) {
+    // return movies.get(movieIndex);
+    // }
+    // return null;
     // }
 
 }
