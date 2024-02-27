@@ -1,4 +1,5 @@
 package co.edu.uptc.controller;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,37 +13,34 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import co.edu.uptc.model.Series;
+import co.edu.uptc.util.FileManager;
 
 public class FileManagement {
 
     private String filename1 = "Series";
     private String filename2 = "Peliculas";
-    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {}.getType();
+    private FileManager fileManager = new FileManager();
+    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {
+    }.getType();
     public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String fileExtension = ".json";
-    String fileNamee1 = filePath+filename1+fileExtension;
+    String fileNamee1 = filePath + filename1 + fileExtension;
 
-    Gson gson=new Gson();
+    Gson gson = new Gson();
 
-
-    public void saveSerie(Series serie){
-        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
+    public void saveSerie(Series serie) {
+        List<Series> series = fileManager.readFile(fileNamee1, SERIES_TYPE);
         series.add(serie);
-
-        writeJsonFile(fileNamee1, series);
-
-
+        fileManager.saveObjectToFile(fileNamee1, series, SERIES_TYPE);
     }
 
-    public void displaySeries(){
-        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
-        for (Series serie : series) {
-            System.out.println(serie);
-        }
+    public void displaySeries() {
+        List<Series> series = fileManager.readFile(fileNamee1, SERIES_TYPE);
+
+        // Save the series information to file
+        fileManager.saveObjectToFile("series_output", series, SERIES_TYPE);
     }
 
-
-   
     public <T> List<T> readJsonFile(String fileName, Type type) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -59,9 +57,8 @@ public class FileManagement {
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
-        } 
+        }
     }
-
 
     private <T> void writeJsonFile(String fileName, List<T> data) {
         try (FileWriter writer = new FileWriter(fileName)) {
@@ -71,5 +68,4 @@ public class FileManagement {
             e.printStackTrace();
         }
     }
-}   
-
+}
