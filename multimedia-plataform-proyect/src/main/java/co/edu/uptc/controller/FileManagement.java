@@ -34,7 +34,12 @@ public class FileManagement {
 
     public void register(String email, String password){
         User user = new User(email, password);
-        List<User> users = readJsonFile(fileNamee3, SERIES_TYPE);
+        List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
+        for (User existingUser : users) {
+            if (existingUser.getEmail().equals(user.getEmail())) {
+                throw new IllegalArgumentException("El correo electrónico ya está en uso");
+            }
+        }
         users.add(user);
         writeJsonFile(fileNamee3, users);
     }

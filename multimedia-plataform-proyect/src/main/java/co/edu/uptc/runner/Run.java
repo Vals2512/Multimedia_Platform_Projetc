@@ -473,7 +473,12 @@ public class Run {
                     // } else {
                     //     System.out.println("Error registering the user");
                     // }
-                fm.register(email, passwordConfirmation);
+                    try {
+                        fm.register(email, passwordConfirmation);
+                    } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    }
+                
                     
                 break;
 
