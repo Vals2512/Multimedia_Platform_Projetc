@@ -49,7 +49,6 @@ public class FileManagement {
     public void saveSerie(Series serie){
         List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         series.add(serie);
-
         writeJsonFile(fileNamee1, series);
 
 
