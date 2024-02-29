@@ -465,14 +465,15 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
-                        // list of users,
-                        // validating that the
-                        // data matches
-                        System.out.println("User registered successfully");
-                    } else {
-                        System.out.println("Error registering the user");
-                    }
+                    // if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
+                    //     // list of users,
+                    //     // validating that the
+                    //     // data matches
+                    //     System.out.println("User registered successfully");
+                    // } else {
+                    //     System.out.println("Error registering the user");
+                    // }
+                fm.register(email, passwordConfirmation);
                     
                 break;
 

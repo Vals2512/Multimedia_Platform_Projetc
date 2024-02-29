@@ -11,18 +11,34 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import co.edu.uptc.model.Playlist;
 import co.edu.uptc.model.Series;
+import co.edu.uptc.model.User;
 
 public class FileManagement {
 
     private String filename1 = "Series";
     private String filename2 = "Peliculas";
+    private String filename3 = "Usuarios";
     private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {}.getType();
+    private static final Type USERS_TYPE = new TypeToken<List<User>>() {}.getType();
+
     public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String fileExtension = ".json";
     String fileNamee1 = filePath+filename1+fileExtension;
+    String fileNamee3 = filePath+filename3+fileExtension;
+
 
     Gson gson=new Gson();
+
+
+    public void register(String email, String password){
+        User user = new User(email, password);
+        List<User> users = readJsonFile(fileNamee3, SERIES_TYPE);
+        users.add(user);
+        writeJsonFile(fileNamee3, users);
+    }
+
 
 
     public void saveSerie(Series serie){
