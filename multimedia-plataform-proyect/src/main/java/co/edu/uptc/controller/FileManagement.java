@@ -59,7 +59,7 @@ public class FileManagement {
             return new ArrayList<>();
         }
     }
-
+    public void deleteMovie(){}
     private <T> void writeJsonFile(String fileName, List<T> data) {
         try (FileWriter writer = new FileWriter(fileName)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

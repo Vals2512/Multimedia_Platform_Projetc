@@ -1,5 +1,7 @@
 package co.edu.uptc.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +12,10 @@ public class Series extends Multimedia {
     // private int chapterDuration;
     // private Chapter chap;
     // private int releaseYear;
-    private String name;
-    private List<Season> seasons;
+    @SerializedName("name")
+    protected String name;
+    @SerializedName("seasons")
+    protected List<Season> seasons;
 
     
     
@@ -40,11 +44,13 @@ public class Series extends Multimedia {
     public void setName(String name) {
         this.name = name;
     }
-     
-    
+
     @Override
     public String toString() {
-        return "Serie: " + name + " seasons: " + seasons;
+        return "Series{" +
+                "name='" + name + '\'' +
+                ", seasons=" + seasons +
+                '}';
     }
 }
     // public Series(String tittle, String details, int releaseYear) {

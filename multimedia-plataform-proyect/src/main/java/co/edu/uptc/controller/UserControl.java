@@ -65,6 +65,7 @@ public class UserControl {
         int userIndex = searchUser(email);
         if (userIndex != -1) {
             users.remove(userIndex);
+            fm.saveObjectToFile("users", users, new TypeToken<ArrayList<User>>(){}.getType());
             return true;
         }
         return false;

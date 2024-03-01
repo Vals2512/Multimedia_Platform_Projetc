@@ -4,4 +4,6 @@ module multimedia.plataform.proyect {
     requires com.google.gson;
     opens co.edu.uptc.view to javafx.fxml;
     exports co.edu.uptc.view;
+    exports co.edu.uptc.controller;
+
 }

@@ -1,4 +1,68 @@
 package co.edu.uptc.view;
 
-public class MainView {
+import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.UserControl;
+import co.edu.uptc.view.Main;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+
+import java.io.IOException;
+
+public class MainView{
+    @FXML
+    TextField emailField;
+    @FXML
+    TextField passwordField;
+    @FXML
+    Button buttonLogin;
+    @FXML
+    Button buttonVisitor;
+    @FXML
+    Button buttonSignIn;
+    @FXML
+    Label errorLabel;
+
+    UserControl uc;
+    AdminControl ac;
+    public MainView() {
+        uc= new UserControl();
+        ac=new AdminControl();
+        errorLabel=new Label();
+//        errorLabel.setStyle("--block-text-color:#FF0000 ");
+
+    }
+    public void initialize() {}
+    public void testButton(ActionEvent actionEvent) {
+        System.out.println("funciona");
+    }
+    
+@FXML
+    public void signInButton() throws IOException {
+        Main.setRoot("singInView.fxml");
+
+    }
+    @FXML
+    private void loginButton() throws IOException {
+
+
+        if (uc.login(emailField.getText(),passwordField.getText())){
+            System.out.println(true);
+
+        }else if (ac.loginAdminBackup(emailField.getText(),passwordField.getText())){
+            System.out.println(true);
+            Main.setRoot("AdminView");
+            errorLabel.setText("");
+
+        }else{
+            errorLabel.setStyle("-fx-text-fill: RED");
+//            errorLabel.setTextFill(Color.web("#FF0000"));
+            errorLabel.setText("revise las credenciales de acceso");
+
+        }
+
+    }
 }

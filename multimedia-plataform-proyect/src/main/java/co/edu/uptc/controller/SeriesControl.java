@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uptc.model.Chapter;
+import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Series;
+import co.edu.uptc.util.FileManager;
+import com.google.gson.reflect.TypeToken;
 
 public class SeriesControl {
     private ArrayList<Series> series;
+    private FileManager fileManager;
 
     // int chapterDuration;
 
     public SeriesControl() {
+        fileManager=new FileManager();
         series = new ArrayList<>();
+        series=fileManager.readFile("Series",new TypeToken<ArrayList<Series>>() {}.getType());
+
     }
 
     public int searchSerie(String tittle) {
