@@ -1,6 +1,6 @@
 package co.edu.uptc.controller;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken;
 
 import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Movies;
-import co.edu.uptc.model.Multimedia;
 import co.edu.uptc.util.FileManager;
 
 public class MoviesControl {
@@ -19,6 +18,10 @@ public class MoviesControl {
     public MoviesControl() {
         movies = new ArrayList<>();
         fileManager = new FileManager();
+        if (fileManager.readFile("movies", new TypeToken<ArrayList<Movies>>() {}.getType())!=null){
+        movies = fileManager.readFile("movies", new TypeToken<ArrayList<Movies>>() {}.getType());}else {
+            fileManager.createFile("movies");
+        }
     }
 
     public Movies searchMoviesObject(String name) {
@@ -88,7 +91,7 @@ public class MoviesControl {
         int movieIndex = searchMovie(title);
         if (movieIndex != -1) {
             movies.set(movieIndex, updatedMovie);
-
+            fileManager.saveObjectToFile("movies", movies, new TypeToken<ArrayList<Movies>>() {}.getType());
             return updatedMovie;
         }
         return null;

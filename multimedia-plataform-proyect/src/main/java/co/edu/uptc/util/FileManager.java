@@ -74,14 +74,12 @@ public class FileManager {
       */
      public <T> ArrayList<T> readFile(String fileName,Type type){
           try {
-
                ArrayList<T> typeArrayList;
                file = new File(fileName);
               br=new BufferedReader(new FileReader(PATH+file+EXTENSION));
               StringBuilder content=new StringBuilder();
               String line= br.readLine();
               while(line!=null) {
-
                    content.append(line);
                    line= br.readLine();
               }

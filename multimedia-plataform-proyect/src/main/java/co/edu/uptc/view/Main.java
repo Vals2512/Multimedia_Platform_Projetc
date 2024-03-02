@@ -3,26 +3,34 @@ package co.edu.uptc.view;
 import javafx.application.Application;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+
 import javafx.stage.Stage;
 
+
+import java.io.IOException;
+
 public class Main extends Application {
+    private static Stage primaryStage;
+     static Scene sc;
     public static void main(String[] args){
-        launch(args);
+        launch();
     }
+   public static void setRoot(String fxml) throws IOException {
+
+       Parent root = FXMLLoader.load(Main.class.getResource(fxml+".fxml"));
+       primaryStage.setScene(new Scene(root));
+    }
+
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader=new FXMLLoader(Main.class.getResource("mainView.fxml"));
-        Scene sc=new Scene(loader.load(),300,400);
-        stage.setScene(sc);
-        stage.setTitle("prueba");
-        stage.show();
+        this.primaryStage = stage;
+        primaryStage.setTitle("Login");
+        setRoot("mainView");
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
+
 }
