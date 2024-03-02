@@ -51,9 +51,9 @@ public class FileManagement {
         series.add(serie);
         writeJsonFile(fileNamee1, series);
 
-
     }
 
+    
     public void displaySeries(){
         List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         for (Series serie : series) {
