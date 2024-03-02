@@ -1,0 +1,64 @@
+[
+  {
+    "duration": 188,
+    "multimedia": {
+      "tittle": "Titanic",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        },
+        {
+          "name": "Romance",
+          "description": "Películas o series de temática romántica"
+        }
+      ],
+      "details": "Película de barco que se hunde",
+      "releaseYear": 1997
+    },
+    "tittle": "Titanic",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      },
+      {
+        "name": "Romance",
+        "description": "Películas o series de temática romántica"
+      }
+    ],
+    "details": "Película de barco que se hunde",
+    "releaseYear": 1997
+  },
+  {
+    "duration": 175,
+    "multimedia": {
+      "tittle": "El padrino",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        },
+        {
+          "name": "Crimen",
+          "description": "Películas o series de crimen"
+        }
+      ],
+      "details": "Película de policía corrupto y actividades ilegales",
+      "releaseYear": 1972
+    },
+    "tittle": "El padrino",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      },
+      {
+        "name": "Crimen",
+        "description": "Películas o series de crimen"
+      }
+    ],
+    "details": "Película de policía corrupto y actividades ilegales",
+    "releaseYear": 1972
+  }
+]

@@ -20,7 +20,8 @@
           }
         ]
       }
-    ]
+    ],
+    "releaseYear": 0
   },
   {
     "name": "Serie 1",
@@ -40,6 +41,21 @@
           {
             "name": "Capitulo 1",
             "duration": 20
+          }
+        ]
+      }
+    ],
+    "releaseYear": 0
+  },
+  {
+    "name": "Breaking bad",
+    "seasons": [
+      {
+        "name": "Temporada 1",
+        "chapters": [
+          {
+            "name": "Capitulo 1",
+            "duration": 45
           }
         ]
       }
