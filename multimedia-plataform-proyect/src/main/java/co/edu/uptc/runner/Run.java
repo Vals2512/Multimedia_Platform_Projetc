@@ -290,6 +290,7 @@ public class Run {
                                             System.out.println("Error deleting movie");
                                         }
                                         break;
+                                        
                                     case 6:
                                         System.out.println("Input the series tittle");
                                         String tittle = sc.nextLine();
@@ -466,16 +467,22 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
-                        // list of users,
-                        // validating that the
-                        // data matches
-                        System.out.println("User registered successfully");
-                    } else {
-                        System.out.println("Error registering the user");
+                    // if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
+                    //     // list of users,
+                    //     // validating that the
+                    //     // data matches
+                    //     System.out.println("User registered successfully");
+                    // } else {
+                    //     System.out.println("Error registering the user");
+                    // }
+                    try {
+                        fm.register(email, passwordConfirmation);
+                    } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
                     }
-
-                    break;
+                
+                    
+                break;
 
                 case 3:
                     String continueOption = "";

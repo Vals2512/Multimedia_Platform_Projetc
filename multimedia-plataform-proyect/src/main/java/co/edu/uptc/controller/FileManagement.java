@@ -12,35 +12,58 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import co.edu.uptc.model.Playlist;
 import co.edu.uptc.model.Series;
-import co.edu.uptc.util.FileManager;
+import co.edu.uptc.model.User;
 
 public class FileManagement {
 
     private String filename1 = "Series";
     private String filename2 = "Peliculas";
-    private FileManager fileManager = new FileManager();
-    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {
-    }.getType();
+    private String filename3 = "Usuarios";
+    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {}.getType();
+    private static final Type USERS_TYPE = new TypeToken<List<User>>() {}.getType();
+
     public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String fileExtension = ".json";
-    String fileNamee1 = filePath + filename1 + fileExtension;
+    String fileNamee1 = filePath+filename1+fileExtension;
+    String fileNamee3 = filePath+filename3+fileExtension;
+
 
     Gson gson = new Gson();
 
-    public void saveSerie(Series serie) {
-        List<Series> series = fileManager.readFile(fileNamee1, SERIES_TYPE);
+
+    public void register(String email, String password){
+        User user = new User(email, password);
+        List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
+        for (User existingUser : users) {
+            if (existingUser.getEmail().equals(user.getEmail())) {
+                throw new IllegalArgumentException("El correo electrónico ya está en uso");
+            }
+        }
+        users.add(user);
+        writeJsonFile(fileNamee3, users);
+    }
+
+
+
+    public void saveSerie(Series serie){
+        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         series.add(serie);
-        fileManager.saveObjectToFile(fileNamee1, series, SERIES_TYPE);
+        writeJsonFile(fileNamee1, series);
+
     }
 
-    public void displaySeries() {
-        List<Series> series = fileManager.readFile(fileNamee1, SERIES_TYPE);
-
-        // Save the series information to file
-        fileManager.saveObjectToFile("series_output", series, SERIES_TYPE);
+    
+    public void displaySeries(){
+        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
+        for (Series serie : series) {
+            System.out.println(serie);
+        }
     }
 
+
+   
     public <T> List<T> readJsonFile(String fileName, Type type) {
         File file = new File(fileName);
         if (!file.exists()) {

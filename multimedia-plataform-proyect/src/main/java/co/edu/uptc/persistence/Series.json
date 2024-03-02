@@ -22,5 +22,29 @@
       }
     ],
     "releaseYear": 0
+  },
+  {
+    "name": "Serie 1",
+    "seasons": [
+      {
+        "name": "Season 1",
+        "chapters": [
+          {
+            "name": "Cap 1",
+            "duration": 20
+          }
+        ]
+      },
+      {
+        "name": "Season 2",
+        "chapters": [
+          {
+            "name": "Capitulo 1",
+            "duration": 20
+          }
+        ]
+      }
+    ],
+    "releaseYear": 0
   }
 ]
