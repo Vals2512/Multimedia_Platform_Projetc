@@ -47,6 +47,17 @@ public void register(String email, String password, Plan plan, Payment payment) 
         writeJsonFile(fileNamee3, users);
     }
 
+    public boolean login(String email, String password){
+        List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
+        for (User user : users) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+
 
 
     public void saveSerie(Series serie){

@@ -526,7 +526,7 @@ public class Run {
                         System.out.print("Enter your password: ");
                         password = sc.next();
 
-                        if (userControl.login(email, password)) {
+                        if (fm.login(email, password)) {
                             System.out.println("Successful login");
                             int opc2 = 10;
                             do {
