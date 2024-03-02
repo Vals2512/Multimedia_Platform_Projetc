@@ -12,6 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import co.edu.uptc.model.Payment;
+import co.edu.uptc.model.Plan;
 import co.edu.uptc.model.Playlist;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
@@ -33,8 +35,8 @@ public class FileManagement {
     Gson gson = new Gson();
 
 
-    public void register(String email, String password){
-        User user = new User(email, password);
+public void register(String email, String password, Plan plan, Payment payment) {
+        User user = new User(email, password, plan, payment);
         List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
         for (User existingUser : users) {
             if (existingUser.getEmail().equals(user.getEmail())) {
@@ -60,6 +62,11 @@ public class FileManagement {
         for (Series serie : series) {
             System.out.println(serie);
         }
+    }
+
+    public Payment makePayment(Plan plan, String metodoPago) {
+        Payment payment = new Payment(plan.getPrice(), metodoPago);
+        return payment;
     }
 
 

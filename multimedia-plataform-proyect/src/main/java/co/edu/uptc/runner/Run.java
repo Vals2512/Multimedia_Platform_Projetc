@@ -15,6 +15,8 @@ import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Chapter;
 import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Multimedia;
+import co.edu.uptc.model.Payment;
+import co.edu.uptc.model.Plan;
 import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
@@ -467,16 +469,47 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    // if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
-                    //     // list of users,
-                    //     // validating that the
-                    //     // data matches
-                    //     System.out.println("User registered successfully");
-                    // } else {
-                    //     System.out.println("Error registering the user");
-                    // }
+                    System.out.println("Select a subscription plan:");
+                    System.out.println("1. Basic Plan");
+                    System.out.println("2. Standard Plan");
+                    System.out.println("3. Premium Plan");
+                    int planOption = sc.nextInt();
+                    Plan plan = null;
+                    switch (planOption) {
+                        case 1:
+                            plan = new Plan("Basic", 7.99, 30);
+                            break;
+                        case 2:
+                            plan = new Plan("Standard", 9.99, 30);
+                            break;
+                        case 3:
+                            plan = new Plan("Premium", 11.99, 30);
+                            break;
+                        default:
+                            System.out.println("Select a valid option");
+                            break;
+                    }
+                    System.out.println("Select a payment method:");
+                    System.out.println("1. Credit Card");
+                    System.out.println("2. PayPal");
+                    int paymentMethodOption = sc.nextInt();
+                    String paymentMethod = null;
+                    switch (paymentMethodOption) {
+                        case 1:
+                            paymentMethod = "Credit Card";
+                            fm.makePayment(plan, paymentMethod);
+                            break;
+                        case 2:
+                            paymentMethod = "PayPal";
+                            fm.makePayment(plan, paymentMethod);
+                            break;
+                        default:
+                            System.out.println("Select a valid option");
+                            break;
+                    }
+                    Payment payment = new Payment(plan.getPrice(), paymentMethod);
                     try {
-                        fm.register(email, passwordConfirmation);
+                        fm.register(email, passwordConfirmation, plan, payment);
                     } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     }
