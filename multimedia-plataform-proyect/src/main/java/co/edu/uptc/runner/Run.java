@@ -510,6 +510,12 @@ public class Run {
                     Payment payment = new Payment(plan.getPrice(), paymentMethod);
                     try {
                         fm.register(email, passwordConfirmation, plan, payment);
+                        User user = new User(email, passwordConfirmation, plan, payment);
+                        System.out.println("Enter the name you want to give to the invoice file:");
+                        sc.nextLine();
+                        String invoiceFileName = sc.nextLine();
+                        fm.generarFactura(user, invoiceFileName);
+                        System.out.println("User successfully registered and plan selected: " + plan.getName());
                     } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     }
