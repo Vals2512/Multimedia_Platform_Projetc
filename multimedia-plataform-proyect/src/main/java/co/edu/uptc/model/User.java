@@ -16,6 +16,10 @@ public class User {
     private Plan plan;
     private Payment payment;
 
+    public User() {
+
+    }
+
     /**
      * Sets the user's playlist.
      *

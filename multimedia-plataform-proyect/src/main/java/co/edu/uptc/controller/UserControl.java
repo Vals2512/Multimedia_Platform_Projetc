@@ -52,7 +52,9 @@ public class UserControl {
     }
 
     public boolean addUser(String email, String password) {
-        User user=new User(email,password);
+        User user=new User();
+        user.setEmail(email);
+        user.setPassword(password);
         if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(password)) {
             users.add(user);
             Type type= new TypeToken<ArrayList<User>>(){}.getType();
