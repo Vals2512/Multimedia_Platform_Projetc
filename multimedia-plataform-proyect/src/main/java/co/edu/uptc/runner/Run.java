@@ -686,76 +686,42 @@ public class Run {
                                             }
 
                                         } while (opc4 != 0);
-                                        break;
+                                    break;
 
                                     case 4:
-                                        int opc5 = 0;
-                                        int selectedSerie = 0;
-                                        do {
-                                            System.out.println("Play Serie");
-                                            System.out.println(
-                                                    "Select the serie you want to reproduce or enter 0 to return to the previous menu");
-                                            System.out.println("Press 0 if you want to return to the previous menu");
-                                            src.showSeriesTittles();
 
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior
-                                            try {
-                                                selectedSerie = sc.nextInt();
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Input a valid option");
-                                                continue;
-                                            }
+                                    boolean playAnotherSerie;
+                                    do {
+                                        series = fm.getSeries();
+                                        for (int i = 0; i < series.size(); i++) {
+                                            System.out.println((i + 1) + ". " + series.get(i).getName());
+                                        }
 
-                                            if (selectedSerie == 0) {
-                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
-                                                // anterior
-                                            }
-                                            System.out.println("The series will last 5 minutes");
-                                            System.out.println(
-                                                    "PLAYING: " + src.getSeries().get(selectedSerie - 1).getTittle());
-                                            int Spaces = 50;
-                                            long serieDuration = 5000; // Duración de la película en segundos
-                                            for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
-                                                int porcentaje = (Pitch * 100) / Spaces;
+                                        System.out.println("Enter the number of the series you want to play, or 0 to return to the previous menu:");
+                                        int serieNumber = sc.nextInt();
+                                        if (serieNumber == 0) {
+                                            break;
+                                        }
 
-                                                System.out.print("\r|");
-                                                for (int i = 0; i < Pitch; i++) {
-                                                    System.out.print("*");
+                                        // Subtract 1 because arrays in Java start at 0
+                                        String serieName = series.get(serieNumber - 1).getName();
+
+                                        List<String> playbackLog = fm.playSerie(serieName);
+                                        for (String log : playbackLog) {
+                                            System.out.println(log);
+                                            if (log.contains("Do you want to play the next episode?")) {
+                                                int answer = sc.nextInt();
+                                                if (answer == 0) {
+                                                    break;
                                                 }
-
-                                                for (int i = Pitch; i < Spaces; i++) {
-                                                    System.out.print(" ");
-                                                }
-
-                                                System.out.print("|" + porcentaje + " %");
-                                                try {
-                                                    Thread.sleep(serieDuration / Spaces); // Espera la cantidad de
-                                                    // tiempo calculada
-                                                } catch (InterruptedException e) {
-                                                    e.printStackTrace();
-                                                }
-
                                             }
-                                            System.out.println();
-                                            System.out.println(
-                                                    "The series " + src.getSeries().get(selectedSerie - 1).getTittle()
-                                                            + " has finished playing.");
-                                            System.out.println(
-                                                    "Do you want to reproduce another serie? \n(0 for no, 1 for yes)");
+                                        }
 
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior y no me
-                                            // deja seleccionar si quiero reproducir otra pelicula
-                                            try {
-                                                opc5 = sc.nextInt();
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Input a valid option");
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                                opc5 = 1; // Establecer un valor por defecto para opc5
-                                            }
+                                        System.out.println("Do you want to play another series? (1 for yes, 0 for no)");
+                                        playAnotherSerie = sc.nextInt() == 1;
+                                    } while (playAnotherSerie);
 
-                                        } while (opc5 != 0);
-                                        break;
+                                    break;
 
                                     case 0:
                                         System.out.println("Leaving menu");

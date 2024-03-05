@@ -13,7 +13,7 @@
     },
     "payment": {
       "amount": 11.99,
-      "paymentMethod": "Credit Card"
+      "paymentMethod": "PayPal"
     }
   }
 ]
