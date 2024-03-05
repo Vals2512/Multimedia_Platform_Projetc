@@ -15,5 +15,22 @@
       "amount": 11.99,
       "paymentMethod": "Credit Card"
     }
+  },
+  {
+    "email": "sadasd@gmail.com",
+    "password": "Asdf232@",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Standard",
+      "price": 9.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 9.99,
+      "paymentMethod": "PayPal"
+    }
   }
 ]
