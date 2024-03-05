@@ -6,5 +6,4 @@ module multimedia.plataform.proyect {
     exports co.edu.uptc.view;
     exports co.edu.uptc.controller;
     opens co.edu.uptc.model to com.google.gson;
-
 }

@@ -292,7 +292,6 @@ public class Run {
                                             System.out.println("Error deleting movie");
                                         }
                                         break;
-                                        
                                     case 6:
                                         System.out.println("Input the series tittle");
                                         String tittle = sc.nextLine();
@@ -513,8 +512,8 @@ public class Run {
                     } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     }
-                
-                    
+
+
                 break;
 
                 case 3:
