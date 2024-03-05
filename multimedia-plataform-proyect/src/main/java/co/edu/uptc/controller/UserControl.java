@@ -51,12 +51,13 @@ public class UserControl {
         return userFound;
     }
 
-    public boolean addUser(User user, String passwordConfirmation) {
-        if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(passwordConfirmation)) {
+    public boolean addUser(String email, String password) {
+        User user=new User(email,password);
+        if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(password)) {
             users.add(user);
             Type type= new TypeToken<ArrayList<User>>(){}.getType();
-            fm.saveObjectToFile(FILE,users,type);
-            return true;
+
+            return fm.saveObjectToFile(FILE, users, type);
         }
         return false;
     }
@@ -65,8 +66,8 @@ public class UserControl {
         int userIndex = searchUser(email);
         if (userIndex != -1) {
             users.remove(userIndex);
-            fm.saveObjectToFile("users", users, new TypeToken<ArrayList<User>>(){}.getType());
-            return true;
+            return fm.saveObjectToFile("users", users, new TypeToken<ArrayList<User>>(){}.getType());
+
         }
         return false;
     }

@@ -466,7 +466,7 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
+                    if (userControl.addUser(email, password)) { // Added to the array
                         // list of users,
                         // validating that the
                         // data matches

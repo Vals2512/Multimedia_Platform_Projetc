@@ -42,7 +42,7 @@ public class MainView{
     
 @FXML
     public void signInButton() throws IOException {
-        Main.setRoot("singInView.fxml");
+        Main.setRoot("singInView");
 
     }
     @FXML
@@ -54,7 +54,7 @@ public class MainView{
 
         }else if (ac.loginAdminBackup(emailField.getText(),passwordField.getText())){
             System.out.println(true);
-            Main.setRoot("AdminView");
+            Main.setRoot("adminView");
             errorLabel.setText("");
 
         }else{
