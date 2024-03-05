@@ -5,5 +5,6 @@ module multimedia.plataform.proyect {
     opens co.edu.uptc.view to javafx.fxml;
     exports co.edu.uptc.view;
     exports co.edu.uptc.controller;
+    opens co.edu.uptc.model to com.google.gson;
 
 }

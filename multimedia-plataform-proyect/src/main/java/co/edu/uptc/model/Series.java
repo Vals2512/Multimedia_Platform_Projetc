@@ -12,10 +12,10 @@ public class Series extends Multimedia {
     // private int chapterDuration;
     // private Chapter chap;
     // private int releaseYear;
-    @SerializedName("name")
-    protected String name;
-    @SerializedName("seasons")
-    protected List<Season> seasons;
+    // @SerializedName("name")
+    private String name;
+    // @SerializedName("seasons")
+    private List<Season> seasons;
 
     
     
