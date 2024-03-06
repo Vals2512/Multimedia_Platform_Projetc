@@ -1,6 +1,7 @@
 package co.edu.uptc.view;
 
 import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.FileManagement;
 import co.edu.uptc.controller.UserControl;
 import co.edu.uptc.view.Main;
 import javafx.event.ActionEvent;
@@ -26,10 +27,10 @@ public class MainView{
     @FXML
     Label errorLabel;
 
-    UserControl uc;
+    FileManagement fm;
     AdminControl ac;
     public MainView() {
-        uc= new UserControl();
+        fm=new FileManagement();
         ac=new AdminControl();
         errorLabel=new Label();
 //        errorLabel.setStyle("--block-text-color:#FF0000 ");
@@ -49,7 +50,7 @@ public class MainView{
     private void loginButton() throws IOException {
 
 
-        if (uc.login(emailField.getText(),passwordField.getText())){
+        if (fm.login(emailField.getText(),passwordField.getText())){
             System.out.println(true);
 
         }else if (ac.loginAdminBackup(emailField.getText(),passwordField.getText())){

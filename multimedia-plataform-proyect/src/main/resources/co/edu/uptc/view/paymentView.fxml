@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uptc.view.PaymentView"
+      prefHeight="400.0" prefWidth="600.0">
+
+        <ComboBox fx:id="comboBoxPlans" styleClass="comboBox-plans" prefHeight="30" prefWidth="200">
+            <placeholder/>
+        </ComboBox>
+
+        <Label prefWidth="300" prefHeight="20" text="aaaaaaaaaaaa"/>
+
+</VBox>

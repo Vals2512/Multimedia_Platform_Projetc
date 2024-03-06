@@ -1,8 +1,11 @@
 package co.edu.uptc.view;
 
 
-import co.edu.uptc.controller.UserControl;
+import co.edu.uptc.controller.FileManagement;
+import co.edu.uptc.model.Plan;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -13,13 +16,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SingInView implements Initializable {
-    UserControl uc=new UserControl();
+    @FXML
+    Button nextButton;
+
     @FXML
     Label showPassword2;
     @FXML
     Label showPassword1;
-    @FXML
-    Button sendContent;
+
     @FXML
     Label errorLabel;
     @FXML
@@ -39,7 +43,6 @@ public class SingInView implements Initializable {
         if (password1.isSelected()) {
             showPassword1.setVisible(true);
             showPassword1.textProperty().bind(Bindings.concat(passwordF1.getText()));
-
             password1.setText("Hide");
         } else {
             showPassword1.setVisible(false);
@@ -51,7 +54,6 @@ public class SingInView implements Initializable {
         if (password2.isSelected()) {
             showPassword2.setVisible(true);
             showPassword2.textProperty().bind(Bindings.concat(passwordF2.getText()));
-
             password2.setText("Hide");
         } else {
             showPassword2.setVisible(false);
@@ -67,10 +69,10 @@ public class SingInView implements Initializable {
         showPassword1.textProperty().bind(Bindings.concat(passwordF1.getText()));
     }
 
-    public void send() {
+    public void send() throws IOException {
         if (passwordF1.getText().equals(passwordF2.getText())){
         if (passwordF1.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")){
-            System.out.println(uc.addUser(emailField.getText(),passwordF1.getText()));
+           changePaymentView();
 
         }else {
             errorLabel.setStyle("-fx-text-fill: Red");
@@ -93,5 +95,12 @@ public class SingInView implements Initializable {
 
         showPassword1.setVisible(false);
         showPassword2.setVisible(false);
+    }
+
+    public void changePaymentView() throws IOException {
+        PaymentView p=new PaymentView();
+        p.setPassword(passwordF1.getText());
+        p.setEmail(emailField.getText());
+        Main.setRoot("paymentView");
     }
 }

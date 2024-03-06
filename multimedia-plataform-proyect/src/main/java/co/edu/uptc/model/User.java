@@ -17,7 +17,7 @@ public class User {
     private Payment payment;
 
     public User() {
-
+        playlist=new Playlist();
     }
 
     /**

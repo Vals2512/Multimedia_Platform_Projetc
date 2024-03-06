@@ -29,4 +29,13 @@ public class Plan {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "Plan{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", duration=" + duration +
+                '}';
+    }
 }

@@ -8,3 +8,11 @@
 .tButton {
 
 }
+#comboBoxPlans{
+    -fx-wrap-text: true;
+    -fx-pref-rows: 3;
+
+}
+
+.comboBox-plans {
+}

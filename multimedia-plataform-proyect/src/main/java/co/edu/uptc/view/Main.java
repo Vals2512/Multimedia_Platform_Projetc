@@ -23,6 +23,10 @@ public class Main extends Application {
        primaryStage.setScene(new Scene(root));
     }
 
+    public static void setResizable(boolean b) {
+        primaryStage.setResizable(b);
+    }
+
 
     @Override
     public void start(Stage stage) throws Exception {
