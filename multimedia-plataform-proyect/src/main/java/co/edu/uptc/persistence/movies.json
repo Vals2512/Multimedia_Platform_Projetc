@@ -16,6 +16,7 @@
       "details": "PelÃ­cula de barco que se hunde",
       "releaseYear": 1997
     },
+    "tittle": "Titanic",
     "details": "PelÃ­cula de barco que se hunde",
     "releaseYear": 1997
   },
@@ -41,5 +42,36 @@
     ],
     "details": "Niï¿½a que tiene poderes",
     "releaseYear": 2001
+  },
+  {
+    "duration": 175,
+    "multimedia": {
+      "tittle": "El padrino",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        },
+        {
+          "name": "Crimen",
+          "description": "Películas o series de crimen"
+        }
+      ],
+      "details": "Película de policía corrupto y actividades ilegales",
+      "releaseYear": 1972
+    },
+    "tittle": "El padrino",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      },
+      {
+        "name": "Crimen",
+        "description": "Películas o series de crimen"
+      }
+    ],
+    "details": "Película de policía corrupto y actividades ilegales",
+    "releaseYear": 1972
   }
 ]
