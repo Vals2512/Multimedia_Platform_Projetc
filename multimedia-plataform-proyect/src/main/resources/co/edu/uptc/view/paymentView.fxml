@@ -9,12 +9,22 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="co.edu.uptc.view.PaymentView"
-      prefHeight="400.0" prefWidth="600.0">
-
-        <ComboBox fx:id="comboBoxPlans" styleClass="comboBox-plans" prefHeight="30" prefWidth="200">
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@paymentStyle.css">
+        <HBox styleClass="hbox-sub">
+            <Label text="select a plan for ppv:" styleClass="label"/>
+            <ComboBox fx:id="comboBoxPlans" styleClass="comboBox-plans" prefHeight="30" prefWidth="200">
+            <placeholder/>
+            </ComboBox>
+        </HBox>
+    <HBox styleClass="hbox-sub">
+        <Label text="Select a payment method: " styleClass="label"/>
+        <ComboBox fx:id="payMethod" styleClass="comboBox" prefHeight="30" prefWidth="200">
             <placeholder/>
         </ComboBox>
-
-        <Label prefWidth="300" prefHeight="20" text="aaaaaaaaaaaa"/>
+    </HBox>
+    <HBox>
+<!--        <Button text="back" onAction="#backToSignIn"/>-->
+         <Button text="send"  alignment="CENTER_RIGHT" onAction="#send"/>
+    </HBox>
 
 </VBox>

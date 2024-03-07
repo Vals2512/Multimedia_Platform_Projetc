@@ -13,7 +13,7 @@
             <Insets top="10.0" />
         </padding>
     </HBox>
-    <HBox alignment="TOP_CENTER" prefWidth="Infinity" styleClass="hbox-sub">
+    <HBox alignment="CENTER" prefWidth="Infinity" styleClass="hbox-sub">
         <VBox prefWidth="300"> <!-- Ancho fijo para contener etiqueta y campo de contraseña -->
             <Label text="input Password: " />
             <PasswordField fx:id="passwordF1" prefHeight="20" prefWidth="250" onKeyTyped="#passwordFieldKeyTyped1" />
