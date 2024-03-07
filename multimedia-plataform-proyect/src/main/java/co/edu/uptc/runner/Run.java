@@ -180,6 +180,8 @@ public class Run {
                                                 sc.next(); // Clear the buffer
                                                 validInput = false;
                                             }
+
+                                            // validar que no sea negativo
                                         } while (!validInput);
 
                                         do {
@@ -510,11 +512,10 @@ public class Run {
                     try {
                         fm.register(email, passwordConfirmation, plan, payment);
                     } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                        System.out.println(e.getMessage());
                     }
 
-
-                break;
+                    break;
 
                 case 3:
                     String continueOption = "";
