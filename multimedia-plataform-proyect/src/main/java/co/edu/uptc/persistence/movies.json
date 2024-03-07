@@ -17,18 +17,31 @@
       "releaseYear": 1997
     },
     "tittle": "Titanic",
-    "categories": [
-      {
-        "name": "Drama",
-        "description": "PelÃ­culas o series de gÃ©nero dramÃ¡tico"
-      },
-      {
-        "name": "Romance",
-        "description": "PelÃ­culas o series de temÃ¡tica romÃ¡ntica"
-      }
-    ],
     "details": "PelÃ­cula de barco que se hunde",
     "releaseYear": 1997
+  },
+  {
+    "duration": 50,
+    "multimedia": {
+      "tittle": "Matilda",
+      "categories": [
+        {
+          "name": "Fiction",
+          "description": "Pelï¿½culas o series de ficciï¿½n"
+        }
+      ],
+      "details": "Niï¿½a que tiene poderes",
+      "releaseYear": 2001
+    },
+    "tittle": "Matilda",
+    "categories": [
+      {
+        "name": "Fiction",
+        "description": "Pelï¿½culas o series de ficciï¿½n"
+      }
+    ],
+    "details": "Niï¿½a que tiene poderes",
+    "releaseYear": 2001
   },
   {
     "duration": 175,
@@ -37,28 +50,28 @@
       "categories": [
         {
           "name": "Action",
-          "description": "PelÃ­culas o series de acciÃ³n"
+          "description": "Películas o series de acción"
         },
         {
           "name": "Crimen",
-          "description": "PelÃ­culas o series de crimen"
+          "description": "Películas o series de crimen"
         }
       ],
-      "details": "PelÃ­cula de policÃ­a corrupto y actividades ilegales",
+      "details": "Película de policía corrupto y actividades ilegales",
       "releaseYear": 1972
     },
     "tittle": "El padrino",
     "categories": [
       {
         "name": "Action",
-        "description": "PelÃ­culas o series de acciÃ³n"
+        "description": "Películas o series de acción"
       },
       {
         "name": "Crimen",
-        "description": "PelÃ­culas o series de crimen"
+        "description": "Películas o series de crimen"
       }
     ],
-    "details": "PelÃ­cula de policÃ­a corrupto y actividades ilegales",
+    "details": "Película de policía corrupto y actividades ilegales",
     "releaseYear": 1972
   }
 ]

@@ -1,20 +1,28 @@
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Admin.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\util\FileManager.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\UserControl.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Category.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\UsuarioDao.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Multimedia.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\MultimediaAction.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Playlist.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\Main.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\CategoryController.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\runner\Run.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\SeriesControl.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Series.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\AdminControl.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\User.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Usuario.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\MoviesControl.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Season.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Chapter.java
-C:\Users\becer\IdeaProjects\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Movies.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\UsuarioDao.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Series.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\AdminControl.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\CategoryController.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Multimedia.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\FileManagement.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Payment.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\MoviesControl.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\UserView.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Admin.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Category.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\runner\Run.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\SeriesControl.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\controller\UserControl.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\util\FileManager.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Season.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Movies.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\User.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Playlist.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\AdminView.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\Main.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\SingInView.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Chapter.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Usuario.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\MultimediaAction.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\model\Plan.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\module-info.java
+D:\INFORMACION\Desktop\Project Multimedia Platform\Multimedia_Platform_Projetc\multimedia-plataform-proyect\src\main\java\co\edu\uptc\view\MainView.java

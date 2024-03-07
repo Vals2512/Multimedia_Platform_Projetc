@@ -18,7 +18,7 @@ public class FileManager {
      private BufferedReader br;
 
      private PrintWriter pw;
-//     private JsonParser jp=new JsonParser();
+     // private JsonParser jp=new JsonParser();
 
      public static final String PATH="multimedia-plataform-proyect\\src\\main\\java\\co\\edu\\uptc\\persistence\\",EXTENSION=".json";
      public FileManager() {
@@ -27,6 +27,7 @@ public class FileManager {
 
      /***
       * sirve para crear un archivo .json
+      *
       * @param fileName nombre del archivo
       * @return
       */

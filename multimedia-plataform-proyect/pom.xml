@@ -2,6 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <repositories>
+        <repository>
+            <id>itext</id>
+            <name>iText Repository</name>
+            <url>https://repo.itextsupport.com/ui/native/releases/</url>
+        </repository>
+    </repositories>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>co.edu.uptc</groupId>
@@ -11,6 +20,8 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <itext.version>8.0.2</itext.version>
+        
     </properties>
     <build>
         <plugins>
@@ -53,8 +64,20 @@
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.13.2</version>
+            <artifactId>kernel</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+        <!-- always needed -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>io</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+        <!-- always needed -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>${itext.version}</version>
         </dependency>
     </dependencies>
 </project>

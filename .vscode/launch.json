@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Run",
+            "request": "launch",
+            "mainClass": "multimedia.plataform.proyect/co.edu.uptc.runner.Run",
+            "projectName": "multimedia-plataform-proyect"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "multimedia.plataform.proyect/co.edu.uptc.view.Main",
+            "projectName": "multimedia-plataform-proyect"
+        },
+        {
+            "type": "java",
             "name": "Try",
             "request": "launch",
             "mainClass": "co.edu.uptc.runner.Try",
