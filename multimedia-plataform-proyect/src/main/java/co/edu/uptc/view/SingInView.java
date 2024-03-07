@@ -38,6 +38,7 @@ public class SingInView implements Initializable {
     ToggleButton password2;
     @FXML
     Button backButton;
+    PaymentView p;
     @FXML
     public void seeFirstPassword(){
         if (password1.isSelected()) {
@@ -87,20 +88,22 @@ public class SingInView implements Initializable {
     }
 
     public void backToLogin() throws IOException {
+        Main.setResizable(false);
         Main.setRoot("mainView");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        p=new PaymentView();
+        Main.setResizable(true);
         showPassword1.setVisible(false);
         showPassword2.setVisible(false);
     }
 
     public void changePaymentView() throws IOException {
-        PaymentView p=new PaymentView();
-        p.setPassword(passwordF1.getText());
-        p.setEmail(emailField.getText());
+
+        Main.getUc().setPassword(passwordF1.getText());
+        Main.getUc().setEmail(emailField.getText());
         Main.setRoot("paymentView");
     }
 }

@@ -9,11 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
 public class MainView{
+    @FXML
+     ToggleButton passwordB;
     @FXML
     TextField emailField;
     @FXML
@@ -27,16 +31,16 @@ public class MainView{
     @FXML
     Label errorLabel;
 
-    FileManagement fm;
-    AdminControl ac;
+
     public MainView() {
-        fm=new FileManagement();
-        ac=new AdminControl();
+
         errorLabel=new Label();
 //        errorLabel.setStyle("--block-text-color:#FF0000 ");
 
     }
-    public void initialize() {}
+    public void initialize() {
+        errorLabel.setWrapText(true);
+    }
     public void testButton(ActionEvent actionEvent) {
         System.out.println("funciona");
     }
@@ -50,10 +54,10 @@ public class MainView{
     private void loginButton() throws IOException {
 
 
-        if (fm.login(emailField.getText(),passwordField.getText())){
+        if (Main.getUc().login(emailField.getText(),passwordField.getText())){
             System.out.println(true);
 
-        }else if (ac.loginAdminBackup(emailField.getText(),passwordField.getText())){
+        }else if (Main.getAc().loginAdminBackup(emailField.getText(),passwordField.getText())){
             System.out.println(true);
             Main.setRoot("adminView");
             errorLabel.setText("");
@@ -61,9 +65,15 @@ public class MainView{
         }else{
             errorLabel.setStyle("-fx-text-fill: RED");
 //            errorLabel.setTextFill(Color.web("#FF0000"));
-            errorLabel.setText("revise las credenciales de acceso");
+            errorLabel.setText("revise las credenciales de acceso ya que puede estar mal escrito el correo o la contraseña");
 
         }
 
+    }
+
+    public void seePassword() {
+    }
+
+    public void passwordFieldKeyTyped() {
     }
 }

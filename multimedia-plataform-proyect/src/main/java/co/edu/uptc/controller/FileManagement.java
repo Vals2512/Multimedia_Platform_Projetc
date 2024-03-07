@@ -42,14 +42,10 @@ public class FileManagement {
     private String filename1 = "Series";
     private String filename2 = "Peliculas";
     private String filename3 = "Usuarios";
-    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {
-    }.getType();
-    private static final Type USERS_TYPE = new TypeToken<List<User>>() {
-    }.getType();
+    private static final Type SERIES_TYPE=new TypeToken<List<Series>>(){}.getType();
+    private static final Type USERS_TYPE=new TypeToken<List<User>>(){}.getType();
 
     public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
-    public static final String filePath1 = "src\\main\\java\\co\\edu\\uptc\\invoices\\";
-
     public static final String fileExtension = ".json";
     public static final String fileExtension1 = ".pdf";
     String fileNamee1 = filePath + filename1 + fileExtension;
@@ -140,15 +136,18 @@ public class FileManagement {
                                 + " has finished playing.");
                         playbackLog.add("Do you want to play the next episode? (1 for yes, 0 for no)");
                     }
-
+                    playbackLog.add("The episode " + chapter.getName() + ", Season: " + season.getName()
+                            + " has finished playing.");
+                    playbackLog.add("Do you want to play the next episode? (1 for yes, 0 for no)");
                 }
-                playbackLog.add("There are no more episodes to play.");
-                playbackLog.add("Do you want to play another series? (1 for yes, 0 for no)");
-            }
-        }
-        return playbackLog;
 
-    }
+            }
+            playbackLog.add("There are no more episodes to play.");
+            playbackLog.add("Do you want to play another series? (1 for yes, 0 for no)");
+        }
+    }return playbackLog;
+
+}
 
     public void generarFactura(User user, String nombreArchivo) {
         try {
@@ -180,62 +179,6 @@ public class FileManagement {
             Style styleHeader = new Style().setFontSize(12).setFontColor(ColorConstants.BLACK).setFont(fontHeader);
             PdfFont fontBody = PdfFontFactory.createFont("Helvetica");
             Style styleBody = new Style().setFontSize(12).setFontColor(ColorConstants.BLACK).setFont(fontBody);
-
-            Cell cell;
-
-            cell = new Cell().add(new Paragraph("Email").addStyle(styleHeader))
-                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph(user.getEmail()).addStyle(styleBody)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph("Plan").addStyle(styleHeader))
-                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph(user.getPlan().getName()).addStyle(styleBody)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph("Price").addStyle(styleHeader))
-                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getPrice())).addStyle(styleBody))
-                    .setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph("Payment Method").addStyle(styleHeader))
-                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph(user.getPayment().getPaymentMethod()).addStyle(styleBody))
-                    .setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph("Duration (days)").addStyle(styleHeader))
-                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
-            table.addCell(cell);
-
-            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getDuration())).addStyle(styleBody))
-                    .setPadding(5);
-            table.addCell(cell);
-
-            document.add(table);
-
-            // Pie de página
-            PdfFont fontFooter = PdfFontFactory.createFont("Helvetica-Oblique");
-            Style styleFooter = new Style().setFontSize(10).setFontColor(ColorConstants.GRAY).setFont(fontFooter);
-            Paragraph footer = new Paragraph("Thanks for your purchase").addStyle(styleFooter);
-            footer.setTextAlignment(TextAlignment.CENTER);
-            footer.setMarginTop(25);
-            document.add(footer);
-
-            document.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public <T> List<T> readJsonFile(String fileName, Type type) {
         File file = new File(fileName);

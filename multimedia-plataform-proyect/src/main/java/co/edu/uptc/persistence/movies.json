@@ -50,28 +50,51 @@
       "categories": [
         {
           "name": "Action",
-          "description": "Películas o series de acción"
+          "description": "Pelï¿½culas o series de acciï¿½n"
         },
         {
           "name": "Crimen",
-          "description": "Películas o series de crimen"
+          "description": "Pelï¿½culas o series de crimen"
         }
       ],
-      "details": "Película de policía corrupto y actividades ilegales",
+      "details": "Pelï¿½cula de policï¿½a corrupto y actividades ilegales",
       "releaseYear": 1972
     },
     "tittle": "El padrino",
     "categories": [
       {
         "name": "Action",
-        "description": "Películas o series de acción"
+        "description": "Pelï¿½culas o series de acciï¿½n"
       },
       {
         "name": "Crimen",
-        "description": "Películas o series de crimen"
+        "description": "Pelï¿½culas o series de crimen"
       }
     ],
-    "details": "Película de policía corrupto y actividades ilegales",
+    "details": "Pelï¿½cula de policï¿½a corrupto y actividades ilegales",
     "releaseYear": 1972
+  },
+  {
+    "duration": 50,
+    "multimedia": {
+      "tittle": "lol",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "PelÃ­culas o series de gÃ©nero dramÃ¡tico"
+        }
+      ],
+      "details": "si",
+      "releaseYear": 2001
+    },
+    "tittle": "lol",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "PelÃ­culas o series de gÃ©nero dramÃ¡tico"
+      }
+    ],
+    "details": "si",
+    "releaseYear": 2001
   }
 ]

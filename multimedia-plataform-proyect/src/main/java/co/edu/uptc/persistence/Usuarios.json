@@ -1,7 +1,5 @@
 [
   {
-    "email": "harolduenas23@gmail.com",
-    "password": "Gomino23@",
     "playlist": {
       "name": "",
       "content": []
@@ -13,7 +11,7 @@
     },
     "payment": {
       "amount": 7.99,
-      "paymentMethod": "PayPal"
+      "paymentMethod": "paypal"
     }
   },
   {
