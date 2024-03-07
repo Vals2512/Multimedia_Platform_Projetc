@@ -23,19 +23,19 @@ public class FileManagement {
     private String filename1 = "Series";
     private String filename2 = "Peliculas";
     private String filename3 = "Usuarios";
-    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {}.getType();
-    private static final Type USERS_TYPE = new TypeToken<List<User>>() {}.getType();
+    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {
+    }.getType();
+    private static final Type USERS_TYPE = new TypeToken<List<User>>() {
+    }.getType();
 
-    public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
+    public static final String filePath = "multimedia-plataform-proyect\\src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String fileExtension = ".json";
-    String fileNamee1 = filePath+filename1+fileExtension;
-    String fileNamee3 = filePath+filename3+fileExtension;
-
+    String fileNamee1 = filePath + filename1 + fileExtension;
+    String fileNamee3 = filePath + filename3 + fileExtension;
 
     Gson gson = new Gson();
 
-
-public void register(String email, String password, Plan plan, Payment payment) {
+    public void register(String email, String password, Plan plan, Payment payment) {
         User user = new User(email, password, plan, payment);
         List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
         for (User existingUser : users) {
@@ -47,7 +47,7 @@ public void register(String email, String password, Plan plan, Payment payment) 
         writeJsonFile(fileNamee3, users);
     }
 
-    public boolean login(String email, String password){
+    public boolean login(String email, String password) {
         List<User> users = readJsonFile(fileNamee3, USERS_TYPE);
         for (User user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
@@ -55,20 +55,17 @@ public void register(String email, String password, Plan plan, Payment payment) 
             }
         }
         return false;
-        
+
     }
 
-
-
-    public void saveSerie(Series serie){
+    public void saveSerie(Series serie) {
         List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         series.add(serie);
         writeJsonFile(fileNamee1, series);
 
     }
 
-    
-    public void displaySeries(){
+    public void displaySeries() {
         List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         for (Series serie : series) {
             System.out.println(serie);
@@ -80,8 +77,6 @@ public void register(String email, String password, Plan plan, Payment payment) 
         return payment;
     }
 
-
-   
     public <T> List<T> readJsonFile(String fileName, Type type) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -100,7 +95,10 @@ public void register(String email, String password, Plan plan, Payment payment) 
             return new ArrayList<>();
         }
     }
-    public void deleteMovie(){}
+
+    public void deleteMovie() {
+    }
+
     private <T> void writeJsonFile(String fileName, List<T> data) {
         try (FileWriter writer = new FileWriter(fileName)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
