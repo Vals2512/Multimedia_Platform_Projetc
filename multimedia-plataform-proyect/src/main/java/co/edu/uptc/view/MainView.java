@@ -27,16 +27,16 @@ public class MainView{
     @FXML
     Label errorLabel;
 
-    FileManagement fm;
-    AdminControl ac;
+
     public MainView() {
-        fm=new FileManagement();
-        ac=new AdminControl();
+
         errorLabel=new Label();
 //        errorLabel.setStyle("--block-text-color:#FF0000 ");
 
     }
-    public void initialize() {}
+    public void initialize() {
+
+    }
     public void testButton(ActionEvent actionEvent) {
         System.out.println("funciona");
     }
@@ -50,10 +50,10 @@ public class MainView{
     private void loginButton() throws IOException {
 
 
-        if (fm.login(emailField.getText(),passwordField.getText())){
+        if (Main.getUc().login(emailField.getText(),passwordField.getText())){
             System.out.println(true);
 
-        }else if (ac.loginAdminBackup(emailField.getText(),passwordField.getText())){
+        }else if (Main.getAc().loginAdminBackup(emailField.getText(),passwordField.getText())){
             System.out.println(true);
             Main.setRoot("adminView");
             errorLabel.setText("");

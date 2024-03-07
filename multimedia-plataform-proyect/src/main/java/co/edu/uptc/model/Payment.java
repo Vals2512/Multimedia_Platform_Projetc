@@ -4,6 +4,10 @@ public class Payment {
     private double amount;
     private String paymentMethod;
 
+    public Payment(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     public Payment(double amount, String paymentMethod) {
         this.amount = amount;
         this.paymentMethod = paymentMethod;

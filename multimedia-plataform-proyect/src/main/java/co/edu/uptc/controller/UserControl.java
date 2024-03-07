@@ -3,14 +3,13 @@ package co.edu.uptc.controller;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import co.edu.uptc.model.Movies;
-import co.edu.uptc.model.Series;
-import co.edu.uptc.model.User;
+import co.edu.uptc.model.*;
 import co.edu.uptc.util.FileManager;
 import com.google.gson.reflect.TypeToken;
 
 public class UserControl {
     private ArrayList<User> users;
+    private String email,password;
     private final static String FILE="users";
     private FileManager fm;
     public UserControl() {
@@ -51,17 +50,20 @@ public class UserControl {
         return userFound;
     }
 
-    public boolean addUser(String email, String password) {
+    public void addUser(String email, String password, Plan plan, Payment payment) {
         User user=new User();
-        user.setEmail(email);
+
         user.setPassword(password);
-        if (searchUser(user.getEmail()) == -1 && user.getPassword().equals(password)) {
+        user.setEmail(email);
+        System.out.println(user);
+        user.setPlan(plan);
+        user.setPayment(payment);
+        if (searchUser(user.getEmail()) == -1) {
             users.add(user);
             Type type= new TypeToken<ArrayList<User>>(){}.getType();
 
-            return fm.saveObjectToFile(FILE, users, type);
+            fm.saveObjectToFile(FILE, users, type);
         }
-        return false;
     }
 
     public boolean deleteUser(String email) {
@@ -88,5 +90,21 @@ public class UserControl {
             return true;
         }
         return false;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

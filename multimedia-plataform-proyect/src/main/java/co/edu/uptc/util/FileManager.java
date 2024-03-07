@@ -20,7 +20,7 @@ public class FileManager {
      private PrintWriter pw;
 //     private JsonParser jp=new JsonParser();
 
-     public static final String PATH="co\\edu\\uptc\\persistence\\",EXTENSION=".json";
+     public static final String PATH="multimedia-plataform-proyect\\src\\main\\java\\co\\edu\\uptc\\persistence\\",EXTENSION=".json";
      public FileManager() {
           this.gson = new GsonBuilder().setPrettyPrinting().create();
      }

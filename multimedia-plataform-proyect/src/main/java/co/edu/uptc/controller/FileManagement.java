@@ -26,7 +26,7 @@ public class FileManagement {
     private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {}.getType();
     private static final Type USERS_TYPE = new TypeToken<List<User>>() {}.getType();
 
-    public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
+    public static final String filePath = "multimedia-plataform-proyect\\src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String fileExtension = ".json";
     String fileNamee1 = filePath+filename1+fileExtension;
     String fileNamee3 = filePath+filename3+fileExtension;

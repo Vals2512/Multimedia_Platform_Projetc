@@ -13,7 +13,9 @@ public class User {
     private String password;
     @SerializedName("playlist")
     private Playlist playlist;
+    @SerializedName("plan")
     private Plan plan;
+    @SerializedName("payment")
     private Payment payment;
 
     public User() {
