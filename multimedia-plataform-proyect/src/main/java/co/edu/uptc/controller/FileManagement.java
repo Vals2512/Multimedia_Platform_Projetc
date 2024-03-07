@@ -29,8 +29,11 @@ import com.itextpdf.kernel.colors.DeviceRgb;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+
+import co.edu.uptc.model.Chapter;
 import co.edu.uptc.model.Payment;
 import co.edu.uptc.model.Plan;
+import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
 
@@ -91,9 +94,60 @@ public class FileManagement {
         }
     }
 
+    public List<Series> getSeries() {
+        return readJsonFile(fileNamee1, SERIES_TYPE);
+    }
+
     public Payment makePayment(Plan plan, String metodoPago) {
         Payment payment = new Payment(plan.getPrice(), metodoPago);
         return payment;
+    }
+
+    public List<String> playSerie(String serieName) {
+        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
+        List<String> playbackLog = new ArrayList<>();
+        for (Series serie : series) {
+            if (serie.getName().equals(serieName)) {
+                playbackLog.add("Playing: " + serie.getName());
+                for (Season season : serie.getSeasons()) {
+                    for (Chapter chapter : season.getChapters()) {
+                        playbackLog.add("Playing chapter: " + chapter.getName() + ", Season: " + season.getName());
+                        playbackLog.add("Chapter duration is: " + chapter.getDuration() + " minutes");
+                        int numberOfSpaces = 50;
+                        long episodeDuration = chapter.getDuration() * 10;
+                        for (int currentPitch = 0; currentPitch <= numberOfSpaces; currentPitch++) {
+                            int porcentaje = (currentPitch * 100) / numberOfSpaces;
+
+                            StringBuilder progress = new StringBuilder("\r|");
+                            for (int i = 0; i < currentPitch; i++) {
+                                progress.append("*");
+                            }
+
+                            for (int i = currentPitch; i < numberOfSpaces; i++) {
+                                progress.append(" ");
+                            }
+
+                            progress.append("|").append(porcentaje).append(" %");
+                            playbackLog.add(progress.toString());
+                            try {
+                                Thread.sleep(episodeDuration / numberOfSpaces); // Espera la cantidad de tiempo
+                                                                                // calculada
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        playbackLog.add("The episode " + chapter.getName() + ", Season: " + season.getName()
+                                + " has finished playing.");
+                        playbackLog.add("Do you want to play the next episode? (1 for yes, 0 for no)");
+                    }
+
+                }
+                playbackLog.add("There are no more episodes to play.");
+                playbackLog.add("Do you want to play another series? (1 for yes, 0 for no)");
+            }
+        }
+        return playbackLog;
+
     }
 
     public void generarFactura(User user, String nombreArchivo) {
