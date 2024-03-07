@@ -198,7 +198,7 @@ public class Run {
                                             }
                                         } while (duration <= 0);
 
-                                        String fileName = "movies.json"; // Replace with your desired file name
+                                        String fileName = "movies.json";
                                         if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
                                                 categoriesList)) {
                                             System.out.println("Movie added successfully");
