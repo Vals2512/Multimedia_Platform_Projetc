@@ -15,5 +15,22 @@
       "amount": 7.99,
       "paymentMethod": "paypal"
     }
+  },
+  {
+    "email": "andres1@gmail.com",
+    "password": "Shiromaru01",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Basic",
+      "price": 7.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 7.99,
+      "paymentMethod": "paypal"
+    }
   }
 ]

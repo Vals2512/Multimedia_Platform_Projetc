@@ -11,11 +11,16 @@ public class UserControl {
     private ArrayList<User> users;
     private String email,password;
     private final static String FILE="users";
+    private final static Type FILETYPE=new TypeToken<ArrayList<User>>(){}.getType();
     private FileManager fm;
     public UserControl() {
         users = new ArrayList<>();
+
         fm=new FileManager();
-        fm.createFile(FILE);
+        users= fm.readFile(FILE,FILETYPE);if(users==null){
+            fm.createFile(FILE);
+        }
+
     }
 
     public int searchUser(String email) {

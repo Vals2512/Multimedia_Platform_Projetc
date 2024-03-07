@@ -79,8 +79,9 @@ public class PaymentView implements Initializable {
         Main.setRoot("signInView");
     }
 
-    public void send() {
+    public void send() throws IOException {
 
         Main.getUc().addUser(email,password,selectedPlan,method);
+        Main.setRoot("mainView");
     }
 }
