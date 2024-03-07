@@ -21,7 +21,7 @@ public class FileManager {
      private PrintWriter pw;
      // private JsonParser jp=new JsonParser();
 
-     public static final String PATH = "multimedia-plataform-proyect\\src\\main\\java\\co\\edu\\uptc\\persistence\\",
+     public static final String PATH = "src\\main\\java\\co\\edu\\uptc\\persistence\\",
                EXTENSION = ".json";
 
      public FileManager() {
