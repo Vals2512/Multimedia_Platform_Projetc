@@ -42,6 +42,11 @@ public class MainView{
         errorLabel.setWrapText(true);
     }
 
+    @FXML
+    public void testButton(){
+        
+    }
+
     
 @FXML
     public void signInButton() throws IOException {

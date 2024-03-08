@@ -53,7 +53,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         uc=new UserControl();
         ac=new AdminControl();
-        this.primaryStage = stage;
+        primaryStage = stage;
         primaryStage.setTitle("Login");
         setRoot("mainView");
         primaryStage.setResizable(false);

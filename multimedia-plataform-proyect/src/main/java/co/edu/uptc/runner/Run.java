@@ -334,55 +334,7 @@ public class Run {
 
                                         break;
 
-                                    // case 6:
-                                    // System.out.println("Enter the title of the serie: ");
-                                    // String seriesTitle = sc.nextLine();
-
-                                    // List<Category> selectedCategories = selectCategories(categoriesList);
-
-                                    // System.out.println("Enter the details of the series: ");
-                                    // String seriesDetails = sc.nextLine();
-                                    // do {
-                                    // System.out.println("Enter the release year of the series: ");
-                                    // try {
-                                    // releaseYear = sc.nextInt();
-                                    // validInput = true;
-                                    // if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
-                                    // System.out.println(
-                                    // "Error: Release year cannot be greater than the current year.");
-                                    // validInput = false;
-                                    // }
-                                    // } catch (InputMismatchException e) {
-                                    // System.out.println("Error: Please input a valid year.");
-                                    // sc.next(); // Clear the buffer
-                                    // }
-                                    // } while (!validInput);
-                                    // /* */
-                                    // do {
-                                    // try {
-                                    // System.out.println("Enter the number of seasons of the series: ");
-                                    // seasons = sc.nextInt();
-                                    // if (seasons <= 0) {
-                                    // System.out.println("Input a valid value");
-                                    // }
-                                    // sc.nextLine(); // Consume the newline character left by nextInt()
-                                    // } catch (InputMismatchException e) {
-                                    // System.out.println("Input a valid value");
-                                    // }
-
-                                    // } while (seasons <= 0);
-
-                                    // // Crear la nueva serie con una lista vacía de capítulos
-                                    // Series newSeries = new Series(seriesTitle, selectedCategories, seriesDetails,
-                                    // releaseYear, seasons, 0);
-
-                                    // // Agregar la nueva serie
-                                    // if (src.addSerie(newSeries)) {
-                                    // System.out.println("Series added successfully");
-                                    // } else {
-                                    // System.out.println("Error adding series");
-                                    // }
-                                    // break;
+                                
 
                                     case 7:
                                         System.out.println("Enter the title of the series you want to update: ");
@@ -454,7 +406,7 @@ public class Run {
                     }
                     System.out.print("Enter your password: ");
                     password = sc.next();
-                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Line to validate that the
+                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$")) {
                         // password contains the
                         // necessary security
                         System.out.println(

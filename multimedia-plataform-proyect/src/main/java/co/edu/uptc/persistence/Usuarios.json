@@ -1,7 +1,7 @@
 [
   {
     "email": "harolduenas23@gmail.com",
-    "password": "Gomino23@",
+    "password": "Harold23@",
     "playlist": {
       "name": "",
       "content": []
@@ -13,23 +13,6 @@
     },
     "payment": {
       "amount": 11.99,
-      "paymentMethod": "PayPal"
-    }
-  },
-  {
-    "email": "valen9.vvg@gmail.com",
-    "password": "Gonzalez25*",
-    "playlist": {
-      "name": "",
-      "content": []
-    },
-    "plan": {
-      "name": "Basic",
-      "price": 7.99,
-      "duration": 30
-    },
-    "payment": {
-      "amount": 7.99,
       "paymentMethod": "Credit Card"
     }
   }
