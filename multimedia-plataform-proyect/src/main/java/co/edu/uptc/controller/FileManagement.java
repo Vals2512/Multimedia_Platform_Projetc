@@ -85,12 +85,6 @@ public class FileManagement {
 
     }
 
-    public void displaySeries(){
-        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
-        for (Series serie : series) {
-            System.out.println(serie);
-        }
-    }
 
     
     public List<Series> getSeries() {

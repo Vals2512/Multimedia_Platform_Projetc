@@ -781,8 +781,12 @@ public class Run {
 
                             case 2:
                                 System.out.println("The list of avaliable series is: ");
-                                fm.displaySeries();
-                                break;
+                                series = fm.getSeries();
+                                for (Series serie : series) {
+                                System.out.println("- " + serie);
+                                }
+
+                            break;
 
                             case 3:
                                 System.out.println("Leaving menu");
