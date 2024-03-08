@@ -41,9 +41,7 @@ public class MainView{
     public void initialize() {
         errorLabel.setWrapText(true);
     }
-    public void testButton(ActionEvent actionEvent) {
-        System.out.println("funciona");
-    }
+
     
 @FXML
     public void signInButton() throws IOException {
@@ -55,10 +53,8 @@ public class MainView{
 
 
         if (Main.getUc().login(emailField.getText(),passwordField.getText())){
-            System.out.println(true);
 
         }else if (Main.getAc().loginAdminBackup(emailField.getText(),passwordField.getText())){
-            System.out.println(true);
             Main.setRoot("adminView");
             errorLabel.setText("");
 

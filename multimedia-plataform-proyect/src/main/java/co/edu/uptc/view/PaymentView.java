@@ -60,7 +60,7 @@ public class PaymentView implements Initializable {
         comboBoxPlans.setItems(FXCollections.observableList(plans));
         comboBoxPlans.setOnAction(e->{
                 selectedPlan=comboBoxPlans.getSelectionModel().getSelectedItem();
-                    System.out.println(selectedPlan);
+                  
                     for (Payment payment : payMethods) {
                 payment.setMonto(selectedPlan.getPrice());
                 }
@@ -71,7 +71,7 @@ public class PaymentView implements Initializable {
         payMethod.setItems(FXCollections.observableList(payMethods));
         payMethod.setOnAction(e->{
             method=payMethod.getSelectionModel().getSelectedItem();
-            System.out.println(method);
+           
         });
     }
 

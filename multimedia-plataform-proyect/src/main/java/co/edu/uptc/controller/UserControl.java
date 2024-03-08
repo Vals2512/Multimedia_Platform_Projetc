@@ -60,7 +60,6 @@ public class UserControl {
 
         user.setPassword(password);
         user.setEmail(email);
-        // System.out.println(user);
         user.setPlan(plan);
         user.setPayment(payment);
         if (searchUser(user.getEmail()) == -1) {
