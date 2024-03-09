@@ -16,6 +16,7 @@ public class Series extends Multimedia {
     private String name;
     // @SerializedName("seasons")
     private List<Season> seasons;
+    
 
     
     

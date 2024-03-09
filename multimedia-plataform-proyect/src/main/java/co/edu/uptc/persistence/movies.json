@@ -96,5 +96,36 @@
     ],
     "details": "si",
     "releaseYear": 2001
+  },
+  {
+    "duration": 120,
+    "multimedia": {
+      "tittle": "Movie 1",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        },
+        {
+          "name": "Fiction",
+          "description": "Películas o series de ficción"
+        }
+      ],
+      "details": "asdasd",
+      "releaseYear": 2020
+    },
+    "tittle": "Movie 1",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      },
+      {
+        "name": "Fiction",
+        "description": "Películas o series de ficción"
+      }
+    ],
+    "details": "asdasd",
+    "releaseYear": 2020
   }
 ]

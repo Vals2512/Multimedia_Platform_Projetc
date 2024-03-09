@@ -411,7 +411,7 @@ public class Run {
                         // necessary security
                         System.out.println(
                                 "Invalid password. Please enter a password with at least 8 characters, one uppercase letter, one lowercase letter, and one number: ");
-                        password = sc.next();
+                        password = sc.next();   
                     }
                     String passwordConfirmation = "";
                     do {
