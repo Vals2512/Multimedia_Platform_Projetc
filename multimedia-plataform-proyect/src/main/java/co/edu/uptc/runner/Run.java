@@ -335,6 +335,7 @@ public class Run {
 
                                         break;
 
+
                                     case 7:
                                         System.out.println("Enter the title of the series you want to update: ");
                                         String seriesToUpdateTitle = sc.nextLine();
