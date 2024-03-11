@@ -96,5 +96,28 @@
     ],
     "details": "si",
     "releaseYear": 2001
+  },
+  {
+    "duration": 80,
+    "multimedia": {
+      "tittle": "The greatest showman",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        }
+      ],
+      "details": "Hombre que ahce un circo",
+      "releaseYear": 2001
+    },
+    "tittle": "The greatest showman",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      }
+    ],
+    "details": "Hombre que ahce un circo",
+    "releaseYear": 2001
   }
 ]

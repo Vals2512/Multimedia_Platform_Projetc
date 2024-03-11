@@ -49,5 +49,63 @@
       "amount": 7.99,
       "paymentMethod": "credit card"
     }
+  },
+  {
+    "email": "val9@gmail.com",
+    "password": "Valen25*",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Basic",
+      "price": 7.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 7.99,
+      "paymentMethod": "debit card"
+    }
+  },
+  {
+    "email": "laricaempanada@gmail.com",
+    "password": "Empanada123$",
+    "playlist": {
+      "name": "si",
+      "content": [
+        {
+          "duration": 50,
+          "multimedia": {
+            "tittle": "Matilda",
+            "categories": [
+              {
+                "name": "Fiction",
+                "description": "Pel�culas o series de ficci�n"
+              }
+            ],
+            "details": "Ni�a que tiene poderes",
+            "releaseYear": 2001
+          },
+          "tittle": "Matilda",
+          "categories": [
+            {
+              "name": "Fiction",
+              "description": "Pel�culas o series de ficci�n"
+            }
+          ],
+          "details": "Ni�a que tiene poderes",
+          "releaseYear": 2001
+        }
+      ]
+    },
+    "plan": {
+      "name": "Premium",
+      "price": 11.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 11.99,
+      "paymentMethod": "PayPal"
+    }
   }
 ]

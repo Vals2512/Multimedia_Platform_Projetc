@@ -54,7 +54,7 @@ public class Main extends Application {
         uc=new UserControl();
         ac=new AdminControl();
         primaryStage = stage;
-        primaryStage.setTitle("Login");
+    primaryStage.setTitle("Login");
         setRoot("mainView");
         primaryStage.setResizable(false);
         primaryStage.show();

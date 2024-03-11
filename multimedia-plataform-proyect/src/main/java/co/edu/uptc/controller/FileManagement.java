@@ -39,11 +39,13 @@ import co.edu.uptc.model.User;
 
 public class FileManagement {
 
-    private String filename1 = "Series";    
+    private String filename1 = "Series";
     private String filename2 = "Peliculas";
-    private String filename3 = "Usuarios";
-    private static final Type SERIES_TYPE=new TypeToken<List<Series>>(){}.getType();
-    private static final Type USERS_TYPE=new TypeToken<List<User>>(){}.getType();
+    private String filename3 = "users";
+    private static final Type SERIES_TYPE = new TypeToken<List<Series>>() {
+    }.getType();
+    private static final Type USERS_TYPE = new TypeToken<List<User>>() {
+    }.getType();
 
     public static final String filePath = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
     public static final String filePath1 = "src\\main\\java\\co\\edu\\uptc\\invoices\\";
@@ -85,8 +87,6 @@ public class FileManagement {
 
     }
 
-
-    
     public List<Series> getSeries() {
         return readJsonFile(fileNamee1, SERIES_TYPE);
     }
@@ -96,50 +96,52 @@ public class FileManagement {
         return payment;
     }
 
-    public List<String> playSerie(String serieName){
+    public List<String> playSerie(String serieName) {
         List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
         List<String> playbackLog = new ArrayList<>();
         for (Series serie : series) {
-            if (serie.getName().equals(serieName)){
+            if (serie.getName().equals(serieName)) {
                 playbackLog.add("Playing: " + serie.getName());
                 for (Season season : serie.getSeasons()) {
                     for (Chapter chapter : season.getChapters()) {
-                    playbackLog.add("Playing chapter: " + chapter.getName() + ", Season: " + season.getName());
-                    playbackLog.add("Chapter duration is: " + chapter.getDuration() + " minutes");
-                    int numberOfSpaces = 50;
-                    long episodeDuration = chapter.getDuration() * 10;
-                    for (int currentPitch = 0; currentPitch <= numberOfSpaces; currentPitch++) {
-                        int porcentaje = (currentPitch * 100) / numberOfSpaces;
+                        playbackLog.add("Playing chapter: " + chapter.getName() + ", Season: " + season.getName());
+                        playbackLog.add("Chapter duration is: " + chapter.getDuration() + " minutes");
+                        int numberOfSpaces = 50;
+                        long episodeDuration = chapter.getDuration() * 10;
+                        for (int currentPitch = 0; currentPitch <= numberOfSpaces; currentPitch++) {
+                            int porcentaje = (currentPitch * 100) / numberOfSpaces;
 
-                        StringBuilder progress = new StringBuilder("\r|");
-                        for (int i = 0; i < currentPitch; i++) {
-                            progress.append("*");
-                        }
+                            StringBuilder progress = new StringBuilder("\r|");
+                            for (int i = 0; i < currentPitch; i++) {
+                                progress.append("*");
+                            }
 
-                        for (int i = currentPitch; i < numberOfSpaces; i++) {
-                            progress.append(" ");
-                        }
+                            for (int i = currentPitch; i < numberOfSpaces; i++) {
+                                progress.append(" ");
+                            }
 
-                        progress.append("|").append(porcentaje).append(" %");
-                        playbackLog.add(progress.toString());
-                        try {
-                            Thread.sleep(episodeDuration / numberOfSpaces); // Espera la cantidad de tiempo calculada
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            progress.append("|").append(porcentaje).append(" %");
+                            playbackLog.add(progress.toString());
+                            try {
+                                Thread.sleep(episodeDuration / numberOfSpaces); // Espera la cantidad de tiempo
+                                                                                // calculada
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
+                        playbackLog.add("The episode " + chapter.getName() + ", Season: " + season.getName()
+                                + " has finished playing.");
+                        playbackLog.add("Do you want to play the next episode? (1 for yes, 0 for no)");
                     }
-                    playbackLog.add("The episode " + chapter.getName() +", Season: " + season.getName() + " has finished playing.");
-                    playbackLog.add("Do you want to play the next episode? (1 for yes, 0 for no)");
-                    }
-                    
+
                 }
                 playbackLog.add("There are no more episodes to play.");
                 playbackLog.add("Do you want to play another series? (1 for yes, 0 for no)");
             }
         }
         return playbackLog;
-    
-}
+
+    }
 
     public void generarFactura(User user, String nombreArchivo) {
         try {
@@ -174,34 +176,42 @@ public class FileManagement {
 
             Cell cell;
 
-            cell = new Cell().add(new Paragraph("Email").addStyle(styleHeader)).setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
+            cell = new Cell().add(new Paragraph("Email").addStyle(styleHeader))
+                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
             table.addCell(cell);
 
             cell = new Cell().add(new Paragraph(user.getEmail()).addStyle(styleBody)).setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph("Plan").addStyle(styleHeader)).setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
+            cell = new Cell().add(new Paragraph("Plan").addStyle(styleHeader))
+                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
             table.addCell(cell);
 
             cell = new Cell().add(new Paragraph(user.getPlan().getName()).addStyle(styleBody)).setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph("Price").addStyle(styleHeader)).setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
+            cell = new Cell().add(new Paragraph("Price").addStyle(styleHeader))
+                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getPrice())).addStyle(styleBody)).setPadding(5);
+            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getPrice())).addStyle(styleBody))
+                    .setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph("Payment Method").addStyle(styleHeader)).setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
+            cell = new Cell().add(new Paragraph("Payment Method").addStyle(styleHeader))
+                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph(user.getPayment().getPaymentMethod()).addStyle(styleBody)).setPadding(5);
+            cell = new Cell().add(new Paragraph(user.getPayment().getPaymentMethod()).addStyle(styleBody))
+                    .setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph("Duration (days)").addStyle(styleHeader)).setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
+            cell = new Cell().add(new Paragraph("Duration (days)").addStyle(styleHeader))
+                    .setBackgroundColor(new DeviceRgb(211, 211, 211)).setPadding(5);
             table.addCell(cell);
 
-            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getDuration())).addStyle(styleBody)).setPadding(5);
+            cell = new Cell().add(new Paragraph(String.valueOf(user.getPlan().getDuration())).addStyle(styleBody))
+                    .setPadding(5);
             table.addCell(cell);
 
             document.add(table);
@@ -219,7 +229,7 @@ public class FileManagement {
             e.printStackTrace();
         }
     }
-   
+
     public <T> List<T> readJsonFile(String fileName, Type type) {
         File file = new File(fileName);
         if (!file.exists()) {
@@ -237,9 +247,6 @@ public class FileManagement {
             e.printStackTrace();
             return new ArrayList<>();
         }
-    }
-
-    public void deleteMovie() {
     }
 
     private <T> void writeJsonFile(String fileName, List<T> data) {

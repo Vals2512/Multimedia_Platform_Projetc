@@ -16,9 +16,10 @@ public class SeriesControl {
     // int chapterDuration;
 
     public SeriesControl() {
-        fileManager=new FileManager();
+        fileManager = new FileManager();
         series = new ArrayList<>();
-        series=fileManager.readFile("Series",new TypeToken<ArrayList<Series>>() {}.getType());
+        series = fileManager.readFile("Series", new TypeToken<ArrayList<Series>>() {
+        }.getType());
 
     }
 
@@ -68,7 +69,7 @@ public class SeriesControl {
 
     public Series searchSeriesObject(String name) {
         for (Series s : series) {
-            if (s.getTittle().equals(name)) {
+            if (s.getName().equals(name)) {
                 return s;
             }
         }
