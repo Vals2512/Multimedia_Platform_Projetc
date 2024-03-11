@@ -96,5 +96,164 @@
     ],
     "details": "si",
     "releaseYear": 2001
+  },
+  {
+    "duration": 120,
+    "multimedia": {
+      "tittle": "Tres metros sobre el cielo",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        },
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        }
+      ],
+      "details": "asdad",
+      "releaseYear": 2020
+    },
+    "tittle": "Tres metros sobre el cielo",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      },
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      }
+    ],
+    "details": "asdad",
+    "releaseYear": 2020
+  },
+  {
+    "duration": 123,
+    "multimedia": {
+      "tittle": "asda",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        }
+      ],
+      "details": "sssss",
+      "releaseYear": 2020
+    },
+    "imagepath": "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png",
+    "tittle": "asda",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      }
+    ],
+    "details": "sssss",
+    "releaseYear": 2020
+  },
+  {
+    "duration": 120,
+    "multimedia": {
+      "tittle": "Movieeeee1",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        },
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        }
+      ],
+      "details": "aasss",
+      "releaseYear": 2024
+    },
+    "imagepath": "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png",
+    "tittle": "Movieeeee1",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      },
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      }
+    ],
+    "details": "aasss",
+    "releaseYear": 2024
+  },
+  {
+    "duration": 1,
+    "multimedia": {
+      "tittle": "asd",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        }
+      ],
+      "details": "1",
+      "releaseYear": 1
+    },
+    "imagepath": "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png",
+    "tittle": "asd",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      }
+    ],
+    "details": "1",
+    "releaseYear": 1
+  },
+  {
+    "duration": 120,
+    "multimedia": {
+      "tittle": "Movie chanty",
+      "categories": [
+        {
+          "name": "Fiction",
+          "description": "Películas o series de ficción"
+        }
+      ],
+      "details": "asdas",
+      "releaseYear": 2023
+    },
+    "imagepath": "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png",
+    "tittle": "Movie chanty",
+    "categories": [
+      {
+        "name": "Fiction",
+        "description": "Películas o series de ficción"
+      }
+    ],
+    "details": "asdas",
+    "releaseYear": 2023
+  },
+  {
+    "duration": 122,
+    "multimedia": {
+      "tittle": "Chantylly",
+      "categories": [
+        {
+          "name": "Fantasy",
+          "description": "Películas o series de fantasía"
+        }
+      ],
+      "details": "1",
+      "releaseYear": 2024
+    },
+    "imagepath": "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png",
+    "tittle": "Chantylly",
+    "categories": [
+      {
+        "name": "Fantasy",
+        "description": "Películas o series de fantasía"
+      }
+    ],
+    "details": "1",
+    "releaseYear": 2024
   }
 ]

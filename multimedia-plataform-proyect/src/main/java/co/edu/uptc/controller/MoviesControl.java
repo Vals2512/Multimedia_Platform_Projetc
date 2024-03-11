@@ -57,24 +57,18 @@ public class MoviesControl {
         return null;
     }
 
-    public boolean addMovie(String tittle, String categories, String details, int releaseYear, int duration,
-            List<Category> categoriesList) {
-        String[] selectedIndices = categories.split(",");
+    public boolean addMovie(String title, List<Category> selectedCategoryList, String details, int releaseYear, int duration, String imagePath,
+                List<Category> categoriesList) {
         List<Category> selectedCategories = new ArrayList<>();
-        for (String index : selectedIndices) {
-            try {
-                int categoryIndex = Integer.parseInt(index.trim()) - 1;
-                if (categoryIndex >= 0 && categoryIndex < categoriesList.size()) {
-                    selectedCategories.add(categoriesList.get(categoryIndex));
-                } else {
-                    return false;
-                }
-            } catch (NumberFormatException e) {
+        for (Category category : selectedCategoryList) {
+            if (categoriesList.contains(category)) {
+                selectedCategories.add(category);
+            } else {
                 return false;
             }
         }
 
-        return addMovie(new Movies(tittle, selectedCategories, details, releaseYear, duration));
+    return addMovie(new Movies(title, selectedCategories, details, releaseYear, duration, "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png"));
     }
 
     public boolean addMovie(Movies movie) {

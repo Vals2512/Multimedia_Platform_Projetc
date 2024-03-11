@@ -61,5 +61,37 @@
       }
     ],
     "releaseYear": 0
+  },
+  {
+    "name": "Chanty y grillas",
+    "seasons": [
+      {
+        "name": "Season 1",
+        "chapters": [
+          {
+            "name": "Capitulo 1",
+            "duration": 1
+          }
+        ]
+      }
+    ],
+    "imagepath": "D:\\INFORMACION\\Pictures\\xd.jpg",
+    "releaseYear": 0
+  },
+  {
+    "name": "Se",
+    "seasons": [
+      {
+        "name": "1",
+        "chapters": [
+          {
+            "name": "1",
+            "duration": 1
+          }
+        ]
+      }
+    ],
+    "imagepath": "D:\\INFORMACION\\Pictures\\Camera Roll\\WIN_20230924_22_11_53_Pro.jpg",
+    "releaseYear": 0
   }
 ]
