@@ -1,0 +1,7 @@
+.vbox{
+    -fx-background-color: #54EBB1;
+}
+#changeSceneHBox{
+    -fx-padding: 10;
+    -fx-border-insets: 10;
+}

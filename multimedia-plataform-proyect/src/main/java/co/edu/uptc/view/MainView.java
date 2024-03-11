@@ -1,44 +1,80 @@
 package co.edu.uptc.view;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Paint;
+import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.FileManagement;
+import co.edu.uptc.controller.UserControl;
+import co.edu.uptc.view.Main;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 
-public class MainView extends Scene {
-    private StackPane stackPane;
+import java.io.IOException;
 
-    public MainView(Parent parent) {
-        super(parent);
+public class MainView{
+    @FXML
+     ToggleButton passwordB;
+    @FXML
+    TextField emailField;
+    @FXML
+    TextField passwordField;
+    @FXML
+    Button buttonLogin;
+    @FXML
+    Button buttonVisitor;
+    @FXML
+    Button buttonSignIn;
+    @FXML
+    Label errorLabel;
+
+
+    public MainView() {
+
+        errorLabel=new Label();
+//        errorLabel.setStyle("--block-text-color:#FF0000 ");
+
+    }
+    public void initialize() {
+        errorLabel.setWrapText(true);
     }
 
-    public MainView(Parent parent, double v, double v1) {
-        super(parent, v, v1);
+    @FXML
+    public void testButton(){
+        
     }
 
-    public MainView(Parent parent, Paint paint) {
-        super(parent, paint);
+    
+@FXML
+    public void signInButton() throws IOException {
+        Main.setRoot("singInView");
+
+    }
+    @FXML
+    private void loginButton() throws IOException {
+
+
+        if (Main.getUc().login(emailField.getText(),passwordField.getText())){
+
+        }else if (Main.getAc().loginAdminBackup(emailField.getText(),passwordField.getText())){
+            Main.setRoot("adminView");
+            errorLabel.setText("");
+
+        }else{
+            errorLabel.setStyle("-fx-text-fill: RED");
+//            errorLabel.setTextFill(Color.web("#FF0000"));
+            errorLabel.setText("revise las credenciales de acceso ya que puede estar mal escrito el correo o la contraseña");
+
+        }
+
     }
 
-    public MainView(Parent parent, double v, double v1, Paint paint) {
-        super(parent, v, v1, paint);
+    public void seePassword() {
     }
 
-    public MainView(Parent parent, double v, double v1, boolean b) {
-        super(parent, v, v1, b);
+    public void passwordFieldKeyTyped() {
     }
-
-    public MainView(Parent parent, double v, double v1, boolean b, SceneAntialiasing sceneAntialiasing) {
-        super(parent, v, v1, b, sceneAntialiasing);
-    }
-
-    public StackPane getStackPane() {
-        return stackPane;
-    }
-
-    public void setStackPane(StackPane stackPane) {
-        this.stackPane = stackPane;
-    }
-
 }

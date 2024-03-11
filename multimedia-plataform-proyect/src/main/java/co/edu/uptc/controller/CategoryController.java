@@ -26,13 +26,14 @@ public class CategoryController {
     }
 
     public void delete(Category category){
+
     }
 
     public Category create(String name, String description) {
         Category category = new Category(name, description);
         categories.add(category);
         Type type =new TypeToken<ArrayList<Category>>(){}.getType();
-        fm.addObject(FILE,categories,type);
+        fm.saveObjectToFile(FILE,categories,type);
         return category; 
     }
 }

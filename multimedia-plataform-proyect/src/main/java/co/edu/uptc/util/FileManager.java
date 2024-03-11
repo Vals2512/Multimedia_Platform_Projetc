@@ -1,7 +1,6 @@
 package co.edu.uptc.util;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -19,15 +18,18 @@ public class FileManager {
      private BufferedReader br;
 
      private PrintWriter pw;
-//     private JsonParser jp=new JsonParser();
+     // private JsonParser jp=new JsonParser();
 
-     public static final String PATH="src\\main\\java\\co\\edu\\uptc\\persistence\\",EXTENSION=".json";
+     public static final String PATH = "src\\main\\java\\co\\edu\\uptc\\persistence\\",
+               EXTENSION = ".json";
+
      public FileManager() {
           this.gson = new GsonBuilder().setPrettyPrinting().create();
      }
 
      /***
       * sirve para crear un archivo .json
+      *
       * @param fileName nombre del archivo
       * @return
       */
@@ -38,6 +40,7 @@ public class FileManager {
                pw.close();
                return true;
           }catch (IOException e){
+               e.printStackTrace();
           return false;
           }
      }
@@ -50,17 +53,18 @@ public class FileManager {
       * @return falso si hay un error dentro del proceso del metodo
       * @param <T> el tipo de dato en la lista
       */
-     public <T> boolean addObject(String fileName, List<T> objList, Type type){
-          try{
-               file = new File(fileName);
-               pw = new PrintWriter(new FileWriter(PATH + file + EXTENSION));
-               String json= gson.toJson(objList,type);
+     public <T> boolean saveObjectToFile(String fileName, List<T> objList, Type type){
+          try {
 
+               file = new File(PATH + fileName + EXTENSION);
+               PrintWriter pw = new PrintWriter(new FileWriter(file));
+               String json = gson.toJson(objList, type);
                pw.println(json);
                pw.close();
                return true;
 
-          }catch (IOException e){
+          } catch (IOException e) {
+               e.printStackTrace();
                return false;
           }
      }
@@ -75,14 +79,12 @@ public class FileManager {
       */
      public <T> ArrayList<T> readFile(String fileName,Type type){
           try {
-
                ArrayList<T> typeArrayList;
                file = new File(fileName);
               br=new BufferedReader(new FileReader(PATH+file+EXTENSION));
               StringBuilder content=new StringBuilder();
               String line= br.readLine();
               while(line!=null) {
-
                    content.append(line);
                    line= br.readLine();
               }
@@ -94,7 +96,5 @@ public class FileManager {
      }
      //borrar solo es no leer el objeto
 
-     public void deleteFile(){
 
-     }
 }

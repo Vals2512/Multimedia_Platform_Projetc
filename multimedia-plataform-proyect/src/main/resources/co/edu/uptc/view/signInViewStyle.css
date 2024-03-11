@@ -1,0 +1,18 @@
+#mainBox{
+    -fx-padding: 30;
+}
+.hbox-sub{
+    -fx-padding: 30;
+}
+
+.tButton {
+
+}
+#comboBoxPlans{
+    -fx-wrap-text: true;
+    -fx-pref-rows: 3;
+
+}
+
+.comboBox-plans {
+}

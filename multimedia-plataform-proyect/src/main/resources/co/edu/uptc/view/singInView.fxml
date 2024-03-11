@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" stylesheets="@signInViewStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.SingInView">
+    <Button fx:id="backButton" onAction="#backToLogin" text="back to login" />
+    <HBox alignment="TOP_CENTER" styleClass="hbox-sub">
+        <Label text="input your email: " />
+        <TextField fx:id="emailField" prefHeight="20" prefWidth="250" />
+        <padding>
+            <Insets top="10.0" />
+        </padding>
+    </HBox>
+    <HBox alignment="CENTER" prefWidth="Infinity" styleClass="hbox-sub">
+        <VBox prefWidth="300"> <!-- Ancho fijo para contener etiqueta y campo de contraseña -->
+            <Label text="input Password: " />
+            <PasswordField fx:id="passwordF1" prefHeight="20" prefWidth="250" onKeyTyped="#passwordFieldKeyTyped1" />
+            <Label fx:id="showPassword1"/>
+        </VBox>
+        <ToggleButton fx:id="password1" onAction="#seeFirstPassword" text="Show" styleClass="tButton"/>
+    </HBox>
+    <HBox alignment="CENTER" styleClass="hbox-sub">
+        <VBox prefWidth="300">
+            <Label text="confirm Password: " />
+            <PasswordField fx:id="passwordF2" prefHeight="20" prefWidth="250" onKeyTyped="#passwordFieldKeyTyped2" />
+            <Label fx:id="showPassword2" />
+        </VBox>
+        <ToggleButton fx:id="password2" text="Show" styleClass="tButton" onAction="#seeSecondPassword"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" wrapText="true"/>
+<!--    <Button fx:id="sendContent" onAction="#send" text="Send" />-->
+    <Button text="next" fx:id="nextButton"  onAction="#send"/>
+</VBox>

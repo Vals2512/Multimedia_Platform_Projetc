@@ -1,0 +1,36 @@
+[
+  {
+    "email": "harolduenas23@gmail.com",
+    "password": "Harold23@",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Premium",
+      "price": 11.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 11.99,
+      "paymentMethod": "Credit Card"
+    }
+  },
+  {
+    "email": "valen9@gmil.com",
+    "password": "Valen25+",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Basic",
+      "price": 7.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 7.99,
+      "paymentMethod": "Credit Card"
+    }
+  }
+]

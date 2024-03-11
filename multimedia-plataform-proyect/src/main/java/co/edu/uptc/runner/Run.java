@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import co.edu.uptc.controller.AdminControl;
+import co.edu.uptc.controller.FileManagement;
 import co.edu.uptc.controller.MoviesControl;
 import co.edu.uptc.controller.SeriesControl;
 import co.edu.uptc.controller.UserControl;
@@ -14,6 +15,10 @@ import co.edu.uptc.model.Category;
 import co.edu.uptc.model.Chapter;
 import co.edu.uptc.model.Movies;
 import co.edu.uptc.model.Multimedia;
+import co.edu.uptc.model.Payment;
+import co.edu.uptc.model.Plan;
+import co.edu.uptc.model.Playlist;
+import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
 import co.edu.uptc.model.User;
 
@@ -23,11 +28,11 @@ public class Run {
         UserControl userControl = new UserControl();
         MoviesControl mc = new MoviesControl();
         SeriesControl src = new SeriesControl();
+        FileManagement fm = new FileManagement();
 
         String email = "";
         String password = "";
         int releaseYear = 0;
-        int seasons = 0;
         int duration = 0;
         int opc3 = 0;
         boolean validInput = false;
@@ -54,15 +59,17 @@ public class Run {
                 "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
-        Series serie1 = new Series("Stranger Things", Arrays.asList(fiction, thriller),
-                "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
-        Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama), "Serie de mafiosos de época", 2013,
-                7, 188);
+        // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction,
+        // thriller),
+        // "Serie de niños que descubren un nuevo mundo fantástico", 2018, 4, 190);
+        // Series serie2 = new Series("Peaky Blinders", Arrays.asList(action, drama),
+        // "Serie de mafiosos de época", 2013,
+        // 7, 188);
 
         mc.addMovie(movie1);
         mc.addMovie(movie2);
-        src.addSerie(serie1);
-        src.addSerie(serie2);
+        // src.addSerie(serie1);
+        // src.addSerie(serie2);
 
         int opc = 0;
         do {
@@ -174,6 +181,8 @@ public class Run {
                                                 sc.next(); // Clear the buffer
                                                 validInput = false;
                                             }
+
+                                            // validar que no sea negativo
                                         } while (!validInput);
 
                                         do {
@@ -190,7 +199,7 @@ public class Run {
                                             }
                                         } while (duration <= 0);
 
-                                        String fileName = "movies.json"; // Replace with your desired file name
+                                        String fileName = "movies.json";
                                         if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
                                                 categoriesList)) {
                                             System.out.println("Movie added successfully");
@@ -287,79 +296,45 @@ public class Run {
                                         }
                                         break;
                                     case 6:
-                                        System.out.println("Input the serie´s tittle");
-                                        String tittle = sc.next();
+                                        System.out.println("Input the series tittle");
+                                        String tittle = sc.nextLine();
                                         Series sr = new Series(tittle);
-                                        sc.nextLine();
-                                        System.out.println("How many chapters do you want to add?");
-                                        int numChapters = sc.nextInt();
-                                        sc.nextLine();
-                                        for (int i = 1; i <= numChapters; i++) {
-                                            System.out.print("Input the chapter´s name " + i + ": ");
-                                            String episodeName = sc.nextLine();
 
-                                            System.out.print(
-                                                    "Enter the duration of the episode " + i + " (in minutes): ");
-                                            int episodeDuration = sc.nextInt();
-                                            sc.nextLine(); // Consumir la nueva línea
+                                        System.out.print("How many seasons do you want to add? ");
+                                        int numSeasons = sc.nextInt();
 
-                                            Chapter chapter = new Chapter(episodeName, episodeDuration);
-                                            sr.addChapter(chapter);
+                                        for (int i = 1; i <= numSeasons; i++) {
+                                            Season season = new Season();
+                                            System.out.print("Enter the name of season " + i + ": ");
+                                            sc.nextLine(); // Consume the new line
+                                            String seasonName = sc.nextLine();
+                                            season.setName(seasonName);
+
+                                            System.out.print("How many episodes does season " + i + " have? ");
+                                            int numEpisodes = sc.nextInt();
+                                            sc.nextLine(); // Consume the new line
+
+                                            for (int j = 1; j <= numEpisodes; j++) {
+                                                System.out.print("Enter the name of episode " + j + ": ");
+                                                String episodeName = sc.nextLine();
+
+                                                System.out.print(
+                                                        "Enter the duration of episode " + j + " (in minutes): ");
+                                                int episodeDuration = sc.nextInt();
+                                                sc.nextLine(); // Consume the new line
+
+                                                Chapter chapter = new Chapter(episodeName, episodeDuration);
+                                                season.addChapters(chapter);
+                                            }
+                                            sr.addSeason(season);
                                         }
 
-                                        series.add(sr); // Agregar la serie a la lista
+                                        series.add(sr);
+                                        fm.saveSerie(sr);
+                                        System.out.println("Serie added succesfully");
 
                                         break;
 
-                                    // case 6:
-                                    // System.out.println("Enter the title of the serie: ");
-                                    // String seriesTitle = sc.nextLine();
-
-                                    // List<Category> selectedCategories = selectCategories(categoriesList);
-
-                                    // System.out.println("Enter the details of the series: ");
-                                    // String seriesDetails = sc.nextLine();
-                                    // do {
-                                    // System.out.println("Enter the release year of the series: ");
-                                    // try {
-                                    // releaseYear = sc.nextInt();
-                                    // validInput = true;
-                                    // if (releaseYear > java.time.Year.now().getValue() || releaseYear <= 0) {
-                                    // System.out.println(
-                                    // "Error: Release year cannot be greater than the current year.");
-                                    // validInput = false;
-                                    // }
-                                    // } catch (InputMismatchException e) {
-                                    // System.out.println("Error: Please input a valid year.");
-                                    // sc.next(); // Clear the buffer
-                                    // }
-                                    // } while (!validInput);
-                                    // /* */
-                                    // do {
-                                    // try {
-                                    // System.out.println("Enter the number of seasons of the series: ");
-                                    // seasons = sc.nextInt();
-                                    // if (seasons <= 0) {
-                                    // System.out.println("Input a valid value");
-                                    // }
-                                    // sc.nextLine(); // Consume the newline character left by nextInt()
-                                    // } catch (InputMismatchException e) {
-                                    // System.out.println("Input a valid value");
-                                    // }
-
-                                    // } while (seasons <= 0);
-
-                                    // // Crear la nueva serie con una lista vacía de capítulos
-                                    // Series newSeries = new Series(seriesTitle, selectedCategories, seriesDetails,
-                                    // releaseYear, seasons, 0);
-
-                                    // // Agregar la nueva serie
-                                    // if (src.addSerie(newSeries)) {
-                                    // System.out.println("Series added successfully");
-                                    // } else {
-                                    // System.out.println("Error adding series");
-                                    // }
-                                    // break;
 
                                     case 7:
                                         System.out.println("Enter the title of the series you want to update: ");
@@ -431,7 +406,7 @@ public class Run {
                     }
                     System.out.print("Enter your password: ");
                     password = sc.next();
-                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")) { // Line to validate that the
+                    while (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*]).{8,}$")) {
                         // password contains the
                         // necessary security
                         System.out.println(
@@ -447,14 +422,57 @@ public class Run {
                         }
                     } while (!password.equals(passwordConfirmation));
 
-                    if (userControl.addUser(new User(email, password), passwordConfirmation)) { // Added to the array
-                        // list of users,
-                        // validating that the
-                        // data matches
-                        System.out.println("User registered successfully");
-                    } else {
-                        System.out.println("Error registering the user");
+                    System.out.println("Select a subscription plan:");
+                    System.out.println("1. Basic Plan");
+                    System.out.println("2. Standard Plan");
+                    System.out.println("3. Premium Plan");
+                    int planOption = sc.nextInt();
+                    Plan plan = null;
+                    switch (planOption) {
+                        case 1:
+                            plan = new Plan("Basic", 7.99, 30);
+                            break;
+                        case 2:
+                            plan = new Plan("Standard", 9.99, 30);
+                            break;
+                        case 3:
+                            plan = new Plan("Premium", 11.99, 30);
+                            break;
+                        default:
+                            System.out.println("Select a valid option");
+                            break;
                     }
+                    System.out.println("Select a payment method:");
+                    System.out.println("1. Credit Card");
+                    System.out.println("2. PayPal");
+                    int paymentMethodOption = sc.nextInt();
+                    String paymentMethod = null;
+                    switch (paymentMethodOption) {
+                        case 1:
+                            paymentMethod = "Credit Card";
+                            fm.makePayment(plan, paymentMethod);
+                            break;
+                        case 2:
+                            paymentMethod = "PayPal";
+                            fm.makePayment(plan, paymentMethod);
+                            break;
+                        default:
+                            System.out.println("Select a valid option");
+                            break;
+                    }
+                    Payment payment = new Payment(plan.getPrice(), paymentMethod);
+                    try {
+                        fm.register(email, passwordConfirmation, plan, payment);
+                        User user = new User(email, passwordConfirmation, plan, payment);
+                        System.out.println("Enter the name you want to give to the invoice file:");
+                        sc.nextLine();
+                        String invoiceFileName = sc.nextLine();
+                        fm.generarFactura(user, invoiceFileName);
+                        System.out.println("User successfully registered and plan selected: " + plan.getName());
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     break;
 
                 case 3:
@@ -466,15 +484,14 @@ public class Run {
                         System.out.print("Enter your password: ");
                         password = sc.next();
 
-                        if (userControl.login(email, password)) {
+                        if (fm.login(email, password)) {
                             System.out.println("Successful login");
                             int opc2 = 10;
                             do {
                                 System.out.println("Welcome User");
                                 System.out.println("1. Search for Movie");
-                                System.out.println("2. your list ");
-                                System.out.println("3. Play movies");
-                                System.out.println("4. Play Series");
+                                System.out.println("2. Playlist Management");
+                                System.out.println("3. Search for serie");
                                 System.out.println("0. Go Back");
                                 try {
                                     opc2 = sc.nextInt();
@@ -484,217 +501,396 @@ public class Run {
                                     sc.next(); // Discards incorrect entry
                                     continue;
                                 }
-                                inner: switch (opc2) {
-                                    case 1:
 
+                                switch (opc2) {
+                                    case 1:
                                         System.out.println("Enter the title of the movie you want to search for: ");
-                                        String tittle = sc.nextLine();
-                                        Multimedia movie = mc.getMovieTittle(tittle);
+                                        String title = sc.nextLine();
+                                        Multimedia movie = mc.getMovieTittle(title);
                                         if (movie != null) {
                                             System.out.println(movie.toString());
                                         } else {
                                             System.out.println("Movie not found");
                                         }
-                                        break inner;
+                                        break;
                                     case 2:
-                                        opc3 = 10;
-                                        if (userControl.searchUserObject(email).getPlaylist().getName().isEmpty()) {
-
-                                            System.out.println("input the playlist name");
-                                            String playlistName = sc.nextLine();
-                                            userControl.searchUserObject(email).getPlaylist().setName(playlistName);
-
-                                        }
+                                        int playlistSubMenuOption = 0;
                                         do {
-                                            System.out.println("this is your playlist: "
-                                                    + userControl.searchUserObject(email).getPlaylist());
-                                            System.out.println("""
-                                                    1.add series to playlist
-                                                    2.add movies to playlist
-                                                    3.clear playlist
-                                                    0.back""");
+                                            System.out.println("Playlist Management Menu");
+                                            System.out.println("1. Create Playlist");
+                                            System.out.println("2. Change Playlist Name");
+                                            System.out.println("3. Add Movies to Playlist");
+                                            System.out.println("4. Add Series to Playlist");
+                                            System.out.println("5. Delete Movies from Playlist");
+                                            System.out.println("6. Delete Series from Playlist");
+                                            System.out.println("7. Play Series");
+                                            System.out.println("8. Play Movie");
+                                            System.out.println("9. Delete Playlist");
+                                            System.out.println("0. Go Back");
                                             try {
-
-                                                opc3 = sc.nextInt();
+                                                playlistSubMenuOption = sc.nextInt();
+                                                sc.nextLine();
                                             } catch (InputMismatchException e) {
-                                                System.out.println("no valid option");
+                                                System.out.println("Please enter a valid option");
+                                                sc.next(); // Descarta la entrada incorrecta
+                                                continue;
                                             }
-                                            sc.nextLine();
-                                            playlistoption: switch (opc3) {
 
+                                            switch (playlistSubMenuOption) {
                                                 case 1:
-                                                    System.out.println(src.showSeries());
-                                                    System.out.println("Input the series name to be addded");
-                                                    String seriesName = sc.nextLine();
-                                                    if (src.searchSeriesObject(seriesName) != null) {
-                                                        userControl.addSeriesToPlaylist(email,
-                                                                src.searchSeriesObject(seriesName));
-                                                    } else {
-                                                        System.out.println("series not found");
-                                                    }
-                                                    break playlistoption;
+                                                    System.out.println("Enter the name for your new playlist:");
+                                                    String newPlaylistName = sc.nextLine();
+                                                    userControl.createPlaylist(email, newPlaylistName);
+                                                    break;
 
                                                 case 2:
-                                                    mc.showMoviesTittles();
-                                                    System.out.println("Input the movies name to be addded");
-                                                    String moviesName = sc.nextLine();
-                                                    if (mc.searchMoviesObject(moviesName) != null) {
-                                                        userControl.addMoviesToPlaylist(email,
-                                                                mc.searchMoviesObject(moviesName));
+                                                    System.out.println("Enter the current name of the playlist:");
+                                                    String currentPlaylistName = sc.nextLine();
+
+                                                    // Buscar la playlist por el nombre actual
+                                                    Playlist currentPlaylist = userControl.getPlaylistByName(email,
+                                                            currentPlaylistName);
+
+                                                    if (currentPlaylist != null) {
+                                                        System.out.println("Enter the new name for your playlist:");
+                                                        String modifiedPlaylistName = sc.nextLine();
+
+                                                        // Modificar el nombre de la playlist
+                                                        userControl.modifyPlaylist(email, currentPlaylistName,
+                                                                modifiedPlaylistName);
+
+                                                        System.out.println("Playlist name changed successfully.");
                                                     } else {
-                                                        System.out.println("movies not found");
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
                                                     }
-                                                    break playlistoption;
+                                                    break;
                                                 case 3:
-                                                    userControl.clearPlaylist(email);
-                                                    break playlistoption;
+                                                    System.out.println("Enter the name of the playlist:");
+                                                    String playlistName = sc.nextLine();
+                                                    // Buscar la lista por su nombre
+                                                    Playlist playlist = userControl.getPlaylistByName(email,
+                                                            playlistName);
+
+                                                    if (playlist != null) {
+                                                        System.out.println(
+                                                                "Enter the name of the movie to add to your playlist:");
+                                                        String movieNameToAdd = sc.nextLine();
+
+                                                        // Buscar la película por su nombre
+                                                        Movies movieToAdd = mc.searchMoviesObject(movieNameToAdd);
+
+                                                        if (movieToAdd != null) {
+                                                            // Verificar si la película ya está en la playlist
+                                                            if (playlist.getContent().contains(movieToAdd)) {
+                                                                System.out.println("Movie is already in the playlist.");
+                                                            } else {
+                                                                // Agregar la película a la playlist
+                                                                userControl.addMoviesToPlaylist(email, movieToAdd);
+                                                                System.out.println(
+                                                                        "Movie added to the playlist successfully.");
+                                                            }
+                                                        } else {
+                                                            System.out.println("Movie not found");
+                                                        }
+                                                    } else {
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    System.out.println("Enter the name of the playlist:");
+                                                    String playlistNameForSeries = sc.nextLine();
+
+                                                    // Buscar la lista por su nombre
+                                                    Playlist seriesPlaylist = userControl.getPlaylistByName(email,
+                                                            playlistNameForSeries);
+
+                                                    if (seriesPlaylist != null) {
+                                                        System.out.println(
+                                                                "Enter the name of the series to add to your playlist:");
+                                                        String seriesNameToAdd = sc.nextLine();
+
+                                                        // Buscar la serie por su nombre
+                                                        Series seriesToAdd = src.searchSeriesObject(seriesNameToAdd);
+
+                                                        if (seriesToAdd != null) {
+                                                            // Verificar si la serie ya está en la playlist
+                                                            if (seriesPlaylist.getContent().contains(seriesToAdd)) {
+                                                                System.out
+                                                                        .println("Series is already in the playlist.");
+                                                            } else {
+                                                                // Agregar la serie a la playlist
+                                                                userControl.addSeriesToPlaylist(email, seriesToAdd);
+                                                                System.out.println(
+                                                                        "Series added to the playlist successfully.");
+                                                            }
+                                                        } else {
+                                                            System.out.println("Series not found");
+                                                        }
+                                                    } else {
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
+                                                    }
+                                                    break;
+                                                case 5:
+                                                    System.out.println("Enter the name of the playlist:");
+                                                    String playlistNameForMovies = sc.nextLine();
+
+                                                    // Buscar la lista por su nombre
+                                                    Playlist moviePlaylist = userControl.getPlaylistByName(email,
+                                                            playlistNameForMovies);
+
+                                                    if (moviePlaylist != null) {
+                                                        System.out.println(
+                                                                "Enter the name of the movie to delete from your playlist:");
+                                                        String movieNameToDelete = sc.nextLine();
+
+                                                        // Buscar la película por su nombre
+                                                        Movies movieToDelete = mc.searchMoviesObject(movieNameToDelete);
+
+                                                        if (movieToDelete != null) {
+                                                            // Verificar si la película está en la playlist antes de
+                                                            // eliminarla
+                                                            if (moviePlaylist.getContent().contains(movieToDelete)) {
+                                                                userControl.deleteMoviesFromPlaylist(email,
+                                                                        movieToDelete);
+                                                                System.out.println(
+                                                                        "Movie deleted from the playlist successfully.");
+                                                            } else {
+                                                                System.out.println("Movie is not in the playlist.");
+                                                            }
+                                                        } else {
+                                                            System.out.println("Movie not found");
+                                                        }
+                                                    } else {
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
+                                                    }
+                                                    break;
+
+                                                case 6:
+                                                    System.out.println("Enter the name of the playlist:");
+                                                    String playlistNameForSeriesToDelete = sc.nextLine();
+
+                                                    // Buscar la lista por su nombre
+                                                    Playlist seriesPlaylistToDelete = userControl
+                                                            .getPlaylistByName(email, playlistNameForSeriesToDelete);
+
+                                                    if (seriesPlaylistToDelete != null) {
+                                                        System.out.println(
+                                                                "Enter the name of the series to delete from your playlist:");
+                                                        String seriesNameToDelete = sc.nextLine();
+
+                                                        // Buscar la serie por su nombre
+                                                        Series seriesToDelete = src
+                                                                .searchSeriesObject(seriesNameToDelete);
+
+                                                        if (seriesToDelete != null) {
+                                                            // Verificar si la serie está en la playlist antes de
+                                                            // eliminarla
+                                                            if (seriesPlaylistToDelete.getContent()
+                                                                    .contains(seriesToDelete)) {
+                                                                userControl.deleteSeriesFromPlaylist(email,
+                                                                        seriesToDelete);
+                                                                System.out.println(
+                                                                        "Series deleted from the playlist successfully.");
+                                                            } else {
+                                                                System.out.println("Series is not in the playlist.");
+                                                            }
+                                                        } else {
+                                                            System.out.println("Series not found");
+                                                        }
+                                                    } else {
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
+                                                    }
+                                                    break;
+
+                                                case 8:
+                                                    int opc4 = 0;
+                                                    int selectedMovie = 0;
+                                                    do {
+                                                        System.out.println("Play Movie");
+                                                        System.out.println(
+                                                                "Select the movie you want to reproduce or enter 0 to return to the previous menu");
+                                                        System.out.println(
+                                                                "Press 0 if you want to return to the previous menu");
+                                                        mc.showMoviesTittles();
+                                                        // Solucionar validacion, me devuelve dos veces al menu anterior
+                                                        try {
+                                                            selectedMovie = sc.nextInt();
+                                                        } catch (InputMismatchException e) {
+                                                            System.out.println("Input a valid option");
+                                                            continue;
+                                                        }
+
+                                                        if (selectedMovie == 0) {
+                                                            break; // Si el usuario selecciona 0, rompe el bucle y
+                                                                   // vuelve al menú
+                                                            // anterior
+                                                        }
+                                                        System.out.println("The movie will last "
+                                                                + mc.getMovies().get(selectedMovie - 1).getDuration()
+                                                                + " minutes");
+                                                        System.out.println(
+                                                                "PLAYING: " + mc.getMovies().get(selectedMovie - 1)
+                                                                        .getTittle());
+                                                        int Spaces = 50;
+                                                        long movieDuration = mc.getMovies().get(selectedMovie - 1)
+                                                                .getDuration()
+                                                                * 10; // Duración de la película en segundos
+
+                                                        for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
+                                                            int Percentage = (Pitch * 100) / Spaces;
+
+                                                            System.out.print("\r|");
+                                                            for (int i = 0; i < Pitch; i++) {
+                                                                System.out.print("*");
+                                                            }
+
+                                                            for (int i = Pitch; i < Spaces; i++) {
+                                                                System.out.print(" ");
+                                                            }
+
+                                                            System.out.print("|" + Percentage + " %");
+                                                            try {
+                                                                Thread.sleep(movieDuration / Spaces); // Espera la
+                                                                                                      // cantidad de
+                                                                // tiempo calculada
+                                                            } catch (InterruptedException e) {
+                                                                e.printStackTrace();
+                                                            }
+
+                                                        }
+                                                        System.out.println();
+
+                                                        System.out.println(
+                                                                "The movie "
+                                                                        + mc.getMovies().get(selectedMovie - 1)
+                                                                                .getTittle()
+                                                                        + " has finished playing.");
+                                                        System.out.println(
+                                                                "Do you want to reproduce another movie? \n(0 for no, 1 for yes)");
+
+                                                        // Solucionar validacion, me devuelve dos veces al menu anterior
+                                                        // y no me
+                                                        // deja seleccionar si quiero reproducir otra pelicula
+                                                        try {
+                                                            opc4 = sc.nextInt();
+                                                            sc.nextLine(); // Limpiar el buffer de entrada
+                                                        } catch (InputMismatchException e) {
+                                                            System.out.println("Input a valid option");
+                                                            sc.nextLine(); // Limpiar el buffer de entrada
+                                                            opc4 = 1; // Establecer un valor por defecto para opc4
+                                                        }
+
+                                                    } while (opc4 != 0);
+                                                    break;
+
+                                                case 7:
+                                                    boolean playAnotherSerie;
+                                                    do {
+                                                        series = fm.getSeries();
+                                                        for (int i = 0; i < series.size(); i++) {
+                                                            System.out
+                                                                    .println((i + 1) + ". " + series.get(i).getName());
+                                                        }
+
+                                                        System.out.println(
+                                                                "Enter the number of the series you want to play, or 0 to return to the previous menu:");
+                                                        int serieNumber = sc.nextInt();
+                                                        if (serieNumber == 0) {
+                                                            break;
+                                                        }
+
+                                                        // Subtract 1 because arrays in Java start at 0
+                                                        String serieName = series.get(serieNumber - 1).getName();
+
+                                                        List<String> playbackLog = fm.playSerie(serieName);
+                                                        for (String log : playbackLog) {
+                                                            System.out.println(log);
+                                                            if (log.contains("Do you want to play the next episode?")) {
+                                                                int answer = sc.nextInt();
+                                                                if (answer == 0) {
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        System.out.println(
+                                                                "Do you want to play another series? (1 for yes, 0 for no)");
+                                                        playAnotherSerie = sc.nextInt() == 1;
+                                                    } while (playAnotherSerie);
+
+                                                    break;
+                                                case 9:
+
+                                                    System.out.println("Enter the name of the playlist to delete:");
+                                                    String playlistToDelete = sc.nextLine();
+
+                                                    // Buscar la playlist por nombre
+                                                    Playlist playlistObjectToDelete = userControl
+                                                            .getPlaylistByName(email, playlistToDelete);
+
+                                                    if (playlistObjectToDelete != null) {
+                                                        // Eliminar la lista de reproducción
+                                                        userControl.deletePlaylist(email);
+                                                        System.out.println("Playlist deleted successfully.");
+                                                    } else {
+                                                        System.out.println(
+                                                                "Playlist not found. Please enter a valid playlist name.");
+                                                    }
+                                                    break;
+
                                                 case 0:
-                                                    break inner;
+                                                    System.out.println("Going back to the previous menu.");
+                                                    break;
                                                 default:
-                                                    System.out.println("no valid option");
-                                                    break playlistoption;
+                                                    System.out.println("Select a valid option");
+                                                    break;
                                             }
-                                        } while (opc2 != 0);
+                                        } while (playlistSubMenuOption != 9);
                                         break;
                                     case 3:
                                         int opc4 = 0;
-                                        int selectedMovie = 0;
+                                        int selectedSeries = 0;
                                         do {
-                                            System.out.println("Play Movie");
+                                            System.out.println("Search for Series");
                                             System.out.println(
-                                                    "Select the movie you want to reproduce or enter 0 to return to the previous menu");
-                                            System.out.println("Press 0 if you want to return to the previous menu");
-                                            mc.showMoviesTittles();
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior
-                                            try {
-                                                selectedMovie = sc.nextInt();
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Input a valid option");
-                                                continue;
-                                            }
-
-                                            if (selectedMovie == 0) {
-                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
-                                                // anterior
-                                            }
-                                            System.out.println("The movie will last "
-                                                    + mc.getMovies().get(selectedMovie - 1).getDuration() + " minutes");
-                                            System.out.println(
-                                                    "PLAYING: " + mc.getMovies().get(selectedMovie - 1).getTittle());
-                                            int Spaces = 50;
-                                            long movieDuration = mc.getMovies().get(selectedMovie - 1).getDuration()
-                                                    * 10; // Duración de la película en segundos
-
-                                            for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
-                                                int Percentage = (Pitch * 100) / Spaces;
-
-                                                System.out.print("\r|");
-                                                for (int i = 0; i < Pitch; i++) {
-                                                    System.out.print("*");
-                                                }
-
-                                                for (int i = Pitch; i < Spaces; i++) {
-                                                    System.out.print(" ");
-                                                }
-
-                                                System.out.print("|" + Percentage + " %");
-                                                try {
-                                                    Thread.sleep(movieDuration / Spaces); // Espera la cantidad de
-                                                    // tiempo calculada
-                                                } catch (InterruptedException e) {
-                                                    e.printStackTrace();
-                                                }
-
-                                            }
-                                            System.out.println();
-
-                                            System.out.println(
-                                                    "The movie " + mc.getMovies().get(selectedMovie - 1).getTittle()
-                                                            + " has finished playing.");
-                                            System.out.println(
-                                                    "Do you want to reproduce another movie? \n(0 for no, 1 for yes)");
-
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior y no me
-                                            // deja seleccionar si quiero reproducir otra pelicula
-                                            try {
-                                                opc4 = sc.nextInt();
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                            } catch (InputMismatchException e) {
-                                                System.out.println("Input a valid option");
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                                opc4 = 1; // Establecer un valor por defecto para opc4
-                                            }
-
-                                        } while (opc4 != 0);
-                                        break;
-
-                                    case 4:
-                                        int opc5 = 0;
-                                        int selectedSerie = 0;
-                                        do {
-                                            System.out.println("Play Serie");
-                                            System.out.println(
-                                                    "Select the serie you want to reproduce or enter 0 to return to the previous menu");
+                                                    "Select the series you want to view or enter 0 to return to the previous menu");
                                             System.out.println("Press 0 if you want to return to the previous menu");
                                             src.showSeriesTittles();
 
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior
                                             try {
-                                                selectedSerie = sc.nextInt();
+                                                selectedSeries = sc.nextInt();
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Input a valid option");
+                                                sc.nextLine();
                                                 continue;
                                             }
 
-                                            if (selectedSerie == 0) {
-                                                break; // Si el usuario selecciona 0, rompe el bucle y vuelve al menú
-                                                // anterior
+                                            if (selectedSeries == 0) {
+                                                break; // If the user selects 0, break the loop and go back to the
+                                                       // previous menu
                                             }
-                                            System.out.println("The series will last 5 minutes");
+
+                                            // Add logic to display series details based on selectedSeries
+                                            Series selectedSeriesObject = src.getSeries().get(selectedSeries - 1);
+                                            System.out.println(selectedSeriesObject.toString());
+
                                             System.out.println(
-                                                    "PLAYING: " + src.getSeries().get(selectedSerie - 1).getTittle());
-                                            int Spaces = 50;
-                                            long serieDuration = 5000; // Duración de la película en segundos
-                                            for (int Pitch = 0; Pitch <= Spaces; Pitch++) {
-                                                int porcentaje = (Pitch * 100) / Spaces;
+                                                    "Do you want to search for another series? (0 for no, 1 for yes)");
 
-                                                System.out.print("\r|");
-                                                for (int i = 0; i < Pitch; i++) {
-                                                    System.out.print("*");
-                                                }
-
-                                                for (int i = Pitch; i < Spaces; i++) {
-                                                    System.out.print(" ");
-                                                }
-
-                                                System.out.print("|" + porcentaje + " %");
-                                                try {
-                                                    Thread.sleep(serieDuration / Spaces); // Espera la cantidad de
-                                                    // tiempo calculada
-                                                } catch (InterruptedException e) {
-                                                    e.printStackTrace();
-                                                }
-
-                                            }
-                                            System.out.println();
-                                            System.out.println(
-                                                    "The series " + src.getSeries().get(selectedSerie - 1).getTittle()
-                                                            + " has finished playing.");
-                                            System.out.println(
-                                                    "Do you want to reproduce another serie? \n(0 for no, 1 for yes)");
-
-                                            // Solucionar validacion, me devuelve dos veces al menu anterior y no me
-                                            // deja seleccionar si quiero reproducir otra pelicula
                                             try {
-                                                opc5 = sc.nextInt();
-                                                sc.nextLine(); // Limpiar el buffer de entrada
+                                                opc4 = sc.nextInt();
+                                                sc.nextLine();
                                             } catch (InputMismatchException e) {
                                                 System.out.println("Input a valid option");
-                                                sc.nextLine(); // Limpiar el buffer de entrada
-                                                opc5 = 1; // Establecer un valor por defecto para opc5
+                                                sc.nextLine();
+                                                opc4 = 1;
                                             }
-
-                                        } while (opc5 != 0);
+                                        } while (opc4 != 0);
                                         break;
 
                                     case 0:
@@ -717,7 +913,6 @@ public class Run {
                     } while (continueOption.equalsIgnoreCase("y"));
 
                     break;
-
                 case 4:
 
                     int opVisitante = 0;
@@ -749,13 +944,11 @@ public class Run {
 
                             case 2:
                                 System.out.println("The list of avaliable series is: ");
-                                if (series.isEmpty()) {
-                                    System.out.println("There is not series to show.");
-                                } else {
-                                    for (Multimedia seriess : series) {
-                                        System.out.println(seriess.toString());
-                                    }
+                                series = fm.getSeries();
+                                for (Series serie : series) {
+                                    System.out.println("- " + serie);
                                 }
+
                                 break;
 
                             case 3:

@@ -1,0 +1,123 @@
+[
+  {
+    "duration": 188,
+    "multimedia": {
+      "tittle": "Titanic",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        },
+        {
+          "name": "Romance",
+          "description": "Películas o series de temática romántica"
+        }
+      ],
+      "details": "Película de barco que se hunde",
+      "releaseYear": 1997
+    },
+    "tittle": "Titanic",
+    "details": "Película de barco que se hunde",
+    "releaseYear": 1997
+  },
+  {
+    "duration": 50,
+    "multimedia": {
+      "tittle": "Matilda",
+      "categories": [
+        {
+          "name": "Fiction",
+          "description": "Pel�culas o series de ficci�n"
+        }
+      ],
+      "details": "Ni�a que tiene poderes",
+      "releaseYear": 2001
+    },
+    "tittle": "Matilda",
+    "categories": [
+      {
+        "name": "Fiction",
+        "description": "Pel�culas o series de ficci�n"
+      }
+    ],
+    "details": "Ni�a que tiene poderes",
+    "releaseYear": 2001
+  },
+  {
+    "duration": 175,
+    "multimedia": {
+      "tittle": "El padrino",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Pel�culas o series de acci�n"
+        },
+        {
+          "name": "Crimen",
+          "description": "Pel�culas o series de crimen"
+        }
+      ],
+      "details": "Pel�cula de polic�a corrupto y actividades ilegales",
+      "releaseYear": 1972
+    },
+    "tittle": "El padrino",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Pel�culas o series de acci�n"
+      },
+      {
+        "name": "Crimen",
+        "description": "Pel�culas o series de crimen"
+      }
+    ],
+    "details": "Pel�cula de polic�a corrupto y actividades ilegales",
+    "releaseYear": 1972
+  },
+  {
+    "duration": 50,
+    "multimedia": {
+      "tittle": "lol",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        }
+      ],
+      "details": "si",
+      "releaseYear": 2001
+    },
+    "tittle": "lol",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      }
+    ],
+    "details": "si",
+    "releaseYear": 2001
+  },
+  {
+    "duration": 80,
+    "multimedia": {
+      "tittle": "The greatest showman",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Pel�culas o series de acci�n"
+        }
+      ],
+      "details": "Hombre que ahce un circo",
+      "releaseYear": 2001
+    },
+    "tittle": "The greatest showman",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Pel�culas o series de acci�n"
+      }
+    ],
+    "details": "Hombre que ahce un circo",
+    "releaseYear": 2001
+  }
+]

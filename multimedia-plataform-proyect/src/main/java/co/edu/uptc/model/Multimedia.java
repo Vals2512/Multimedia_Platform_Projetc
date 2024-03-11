@@ -1,7 +1,6 @@
 package co.edu.uptc.model;
 
 import java.util.List;
-import java.util.Timer;
 
 public class Multimedia {
 
@@ -10,7 +9,6 @@ public class Multimedia {
     private String details;
     private int releaseYear;
 
-    Timer timer = new Timer();
 
     public Multimedia() {
     }

@@ -1,6 +1,5 @@
 package co.edu.uptc.model;
 
-
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,6 +12,14 @@ public class User {
     private String password;
     @SerializedName("playlist")
     private Playlist playlist;
+    @SerializedName("plan")
+    private Plan plan;
+    @SerializedName("payment")
+    private Payment payment;
+
+    public User() {
+        playlist = new Playlist();
+    }
 
     /**
      * Sets the user's playlist.
@@ -39,10 +46,12 @@ public class User {
      * @param password User's password.
      */
 
-    public User(String email, String password) {
+    public User(String email, String password, Plan plan, Payment payment) {
         this.email = email;
         this.password = password;
-        this.playlist=new Playlist();
+        this.plan = plan;
+        this.payment = payment;
+        this.playlist = new Playlist();
     }
 
     /**
@@ -79,6 +88,22 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Plan getPlan() {
+        return plan;
+    }
+
+    public void setPlan(Plan plan) {
+        this.plan = plan;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     /**

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uptc.view.MainView"
+      prefHeight="600.0" prefWidth="800" stylesheets="@mainViewStyle.css">
+    <children>
+        <VBox prefWidth="Infinity">
+        <Label text="enter the email"   fx:id="labelEnterEmail"/>
+        <TextField prefWidth="Infinity" prefHeight="20" fx:id="emailField"/>
+        </VBox>
+        <HBox>
+        <VBox prefWidth="300">
+        <Label text="enter your password"/>
+        <PasswordField prefWidth="Infinity" prefHeight="20" fx:id="passwordField" onKeyTyped="#passwordFieldKeyTyped" />
+        <Label/>
+        </VBox>
+<!--            <ToggleButton fx:id="passwordB" onAction="#seePassword" text="Show" styleClass="tButton"/>-->
+        </HBox>
+        <HBox alignment="CENTER" fx:id="changeSceneHBox">
+            <Button text="sign in" fx:id="buttonSignIn" onAction="#signInButton"/>
+            <Button text="login" fx:id="buttonLogin" onAction="#loginButton"/>
+            <Button text="enter as a visitor" fx:id="buttonVisitor"  onAction="#testButton"/>
+
+        </HBox>
+        <Label fx:id="errorLabel"/>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="40.0" top="40.0" />
+    </padding>
+</VBox>
