@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="300.0" prefWidth="300.0" style="-fx-max-height: 600; -fx-min-height: 600; -fx-min-width: 800; -fx-max-width: 800; -fx-background-color: #36129E;" stylesheets="@adminViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.AdminView">
@@ -40,37 +42,105 @@
                         <Image url="@../../../../Images/admin.png" />
                      </image>
                   </ImageView>
-                    <Button fx:id="backToLogin" layoutX="75.0" layoutY="472.0" minHeight="50" minWidth="100" onAction="#backToMenu" text="Back to menu">
-                     <font>
-                        <Font name="Eras Bold ITC" size="41.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                    <GridPane hgap="10" layoutX="139.0" layoutY="114.0" vgap="10">
+                    <GridPane hgap="10" layoutX="66.0" layoutY="180.0" prefHeight="222.0" prefWidth="355.0" vgap="10">
                         <padding>
                             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                         </padding>
-                        <Button fx:id="createMovieButton" minHeight="50" minWidth="100" onAction="#createMovie" prefHeight="50.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Create Movie" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Button fx:id="updateMovieButton" minHeight="50" minWidth="100" onAction="#updateMovie" prefHeight="62.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Update movie" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Button fx:id="deleteMovieButton" minHeight="50" minWidth="100" onAction="#deleteMovie" prefHeight="50.0" prefWidth="130.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Delete movie" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <Button fx:id="createSerieButton" minHeight="50" minWidth="100" onAction="#createSerie" prefHeight="50.0" prefWidth="110.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Create serie" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                        <Button fx:id="updateSerieButton" minHeight="50" minWidth="100" onAction="#updateSerie" prefHeight="50.0" prefWidth="110.0" text="Update serie" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="deleteSerieButton" minHeight="49.0" minWidth="100" onAction="#deleteSerie" prefHeight="49.0" prefWidth="126.0" text="Delete serie" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="createMovieButton" minHeight="50" minWidth="100" onAction="#createMovie" prefHeight="50.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-min-width: 150; -fx-background-radius: 20;" text="Create Movie">
+                        <font>
+                           <Font name="Eras Demi ITC" size="9.0" />
+                        </font>
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect></Button>
+                        <Button fx:id="updateMovieButton" minHeight="50" minWidth="100" onAction="#updateMovie" prefHeight="62.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-background-radius: 20; -fx-min-width: 150;" text="Update movie" GridPane.rowIndex="2">
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect></Button>
+                        <Button fx:id="deleteMovieButton" minHeight="50" minWidth="100" onAction="#deleteMovie" prefHeight="50.0" prefWidth="130.0" style="-fx-max-width: 150; -fx-min-width: 150; -fx-background-radius: 20;" text="Delete movie" GridPane.rowIndex="3">
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect>
+                     </Button>
+                        <Button fx:id="createSerieButton" minHeight="50" minWidth="100" onAction="#createSerie" prefHeight="50.0" prefWidth="110.0" style="-fx-max-width: 150; -fx-min-width: 150; -fx-background-radius: 20;" text="Create serie" GridPane.columnIndex="1">
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect></Button>
+                        <Button fx:id="updateSerieButton" minHeight="50" minWidth="100" onAction="#updateSerie" prefHeight="50.0" prefWidth="110.0" style="-fx-max-width: 150; -fx-min-width: 150; -fx-background-radius: 20;" text="Update serie" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect></Button>
+                        <Button fx:id="deleteSerieButton" minHeight="49.0" minWidth="100" onAction="#deleteSerie" prefHeight="49.0" prefWidth="161.0" style="-fx-max-width: 150; -fx-min-width: 150; -fx-background-radius: 20;" text="Delete serie" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <effect>
+                           <InnerShadow>
+                              <color>
+                                 <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                              </color>
+                           </InnerShadow>
+                        </effect></Button>
                      <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints />
+                        <RowConstraints maxHeight="50.400000000000006" minHeight="30.400000000000006" prefHeight="50.400000000000006" />
                         <RowConstraints maxHeight="44.80000305175781" minHeight="0.0" prefHeight="0.0" />
-                        <RowConstraints maxHeight="50.39999999999999" minHeight="5.599996948242193" prefHeight="50.39999999999999" />
-                        <RowConstraints />
+                        <RowConstraints maxHeight="79.2000244140625" minHeight="5.599996948242193" prefHeight="28.600024414062503" />
+                        <RowConstraints maxHeight="71.79997558593749" minHeight="22.399975585937483" prefHeight="71.79997558593749" />
                      </rowConstraints>
             
                     </GridPane>
+                  <Label layoutX="136.0" layoutY="91.0" prefHeight="62.0" prefWidth="214.0" text="Select an option:">
+                     <font>
+                        <Font name="Eras Bold ITC" size="24.0" />
+                     </font>
+                  </Label>
+                    <Button fx:id="backToLogin" layoutX="191.0" layoutY="455.0" minHeight="50" minWidth="100" onAction="#backToMenu" style="-fx-background-radius: 20;" text="Back to menu">
+                     <font>
+                        <Font name="Eras Bold ITC" size="41.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.5960784554481506" green="0.16470588743686676" blue="0.7490196228027344" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <ImageView fitHeight="82.0" fitWidth="66.0" layoutX="48.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/image.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="82.0" fitWidth="66.0" layoutX="390.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/serie.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
         </items>
