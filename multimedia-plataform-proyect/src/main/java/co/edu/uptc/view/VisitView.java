@@ -214,7 +214,7 @@ public class VisitView {
                             alert.setHeaderText(null);
                             alert.setContentText("Tittle: " + item.getTittle() + "\n Categories: " + item.getCategories() + "\n" + //
                                                                 " Details: " + item.getDetails() + "\n Realase Year: " + item.getReleaseYear() + "\n" + //
-                                                                " Duration: " + item.getDuration());
+                                                                " Duration: " + item.getDuration() + " minutes");
                             alert.showAndWait();
                             }
                         });
