@@ -9,7 +9,8 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="co.edu.uptc.view.DeleteSerie"
-            prefHeight="300.0" prefWidth="300.0">
+            prefHeight="300.0" prefWidth="300.0"
+            stylesheets= "@deleteSerieStyle.css">
     <TableView fx:id="seriesTable">
         <columns>
             <TableColumn fx:id="titleColumn" text="Title" />
