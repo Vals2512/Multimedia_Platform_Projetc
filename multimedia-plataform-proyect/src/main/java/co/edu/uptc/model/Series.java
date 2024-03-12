@@ -1,32 +1,24 @@
 package co.edu.uptc.model;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Series extends Multimedia {
-    // private Multimedia multimedia;
-    // private List<Chapter> chapters;
-    // private String chapterName;
-    // private int chapterDuration;
-    // private Chapter chap;
-    // private int releaseYear;
-    // @SerializedName("name")
+
     private String name;
-    // @SerializedName("seasons")
     private List<Season> seasons;
-    private String imagepath;
+    private String imagePath;
 
     
     
     public Series() {
     }
 
-    public Series(String name, String imagepath){
+    public Series(String name, String imagePath){
         this.name = name;
         this.seasons = new ArrayList<>();
-        this.imagepath = imagepath;
+        this.imagePath = imagePath;
     }
 
     
@@ -48,11 +40,11 @@ public class Series extends Multimedia {
     }
 
     public String getImagePath() {
-        return imagepath;
+        return imagePath;
     }
     
-    public void setImagePath(String imagepath) {
-        this.imagepath = imagepath;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     @Override

@@ -20,6 +20,10 @@ public class Season {
         return chapters;
     }
 
+    public int getNumberOfEpisodes(){
+        return chapters.size();
+    }
+
     public String getName() {
         return name;
     }

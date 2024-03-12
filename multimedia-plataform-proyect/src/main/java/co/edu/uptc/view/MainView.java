@@ -66,7 +66,7 @@ public class MainView{
         }else{
             errorLabel.setStyle("-fx-text-fill: RED");
 //            errorLabel.setTextFill(Color.web("#FF0000"));
-            errorLabel.setText("revise las credenciales de acceso ya que puede estar mal escrito el correo o la contraseña");
+            errorLabel.setText("Revise las credenciales de acceso ya que puede estar mal escrito el correo o la contraseña");
 
         }
 

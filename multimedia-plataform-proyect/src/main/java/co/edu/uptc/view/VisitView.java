@@ -8,23 +8,25 @@ import com.google.gson.reflect.TypeToken;
 
 import co.edu.uptc.controller.FileManagement;
 import co.edu.uptc.model.Movies;
+import co.edu.uptc.model.Season;
 import co.edu.uptc.model.Series;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.lang.reflect.Type;
+
+import javafx.scene.image.Image; 
+import javafx.scene.image.ImageView; 
 
 public class VisitView {
     private static final String FILE_PATH = "src\\main\\java\\co\\edu\\uptc\\persistence\\";
@@ -33,17 +35,17 @@ public class VisitView {
     @FXML
     private VBox vBox;
     @FXML
-    private MenuItem verSeries;
-    @FXML
     private Button backToLogin;
     @FXML
     private ListView<Series> listView;
     @FXML
     private ListView<Movies> moviesListView;
     @FXML
-    private MenuItem verMovies;
+    private TabPane tabPane;
     @FXML
-    private SplitPane splitPane;
+    private Tab seriesTab;
+    @FXML
+    private Tab moviesTab;
 
     private FileManagement fm = new FileManagement();
     private String fileName = "Series";
@@ -55,34 +57,23 @@ public class VisitView {
 
     @FXML
     private void showSeries(ActionEvent event) {
-        listView.setVisible(true);
+        tabPane.getSelectionModel().select(seriesTab);
     }
 
     
-
     public void initialize() {
-        setupMenu();
         listView.setCellFactory(param -> new SeriesListCell());
         moviesListView.setCellFactory(param -> new MoviesListCell());
-        splitPane.getItems().addAll(listView, moviesListView);
+        if (this.seriesTab == null) {
+            this.seriesTab = new Tab();
+        }
+        this.seriesTab.setContent(listView);
+        if (this.moviesTab == null) {
+            this.moviesTab = new Tab();
+        }
+        moviesTab.setContent(moviesListView);
+        loadSeries();
 
-    }
-
-
-
-    private void setupMenu() {
-        Menu menu = new Menu("Options ");
-
-        verSeries.setOnAction(e -> loadSeries());
-        verMovies.setOnAction(e -> loadMovies());
-
-        MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(menu);
-
-        VBox vBox = new VBox();
-        vBox.setPadding(new Insets(10));
-        vBox.setSpacing(10);
-        vBox.getChildren().addAll(menuBar);
     }
 
     @FXML
@@ -94,12 +85,83 @@ public class VisitView {
             for (Series serie : seriesFromFile) {
                 listView.getItems().add(serie);
             }
+            listView.setCellFactory(param -> new ListCell<Series>() {
+                private ImageView imageView = new ImageView();
+                private final Label label = new Label();
+                private final VBox vbox = new VBox();
+                private final Button button = new Button();
+                {
+                    vbox.getChildren().addAll(label, button);
+                    vbox.setAlignment(Pos.CENTER);
+                    button.setGraphic(imageView); 
+                    imageView.setFitWidth(179); // Establece el ancho de la imagen
+                    imageView.setFitHeight(211); // Establece la altura de la imagen
+                    imageView.setPreserveRatio(false); // Mantiene la relación de aspecto de la imagen
+                }
+                @Override
+                protected void updateItem(Series item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        String imagePath = item.getImagePath();
+                        if (imagePath != null && !imagePath.isEmpty()) {
+                            File file = new File(imagePath);
+                            imageView.setImage(new Image(file.toURI().toString()));
+                            label.setText(item.getName());
+                            setGraphic(vbox);
+                        } else {
+                            label.setText(item.getName());
+                            setGraphic(vbox);
+                        }
+
+                        // Agrega el evento de click
+                        setOnMouseClicked(event -> {
+                            if (event.getClickCount() == 2) { // Doble click
+                                // Muestra la información completa de la serie
+                                int totalEpisodes = 0;
+                                for (Season season : item.getSeasons()) {
+                                    totalEpisodes += season.getNumberOfEpisodes();
+                                }
+                                Alert alert = new Alert(AlertType.INFORMATION);
+                                alert.setTitle("Serie details");
+                                alert.setHeaderText(null);
+                                alert.setContentText("Tittle: " + item.getName() + "\n Seasons: " + item.getSeasons().size() + "\n" + //
+                                                                        " Total Episodes: " + totalEpisodes);
+                                alert.showAndWait();
+                            }
+                        });
+                    }
+                }
+            });
             listView.setVisible(true);
         } else {
             listView.getItems().clear();
             Series serie = new Series("No hay series disponibles.", "/src/images/718672.png");
             listView.getItems().add(serie);
+            listView.setCellFactory(param -> new ListCell<Series>() {
+                private ImageView imageView = new ImageView();
+                @Override
+                public void updateItem(Series serie, boolean empty) {
+                    super.updateItem(serie, empty);
+                    if (empty) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        File file = new File(serie.getImagePath());
+                        imageView.setImage(new Image(file.toURI().toString()));
+                        imageView.setFitHeight(50); // ajusta el tamaño de la imagen
+                        imageView.setFitWidth(50);
+                        setText(serie.getName());
+                        setGraphic(imageView);
+                    }
+                }
+            });
             listView.setVisible(true);
+            tabPane.getSelectionModel().select(seriesTab);
+
+            
         }
     }
 
@@ -107,24 +169,74 @@ public class VisitView {
     private void loadMovies() {
         File checkFile = new File(fileNamee2);
         if (checkFile.exists()) {
-            try {
-                List<Movies> moviesFromFile = fm.readJsonFile(fileNamee2, MOVIES_TYPE);
-                ObservableList<Movies> moviesObservableList = FXCollections.observableArrayList(moviesFromFile);
-                moviesListView.setItems(moviesObservableList);
-            } catch (Exception ex) {
-                handleException(ex);
+            List<Movies> moviesFromFile = fm.readJsonFile(fileNamee2, MOVIES_TYPE);
+            moviesListView.getItems().clear();
+            for (Movies movie : moviesFromFile) {
+                moviesListView.getItems().add(movie);
             }
+            moviesListView.setCellFactory(param -> new ListCell<Movies>() {
+                private ImageView imageView = new ImageView();
+                private final Label label = new Label();
+                private final VBox vbox = new VBox();
+                private final Button button = new Button();
+                {
+                    vbox.getChildren().addAll(label, button);
+                    vbox.setAlignment(Pos.CENTER);
+                    button.setGraphic(imageView); 
+                    imageView.setFitWidth(179); // Establece el ancho de la imagen
+                    imageView.setFitHeight(211); // Establece la altura de la imagen
+                    imageView.setPreserveRatio(false); // Mantiene la relación de aspecto de la imagen
+                }
+                @Override
+                protected void updateItem(Movies item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        String imagePath = item.getImagePath();
+                        if (imagePath != null && !imagePath.isEmpty()) {
+                            File file = new File(imagePath);
+                            imageView.setImage(new Image(file.toURI().toString()));
+                            label.setText(item.getTittle());
+                            setGraphic(vbox);
+                        } else {
+                            label.setText(item.getTittle());
+                            setGraphic(vbox);
+                        }
+                    }
+                }
+            });
+            moviesListView.setVisible(true);
         } else {
             moviesListView.getItems().clear();
             Movies movie = new Movies();
             moviesListView.getItems().add(movie);
+            moviesListView.setCellFactory(param -> new ListCell<Movies>() {
+                private ImageView imageView = new ImageView();
+                @Override
+                public void updateItem(Movies movie, boolean empty) {
+                    super.updateItem(movie, empty);
+                    if (empty) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        File file = new File(movie.getImagePath());
+                        imageView.setImage(new Image(file.toURI().toString()));
+                        imageView.setFitHeight(50); // ajusta el tamaño de la imagen
+                        imageView.setFitWidth(50);
+                        setText(movie.getTittle());
+                        setGraphic(imageView);
+                    }
+                }
+            });
+            moviesListView.setVisible(true);
+            tabPane.getSelectionModel().select(moviesTab);
+
         }
     }
 
-    private void handleException(Exception ex) {
-        // Manejar la excepción de manera adecuada
-        ex.printStackTrace();
-    }
+ 
 
     @FXML
     public void backToMenu() throws IOException {

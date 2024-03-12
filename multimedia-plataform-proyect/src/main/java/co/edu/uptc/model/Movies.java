@@ -13,7 +13,7 @@ public class Movies extends Multimedia {
 
     }
 
-public Movies(String tittle, List<Category> categories, String details, int releaseYear, int duration, String imagepath) {
+    public Movies(String tittle, List<Category> categories, String details, int releaseYear, int duration, String imagepath) {
         super(tittle, categories, details, releaseYear);
         this.duration = duration;
         this.imagepath = imagepath;

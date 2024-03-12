@@ -9,29 +9,28 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="co.edu.uptc.view.AdminView"
-            prefHeight="600.0" prefWidth="800.0"
+            prefHeight="300.0" prefWidth="300.0"
             stylesheets="@adminViewStyle.css">
     <top>
-        <Button text= "Back to menu" fx:id="backToLogin" onAction="#backToMenu" />
+        <Button text= "Back to menu" fx:id="backToLogin" onAction="#backToMenu" minWidth="100" minHeight="50"/>
     </top>
     <left>
         <GridPane hgap="10" vgap="10">
             <padding>
                 <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
             </padding>
-            <Button text="Crear película" fx:id="createMovieButton" onAction="#createMovie" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Button text="Actualizar película" fx:id="updateMovieButton" onAction="#updateMovie" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-            <Button text="Eliminar película" fx:id="deleteMovieButton" onAction="#deleteMovie" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <Button text="Create serie" fx:id="createSerieButton" onAction="#createSerie" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Button text="Update serie" fx:id="updateSerieButton" onAction="#updateSerie" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-            <Button text="Delete serie" fx:id="deleteSerieButton" onAction="#deleteSerie" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Button text="Crear película" fx:id="createMovieButton" onAction="#createMovie" GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="100" minHeight="50"/>
+            <Button text="Actualizar película" fx:id="updateMovieButton" onAction="#updateMovie" GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" minHeight="50"/>
+            <Button text="Eliminar película" fx:id="deleteMovieButton" onAction="#deleteMovie" GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="100" minHeight="50"/>
+            <Button text="Create serie" fx:id="createSerieButton" onAction="#createSerie" GridPane.columnIndex="1" GridPane.rowIndex="0" minWidth="100" minHeight="50"/>
+            <Button text="Update serie" fx:id="updateSerieButton" onAction="#updateSerie" GridPane.columnIndex="1" GridPane.rowIndex="2" minWidth="100" minHeight="50"/>
+            <Button text="Delete serie" fx:id="deleteSerieButton" onAction="#deleteSerie" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="100" minHeight="50"/>
+
         </GridPane>
     </left>
             <TextField fx:id="nameField" promptText="Series name" />
-            <Button fx:id="agregarSerieButton" text="Agregar serie" />
+            <Button fx:id="agregarSerieButton" text="Agregar serie" minWidth="100" minHeight="50"/>
     <center>
-        <StackPane>
-            <Line startX="0.0" startY="0.0" endX="0.0" endY="600.0"/>
-        </StackPane>
+
     </center>
 </BorderPane>

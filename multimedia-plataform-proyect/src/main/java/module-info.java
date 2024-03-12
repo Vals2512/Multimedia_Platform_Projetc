@@ -11,5 +11,5 @@ module multimedia.plataform.proyect {
     opens co.edu.uptc.controller to com.itextpdf.text;
     exports co.edu.uptc.view;
     exports co.edu.uptc.controller;
-    opens co.edu.uptc.model to com.google.gson;
+    opens co.edu.uptc.model to com.google.gson, javafx.base;
 }

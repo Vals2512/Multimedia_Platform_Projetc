@@ -281,7 +281,7 @@ public class Run {
                                         } else {
                                             System.out.println("Movie not found");
                                         }
-                                        break;
+                                    break;
 
                                     case 5:
                                         System.out.println("Enter the title of the movie you want to delete: ");

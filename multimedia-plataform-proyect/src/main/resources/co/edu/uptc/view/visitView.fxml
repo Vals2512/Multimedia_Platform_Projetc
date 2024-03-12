@@ -6,23 +6,26 @@
 <VBox  xmlns="http://javafx.com/javafx" 
         xmlns:fx="http://javafx.com/fxml"
         fx:controller="co.edu.uptc.view.VisitView"
-        prefHeight="600.0" prefWidth="800.0">
-    <children>
+        prefHeight="600.0" prefWidth="800.0"
+        stylesheets="@visitViewStyle.css">
         <Button fx:id="backToLogin" text= "Back to menu" onAction="#backToMenu"/>
-        <MenuBar>
-            <menus>
-                <Menu text="Options">
-                    <items>
-                        <MenuItem fx:id="verSeries" text="Ver series disponibles" onAction="#showSeries" />
-                        <MenuItem fx:id="verMovies" text="See availables movies" onAction="#loadMovies"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <ListView fx:id="listView"></ListView>
-        <ListView fx:id="moviesListView"></ListView>
-        <SplitPane fx:id="splitPane" orientation="HORIZONTAL">
-            <!-- Los elementos se añadirán aquí en el código -->
-        </SplitPane>
+
+    <children>
+
+        <Separator />
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Availables Series" onSelectionChanged="#loadSeries">
+                    <content>
+                        <ListView fx:id="listView"></ListView>
+                    </content>
+                </Tab>
+                <Tab text="Availables Movies" onSelectionChanged="#loadMovies">
+                    <content>
+                        <ListView fx:id="moviesListView"></ListView>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </children>
 </VBox>

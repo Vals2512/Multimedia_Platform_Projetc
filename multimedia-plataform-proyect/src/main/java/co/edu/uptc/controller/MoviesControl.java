@@ -68,7 +68,7 @@ public class MoviesControl {
             }
         }
 
-    return addMovie(new Movies(title, selectedCategories, details, releaseYear, duration, "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png"));
+    return addMovie(new Movies(title, selectedCategories, details, releaseYear, duration, imagePath));
     }
 
     public boolean addMovie(Movies movie) {
