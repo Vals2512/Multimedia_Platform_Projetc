@@ -1,26 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:controller="co.edu.uptc.view.CreateMovie" spacing="10" 
-                    prefHeight="200.0" prefWidth="300.0"
-                    xmlns:fx="http://javafx.com/fxml"
-                    stylesheets= "@createMovieStyle.css">
-    <Label text="Input the title of the movie you want to add:"/>
-    <TextField fx:id="titleTextField" promptText="Enter movie title"/>
-
-    <Label text="Select categories (enter numbers separated by comma):"/>
-    <TextField fx:id="categoriesTextField" promptText="Enter selected categories"/>
-
-    <Label text="Input the details of the movie you want to add:"/>
-    <TextField fx:id="detailsTextField" promptText="Enter movie details"/>
-
-    <Label text="Input the release year of the movie you want to add:"/>
-    <TextField fx:id="releaseYearTextField" promptText="Enter release year"/>
-
-    <Label text="Input the duration of the movie you want to add (in minutes):"/>
-    <TextField fx:id="durationTextField" promptText="Enter movie duration"/>
-
-    <Button fx:id="addButton" text="Add Movie" onAction="#handleAddMovie"/>
+<VBox prefHeight="200.0" prefWidth="300.0" spacing="10" style="-fx-min-height: 600; -fx-max-height: 600; -fx-min-width: 800; -fx-max-width: 800; -fx-padding: 25; -fx-background-color: #36129E;" stylesheets="@createMovieStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.CreateMovie">
+   <SplitPane dividerPositions="0.26869658119658113" minHeight="510.0" minWidth="695.0" prefHeight="510.0" prefWidth="695.0" style="-fx-min-height: 550; -fx-max-height: 550; -fx-min-width: 750; -fx-max-width: 750;">
+     <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+            <children>
+               <Label layoutX="73.0" layoutY="94.0" text="Add the">
+                  <font>
+                     <Font name="Consolas" size="18.0" />
+                  </font>
+               </Label>
+               <Label layoutX="64.0" layoutY="130.0" text="Neccesary" />
+               <Label layoutX="60.0" layoutY="175.0" text="Information" />
+               <ImageView fitHeight="220.0" fitWidth="198.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../Images/si.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="558.0" style="-fx-background-color: #72629E;">
+            <children>
+                <Label layoutX="113.0" layoutY="19.0" text="Input the title of the movie you want to add:" textFill="WHITE">
+                  <font>
+                     <Font name="Eras Bold ITC" size="12.0" />
+                  </font>
+               </Label>
+                <TextField fx:id="titleTextField" layoutX="48.0" layoutY="49.0" promptText="Enter movie title" style="-fx-max-width: 450; -fx-min-width: 450;" />
+            
+                            <Label layoutX="71.0" layoutY="89.0" text="Select categories (enter numbers separated by comma):" textFill="WHITE" />
+                <TextField fx:id="categoriesTextField" layoutX="47.0" layoutY="122.0" promptText="Enter selected categories" style="-fx-max-width: 450; -fx-min-width: 450;" />
+            
+                <Label layoutX="118.0" layoutY="170.0" text="Input the details of the movie you want to add:" textFill="WHITE" />
+                <TextField fx:id="detailsTextField" layoutX="48.0" layoutY="206.0" promptText="Enter movie details" style="-fx-max-width: 450; -fx-min-width: 450;" />
+            
+                <Label layoutX="85.0" layoutY="255.0" text="Input the release year of the movie you want to add:" textFill="WHITE" />
+                <TextField fx:id="releaseYearTextField" layoutX="47.0" layoutY="297.0" promptText="Enter release year" style="-fx-max-width: 450; -fx-min-width: 450;" />
+            
+                                        <Button fx:id="addButton" layoutX="228.0" layoutY="449.0" onAction="#handleAddMovie" style="-fx-background-radius: 20;" text="Add Movie">
+                  <effect>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.8947368264198303" green="0.874853789806366" blue="0.874853789806366" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </Button>
+            
+                <Label layoutX="65.0" layoutY="343.0" text="Input the duration of the movie you want to add (in minutes):" textFill="WHITE" />
+                <TextField fx:id="durationTextField" layoutX="47.0" layoutY="385.0" promptText="Enter movie duration" style="-fx-max-width: 450; -fx-min-width: 450;" />
+            </children>
+         </AnchorPane>
+     </items>
+   </SplitPane>
 </VBox>
