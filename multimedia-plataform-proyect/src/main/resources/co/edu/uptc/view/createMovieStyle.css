@@ -1,0 +1,17 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #9F96D9;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+}
+.button:pressed {
+    -fx-background-color: #E1D0F2;
+}
+
+.label {
+    -fx-font-weight: bold;
+}

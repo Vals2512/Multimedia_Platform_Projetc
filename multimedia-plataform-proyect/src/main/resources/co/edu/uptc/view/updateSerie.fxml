@@ -1,0 +1,17 @@
+<!-- UpdateSerie.fxml -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane fx:controller="co.edu.uptc.view.UpdateSerie"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" padding="10">
+    <Label text="Enter the new title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="newTitleTextField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    
+    <!-- Add more controls for other properties as needed -->
+    
+    <Button text="Update" onAction="#handleUpdate" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+</GridPane>

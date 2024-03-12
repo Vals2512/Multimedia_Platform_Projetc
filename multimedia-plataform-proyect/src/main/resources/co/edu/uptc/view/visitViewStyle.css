@@ -1,0 +1,62 @@
+.root {
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-background-color: #E1D0F2; /* Color de fondo */
+}
+
+.button {
+    -fx-background-color: #9F96D9; /* Color de fondo del botón */
+    -fx-border: none;
+    -fx-text-fill: #E1D0F2; /* Color del texto del botón */
+    -fx-text-decoration: none;
+    -fx-display: inline-block;
+    -fx-font-size: 14px; /* Tamaño de fuente aumentado para mejor legibilidad */
+    -fx-transition-duration: 0.4s; 
+    -fx-cursor: pointer;
+    -fx-border-radius: 8px; /* Borde redondeado aumentado para un aspecto más moderno */
+    -fx-padding: 10px 24px; /* Padding aumentado para un botón más grande */
+    -fx-margin: 20px; /* Margen aumentado para más espacio alrededor del botón */
+}
+
+.button:hover {
+    -fx-text-fill: #000000; /* Color del texto del botón cuando se pasa el ratón por encima */
+}
+.button:pressed {
+    -fx-background-color: #E1D0F2;
+}
+
+.label {
+    -fx-font-size: 18px; /* Tamaño de fuente aumentado para mejor legibilidad */
+    -fx-text-fill: #000000; /* Color del texto de la etiqueta */
+}
+
+.menu-bar {
+    -fx-background-color: #9F96D9; /* Color de fondo de la barra de menú */
+}
+
+.menu-bar .label {
+    -fx-text-fill: #E1D0F2; /* Color del texto de la barra de menú */
+    -fx-font-size: 16px; /* Tamaño de fuente aumentado para mejor legibilidad */
+}
+
+.menu-item .label {
+    -fx-text-fill: #9F96D9; /* Color del texto del elemento de menú */
+    -fx-font-size: 14px; /* Tamaño de fuente aumentado para mejor legibilidad */
+}
+
+.tab-pane {
+    -fx-background-color: #E1D0F2; /* Color de fondo del TabPane */
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #9F96D9; /* Color de fondo de la cabecera del TabPane */
+}
+
+.tab-pane .tab {
+    -fx-background-color: #9F96D9; /* Color de fondo de las pestañas no seleccionadas */
+    -fx-text-fill: #E1D0F2; /* Color del texto de las pestañas no seleccionadas */
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #E1D0F2; /* Color de fondo de la pestaña seleccionada */
+    -fx-text-fill: #9F96D9; /* Color del texto de la pestaña seleccionada */
+}

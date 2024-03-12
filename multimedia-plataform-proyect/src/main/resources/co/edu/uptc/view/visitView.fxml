@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox  xmlns="http://javafx.com/javafx" 
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="co.edu.uptc.view.VisitView"
+        prefHeight="600.0" prefWidth="800.0"
+        stylesheets="@visitViewStyle.css">
+        <Button fx:id="backToLogin" text= "Back to menu" onAction="#backToMenu"/>
+
+    <children>
+
+        <Separator />
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Availables Series" onSelectionChanged="#loadSeries">
+                    <content>
+                        <ListView fx:id="listView"></ListView>
+                    </content>
+                </Tab>
+                <Tab text="Availables Movies" onSelectionChanged="#loadMovies">
+                    <content>
+                        <ListView fx:id="moviesListView"></ListView>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

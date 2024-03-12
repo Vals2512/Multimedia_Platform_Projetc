@@ -43,8 +43,8 @@ public class MainView{
     }
 
     @FXML
-    public void testButton(){
-        
+    public void testButton() throws IOException{
+        Main.setRoot("visitView");
     }
 
     

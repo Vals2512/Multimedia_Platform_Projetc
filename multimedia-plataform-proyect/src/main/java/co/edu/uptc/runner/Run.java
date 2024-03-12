@@ -52,11 +52,11 @@ public class Run {
 
         List<Category> categoriesList = List.of(drama, action, fiction, fantasy, thriller, romance, crime);
 
-        // Películas
-        Movies movie1 = new Movies("Titanic", Arrays.asList(drama, romance), "Película de barco que se hunde", 1997,
-                188);
-        Movies movie2 = new Movies("El padrino", Arrays.asList(action, crime),
-                "Película de policía corrupto y actividades ilegales", 1972, 175);
+        // // Películas
+        // Movies movie1 = new Movies("Titanic", Arrays.asList(drama, romance), "Película de barco que se hunde", 1997,
+        //         188);
+        // Movies movie2 = new Movies("El padrino", Arrays.asList(action, crime),
+        //         "Película de policía corrupto y actividades ilegales", 1972, 175);
 
         // Series
         // Series serie1 = new Series("Stranger Things", Arrays.asList(fiction,
@@ -66,8 +66,8 @@ public class Run {
         // "Serie de mafiosos de época", 2013,
         // 7, 188);
 
-        mc.addMovie(movie1);
-        mc.addMovie(movie2);
+        // mc.addMovie(movie1);
+        // mc.addMovie(movie2);
         // src.addSerie(serie1);
         // src.addSerie(serie2);
 
@@ -199,15 +199,14 @@ public class Run {
                                             }
                                         } while (duration <= 0);
 
-                                        String fileName = "movies.json";
-                                        if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
-                                                categoriesList)) {
-                                            System.out.println("Movie added successfully");
-                                        } else {
-                                            System.out.println("Error adding movie");
-                                        }
+                                        // if (mc.addMovie(title, selectedCategories1, details, releaseYear, duration,
+                                        //         categoriesList)) {
+                                        //     System.out.println("Movie added successfully");
+                                        // } else {
+                                        //     System.out.println("Error adding movie");
+                                        // }
 
-                                        break;
+                                    break;
 
                                     case 4:
                                         System.out.println("Enter the title of the movie you want to update: ");
@@ -273,7 +272,7 @@ public class Run {
                                                     newDetails.isEmpty() ? existingMovie.getDetails() : newDetails,
                                                     newReleaseYear > 0 ? newReleaseYear
                                                             : existingMovie.getReleaseYear(),
-                                                    newDuration > 0 ? newDuration : existingMovie.getDuration());
+                                                newDuration > 0 ? newDuration : existingMovie.getDuration(), "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png");
 
                                             if (mc.updateMovie(movieToUpdateTitle, updatedMovie) != null) {
                                                 System.out.println("Movie updated successfully");
@@ -283,7 +282,7 @@ public class Run {
                                         } else {
                                             System.out.println("Movie not found");
                                         }
-                                        break;
+                                    break;
 
                                     case 5:
                                         System.out.println("Enter the title of the movie you want to delete: ");
@@ -295,10 +294,11 @@ public class Run {
                                             System.out.println("Error deleting movie");
                                         }
                                         break;
+                                        
                                     case 6:
                                         System.out.println("Input the series tittle");
                                         String tittle = sc.nextLine();
-                                        Series sr = new Series(tittle);
+                                        Series sr = new Series(tittle, "src\\\\main\\\\java\\\\co\\\\edu\\\\uptc\\\\images\\\\718672.png");
 
                                         System.out.print("How many seasons do you want to add? ");
                                         int numSeasons = sc.nextInt();
@@ -333,7 +333,7 @@ public class Run {
                                         fm.saveSerie(sr);
                                         System.out.println("Serie added succesfully");
 
-                                        break;
+                                    break;
 
 
                                     case 7:

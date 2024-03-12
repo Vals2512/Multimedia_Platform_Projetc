@@ -54,6 +54,8 @@ public class FileManagement {
     public static final String fileExtension1 = ".pdf";
     String fileNamee1 = filePath + filename1 + fileExtension;
     String fileNamee3 = filePath + filename3 + fileExtension;
+    private List<Series> seriesList;
+
 
     Gson gson = new Gson();
 
@@ -87,8 +89,26 @@ public class FileManagement {
 
     }
 
+    
     public List<Series> getSeries() {
         return readJsonFile(fileNamee1, SERIES_TYPE);
+    }
+
+    public void deleteSeries(String seriesName) {
+        List<Series> series = readJsonFile(fileNamee1, SERIES_TYPE);
+        Series seriesToDelete = null;
+        for (Series s : series) {
+            if (s.getName().equals(seriesName)) {
+                seriesToDelete = s;
+                break;
+            }
+        }
+        if (seriesToDelete != null) {
+            series.remove(seriesToDelete);
+            writeJsonFile(fileNamee1, series);
+        } else {
+            throw new IllegalArgumentException("La serie " + seriesName + " no existe");
+        }
     }
 
     public Payment makePayment(Plan plan, String metodoPago) {

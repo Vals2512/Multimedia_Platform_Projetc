@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.*?>
+
+<VBox fx:controller="co.edu.uptc.view.CreateSerie" spacing="10"  
+                    prefHeight="200.0" prefWidth="300.0"
+                    xmlns:fx="http://javafx.com/fxml"
+                stylesheets="@createSerieStyle.css">
+    <children>
+        <Label text="Input the series title:" />
+        <TextField fx:id="titleTextField" promptText="Enter series title" />
+        <Label text="How many seasons do you want to add?" />
+        <Spinner fx:id="seasonsSpinner" min="1" max="2147483647" initialValue="1" />
+        <Button fx:id="addButton" text="Add Series" onAction="#handleAddSeries" />
+    </children>
+</VBox>
