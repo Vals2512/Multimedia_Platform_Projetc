@@ -7,20 +7,21 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER_LEFT" prefHeight="637.0" prefWidth="812.0" style="-fx-background-color: #192959; -fx-padding: 30;" stylesheets="@mainViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.MainView">
+<VBox alignment="CENTER_LEFT" prefHeight="637.0" prefWidth="812.0" style="-fx-background-color: #192959; -fx-padding: 30; -fx-min-height: 600; -fx-max-height: 600; -fx-max-width: 800; -fx-min-width: 800;" stylesheets="@mainViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.MainView">
     <children>
       <SplitPane dividerPositions="0.5" prefHeight="512.0" prefWidth="740.0" style="-fx-border-color: #ffffff;">
         <items>
-          <AnchorPane maxWidth="311.0" minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="311.0" style="-fx-max-width: 300; -fx-min-width: 310; -fx-background-color: #0D0D0D; -fx-border-color: #ffffff;">
+          <AnchorPane maxWidth="311.0" minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="311.0" style="-fx-max-width: 310; -fx-min-width: 310; -fx-background-color: #0D0D0D; -fx-border-color: #ffffff;">
                <children>
              <Label fx:id="titlle" layoutX="59.0" layoutY="214.0" text="Welcome to the " textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -59,7 +60,10 @@
                         <Cursor fx:constant="NONE" />
                      </cursor>
                      <effect>
-                        <InnerShadow />
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.35686275362968445" />
+                           </color></InnerShadow>
                      </effect>
                   </TextField>
               <Label layoutX="132.0" layoutY="134.0" text="Enter your password">
@@ -72,7 +76,10 @@
                         <Cursor fx:constant="NONE" />
                      </cursor>
                      <effect>
-                        <InnerShadow />
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.35686275362968445" />
+                           </color></InnerShadow>
                      </effect>
                   </PasswordField>
                      <Button fx:id="buttonSignIn" layoutX="90.0" layoutY="368.0" onAction="#signInButton" style="-fx-max-width: 250; -fx-min-width: 250; -fx-background-color: #2651A6; -fx-background-radius: 100;" text="Sign in" textFill="#fff9f9">
@@ -80,7 +87,11 @@
                         <Font name="Eras Demi ITC" size="12.0" />
                      </font>
                      <effect>
-                        <Glow />
+                        <DropShadow>
+                           <color>
+                              <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                           </color>
+                        </DropShadow>
                      </effect>
                   </Button>
                      <Button fx:id="buttonLogin" layoutX="90.0" layoutY="335.0" onAction="#loginButton" style="-fx-max-width: 250; -fx-background-color: #2651A6; -fx-min-width: 250; -fx-background-radius: 100; -fx-border-radius: 100;" text="Login" textFill="#fff9f9">
@@ -88,7 +99,11 @@
                         <Font name="Eras Demi ITC" size="12.0" />
                      </font>
                      <effect>
-                        <Glow />
+                        <DropShadow>
+                           <color>
+                              <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                           </color>
+                        </DropShadow>
                      </effect>
                   </Button>
                      <Button fx:id="buttonVisitor" layoutX="91.0" layoutY="403.0" onAction="#testButton" style="-fx-max-width: 250; -fx-min-width: 250; -fx-background-color: #2651A6; -fx-background-radius: 100;" text="Enter as a visitor" textFill="#fff9f9">
@@ -96,7 +111,11 @@
                         <Font name="Eras Demi ITC" size="12.0" />
                      </font>
                      <effect>
-                        <Glow />
+                        <DropShadow>
+                           <color>
+                              <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                           </color>
+                        </DropShadow>
                      </effect>
                   </Button>
                   <ImageView fitHeight="141.0" fitWidth="250.0" layoutX="91.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">

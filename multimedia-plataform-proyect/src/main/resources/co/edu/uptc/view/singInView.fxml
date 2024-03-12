@@ -1,36 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" stylesheets="@signInViewStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.SingInView">
-    <Button fx:id="backButton" onAction="#backToLogin" text="back to login" />
-    <HBox alignment="TOP_CENTER" styleClass="hbox-sub">
-        <Label text="input your email: " />
-        <TextField fx:id="emailField" prefHeight="20" prefWidth="250" />
-        <padding>
-            <Insets top="10.0" />
-        </padding>
-    </HBox>
-    <HBox alignment="CENTER" prefWidth="Infinity" styleClass="hbox-sub">
-        <VBox prefWidth="300"> <!-- Ancho fijo para contener etiqueta y campo de contraseña -->
-            <Label text="input Password: " />
-            <PasswordField fx:id="passwordF1" prefHeight="20" prefWidth="250" onKeyTyped="#passwordFieldKeyTyped1" />
-            <Label fx:id="showPassword1"/>
+<VBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" style="-fx-max-height: 600; -fx-background-color: #192959; -fx-min-height: 600; -fx-max-width: 800; -fx-min-width: 800;" stylesheets="@signInViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.SingInView">
+   <SplitPane dividerPositions="0.29797979797979796" prefHeight="574.0" prefWidth="739.0">
+     <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-border-color: #ffffff; -fx-max-width: 310; -fx-min-width: 310; -fx-background-color: #ffffff;">
+            <children>
+               <Label layoutX="75.0" layoutY="54.0" prefHeight="78.0" prefWidth="160.0" text="Sign In" textAlignment="CENTER">
+                  <font>
+                     <Font name="Consolas Bold Italic" size="39.0" />
+                  </font>
+               </Label>
+               <ImageView fitHeight="256.0" fitWidth="429.0" layoutX="-2.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../Images/signin.jpg" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="435.0" style="-fx-max-height: 500; -fx-min-height: 500; -fx-border-color: #ffffff; -fx-background-color: #2651A6;">
+            <children>
+             <AnchorPane layoutX="29.0" layoutY="13.0" minHeight="0.0" minWidth="0.0" prefHeight="40.0" prefWidth="160.0" /> <!-- Ancho fijo para contener etiqueta y campo de contraseña -->
+                  <Label layoutX="142.0" layoutY="160.0" text="Input Password: " textFill="WHITE">
+                  <font>
+                     <Font name="Eras Bold ITC" size="16.0" />
+                  </font>
+               </Label>
+                  <PasswordField fx:id="passwordF1" layoutX="59.0" layoutY="197.0" onKeyTyped="#passwordFieldKeyTyped1" prefHeight="20" prefWidth="250" style="-fx-max-width: 300; -fx-min-width: 300;">
+                  <effect>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.35686275362968445" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </PasswordField>
+                 <ToggleButton fx:id="password1" layoutX="184.0" layoutY="238.0" onAction="#seeFirstPassword" style="-fx-background-radius: 100; -fx-max-width: 50; -fx-min-width: 50; -fx-background-color: #ffffff;" styleClass="tButton" text="Show">
+                  <font>
+                     <Font name="Eras Demi ITC" size="12.0" />
+                  </font>
+                  <effect>
+                     <DropShadow>
+                        <color>
+                           <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </ToggleButton>
+                  <Label layoutX="132.0" layoutY="311.0" text="Confirm Password: " textFill="WHITE">
+                  <font>
+                     <Font name="Eras Bold ITC" size="16.0" />
+                  </font>
+               </Label>
+                  <PasswordField fx:id="passwordF2" layoutX="61.0" layoutY="342.0" onKeyTyped="#passwordFieldKeyTyped2" prefHeight="20" prefWidth="250" style="-fx-max-width: 300; -fx-min-width: 300;">
+                  <effect>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.35686275362968445" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </PasswordField>
+                 <ToggleButton fx:id="password2" layoutX="184.0" layoutY="390.0" onAction="#seeSecondPassword" style="-fx-background-radius: 100; -fx-min-width: 50; -fx-max-width: 50; -fx-background-color: #ffffff;" styleClass="tButton" text="Show">
+                  <font>
+                     <Font name="Eras Demi ITC" size="12.0" />
+                  </font>
+                  <effect>
+                     <DropShadow>
+                        <color>
+                           <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </ToggleButton>
+            <!--    <Button fx:id="sendContent" onAction="#send" text="Send" />-->
+                <Button fx:id="nextButton" layoutX="335.0" layoutY="440.0" onAction="#send" style="-fx-background-radius: 100; -fx-max-width: 50; -fx-min-width: 50; -fx-background-color: #ffffff;" text="Next">
+                  <font>
+                     <Font name="Eras Demi ITC" size="12.0" />
+                  </font>
+                  <effect>
+                     <DropShadow>
+                        <color>
+                           <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+                <Button fx:id="backButton" layoutX="36.0" layoutY="440.0" onAction="#backToLogin" style="-fx-background-radius: 100; -fx-max-width: 50; -fx-min-width: 50; -fx-background-color: #ffffff;" text="Back">
+                  <font>
+                     <Font name="Eras Demi ITC" size="12.0" />
+                  </font>
+                  <effect>
+                     <DropShadow>
+                        <color>
+                           <Color red="0.13725490868091583" green="0.6392157077789307" blue="0.7803921699523926" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+               </Button>
+                 <TextField fx:id="emailField" layoutX="61.0" layoutY="92.0" prefHeight="20" prefWidth="250" style="-fx-max-width: 300; -fx-min-width: 300;">
+                  <effect>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.35686275362968445" />
+                        </color>
+                     </InnerShadow>
+                  </effect>
+               </TextField>
+                 <Label layoutX="140.0" layoutY="53.0" text="Input your email: " textFill="WHITE">
+                  <font>
+                     <Font name="Eras Bold ITC" size="16.0" />
+                  </font>
+               </Label>
+            </children>
+            <effect>
+               <InnerShadow />
+            </effect>
+         </AnchorPane>
+     </items>
+   </SplitPane>
+    <HBox alignment="CENTER" disable="true" prefHeight="82.0" prefWidth="739.0" styleClass="hbox-sub">
+        <VBox prefWidth="300.0">
+            <Label fx:id="showPassword1" />
         </VBox>
-        <ToggleButton fx:id="password1" onAction="#seeFirstPassword" text="Show" styleClass="tButton"/>
+       <HBox alignment="CENTER" prefHeight="6.0" prefWidth="74.0" styleClass="hbox-sub">
+           <VBox prefWidth="300">
+               <Label fx:id="showPassword2" />
+           </VBox>
+       </HBox>
     </HBox>
-    <HBox alignment="CENTER" styleClass="hbox-sub">
-        <VBox prefWidth="300">
-            <Label text="confirm Password: " />
-            <PasswordField fx:id="passwordF2" prefHeight="20" prefWidth="250" onKeyTyped="#passwordFieldKeyTyped2" />
-            <Label fx:id="showPassword2" />
-        </VBox>
-        <ToggleButton fx:id="password2" text="Show" styleClass="tButton" onAction="#seeSecondPassword"/>
-    </HBox>
+   <VBox prefHeight="58.0" prefWidth="739.0" />
 
-    <Label fx:id="errorLabel" wrapText="true"/>
-<!--    <Button fx:id="sendContent" onAction="#send" text="Send" />-->
-    <Button text="next" fx:id="nextButton"  onAction="#send"/>
+    <Label fx:id="errorLabel" wrapText="true" />
 </VBox>
