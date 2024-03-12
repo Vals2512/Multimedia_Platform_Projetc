@@ -204,6 +204,20 @@ public class VisitView {
                             label.setText(item.getTittle());
                             setGraphic(vbox);
                         }
+                        // Agrega el evento de click
+                        setOnMouseClicked(event -> {
+                            if (event.getClickCount() == 2) { // Doble click
+                            // Muestra la información completa de la serie
+      
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            alert.setTitle("Movie details");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Tittle: " + item.getTittle() + "\n Categories: " + item.getCategories() + "\n" + //
+                                                                " Details: " + item.getDetails() + "\n Realase Year: " + item.getReleaseYear() + "\n" + //
+                                                                " Duration: " + item.getDuration() + " minutes");
+                            alert.showAndWait();
+                            }
+                        });
                     }
                 }
             });
