@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.shape.Line?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uptc.view.AdminView"
-            prefHeight="300.0" prefWidth="300.0"
-            stylesheets="@adminViewStyle.css">
-    <top>
-        <Button text= "Back to menu" fx:id="backToLogin" onAction="#backToMenu" minWidth="100" minHeight="50"/>
-    </top>
-    <left>
-        <GridPane hgap="10" vgap="10">
-            <padding>
-                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
-            </padding>
-            <Button text="Crear película" fx:id="createMovieButton" onAction="#createMovie" GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="100" minHeight="50"/>
-            <Button text="Actualizar película" fx:id="updateMovieButton" onAction="#updateMovie" GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" minHeight="50"/>
-            <Button text="Eliminar película" fx:id="deleteMovieButton" onAction="#deleteMovie" GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="100" minHeight="50"/>
-            <Button text="Create serie" fx:id="createSerieButton" onAction="#createSerie" GridPane.columnIndex="1" GridPane.rowIndex="0" minWidth="100" minHeight="50"/>
-            <Button text="Update serie" fx:id="updateSerieButton" onAction="#updateSerie" GridPane.columnIndex="1" GridPane.rowIndex="2" minWidth="100" minHeight="50"/>
-            <Button text="Delete serie" fx:id="deleteSerieButton" onAction="#deleteSerie" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="100" minHeight="50"/>
-
-        </GridPane>
-    </left>
+<BorderPane prefHeight="300.0" prefWidth="300.0" style="-fx-max-height: 600; -fx-min-height: 600; -fx-min-width: 800; -fx-max-width: 800; -fx-background-color: #36129E;" stylesheets="@adminViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.AdminView">
             <TextField fx:id="nameField" promptText="Series name" />
-            <Button fx:id="agregarSerieButton" text="Agregar serie" minWidth="100" minHeight="50"/>
+            <Button fx:id="agregarSerieButton" minHeight="50" minWidth="100" text="Agregar serie" />
     <center>
 
     </center>
+   <center>
+      <SplitPane dividerPositions="0.344818376068376" prefHeight="160.0" prefWidth="200.0" style="-fx-max-height: 550; -fx-min-height: 550; -fx-max-width: 750; -fx-min-width: 750;" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="549.0" prefWidth="243.0" style="-fx-max-width: 750; -fx-background-color: #72629E;">
+               <children>
+                  <Label layoutX="52.0" layoutY="77.0" text="Welcome" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold Italic" size="39.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="61.0" layoutY="412.0" prefHeight="46.0" prefWidth="132.0" text=" Admin" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold Italic" size="39.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="215.0" fitWidth="239.0" layoutX="20.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/admin.png" />
+                     </image>
+                  </ImageView>
+                    <Button fx:id="backToLogin" layoutX="75.0" layoutY="472.0" minHeight="50" minWidth="100" onAction="#backToMenu" text="Back to menu">
+                     <font>
+                        <Font name="Eras Bold ITC" size="41.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                    <GridPane hgap="10" layoutX="139.0" layoutY="114.0" vgap="10">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <Button fx:id="createMovieButton" minHeight="50" minWidth="100" onAction="#createMovie" prefHeight="50.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Create Movie" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Button fx:id="updateMovieButton" minHeight="50" minWidth="100" onAction="#updateMovie" prefHeight="62.0" prefWidth="131.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Update movie" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button fx:id="deleteMovieButton" minHeight="50" minWidth="100" onAction="#deleteMovie" prefHeight="50.0" prefWidth="130.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Delete movie" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Button fx:id="createSerieButton" minHeight="50" minWidth="100" onAction="#createSerie" prefHeight="50.0" prefWidth="110.0" style="-fx-max-width: 150; -fx-min-width: 150;" text="Create serie" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <Button fx:id="updateSerieButton" minHeight="50" minWidth="100" onAction="#updateSerie" prefHeight="50.0" prefWidth="110.0" text="Update serie" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="deleteSerieButton" minHeight="49.0" minWidth="100" onAction="#deleteSerie" prefHeight="49.0" prefWidth="126.0" text="Delete serie" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints maxHeight="44.80000305175781" minHeight="0.0" prefHeight="0.0" />
+                        <RowConstraints maxHeight="50.39999999999999" minHeight="5.599996948242193" prefHeight="50.39999999999999" />
+                        <RowConstraints />
+                     </rowConstraints>
+            
+                    </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
 </BorderPane>
