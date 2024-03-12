@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 
-<VBox fx:controller="co.edu.uptc.view.CreateSerie" spacing="10"  
-                    prefHeight="200.0" prefWidth="300.0"
-                    xmlns:fx="http://javafx.com/fxml"
-                stylesheets="@createSerieStyle.css">
+<VBox prefHeight="200.0" prefWidth="300.0" spacing="10" style="-fx-padding: 30; -fx-min-height: 600; -fx-max-height: 600; -fx-max-width: 800; -fx-min-width: 800; -fx-background-color: #36129E;" stylesheets="@createSerieStyle.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="co.edu.uptc.view.CreateSerie">
     <children>
-        <Label text="Input the series title:" />
-        <TextField fx:id="titleTextField" promptText="Enter series title" />
-        <Label text="How many seasons do you want to add?" />
-        <Spinner fx:id="seasonsSpinner" min="1" max="2147483647" initialValue="1" />
-        <Button fx:id="addButton" text="Add Series" onAction="#handleAddSeries" />
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="533.0" prefWidth="739.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="92.0" layoutY="79.0" text="Add" />
+                  <Label layoutX="85.0" layoutY="117.0" text="Series" />
+                  <Label layoutX="70.0" layoutY="153.0" text="Information" />
+                  <ImageView fitHeight="221.0" fitWidth="218.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/si.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #72629E;">
+               <children>
+                    <Button fx:id="addButton" layoutX="212.0" layoutY="465.0" onAction="#handleAddSeries" style="-fx-background-color: #2651A6; -fx-border-color: #ffffff; -fx-background-radius: 20; -fx-border-radius: 20;" text="Add Series" wrapText="true">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.8771929740905762" green="0.9204678535461426" blue="0.9473684430122375" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                    <Spinner fx:id="seasonsSpinner" initialValue="1" layoutX="157.0" layoutY="294.0" max="2147483647" min="1" style="-fx-max-width: 200; -fx-min-width: 200;" />
+                    <Label layoutX="121.0" layoutY="267.0" text="How many seasons do you want to add?" textFill="WHITE" wrapText="true" />
+                    <TextField fx:id="titleTextField" layoutX="158.0" layoutY="69.0" promptText="Enter series title" style="-fx-max-width: 200; -fx-min-width: 200;" />
+                    <Label layoutX="188.0" layoutY="37.0" text="Input the series title:" textFill="WHITE" wrapText="true" />
+                  <ImageView fitHeight="108.0" fitWidth="161.0" layoutX="220.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/ser.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="108.0" fitWidth="161.0" layoutX="176.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="198.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Images/serie.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color red="1.0" green="0.8333333134651184" blue="0.8333333134651184" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </AnchorPane>
+        </items>
+      </SplitPane>
     </children>
 </VBox>
