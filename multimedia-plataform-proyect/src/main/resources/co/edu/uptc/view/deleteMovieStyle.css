@@ -1,0 +1,49 @@
+/* Estilo para la tabla */
+#moviesTable {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10px;
+}
+
+/* Estilo para las filas de la tabla */
+#moviesTable .table-row-cell {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+}
+#moviesTable .table-row-cell:selected {
+    -fx-background-color: #9F96D9;
+    -fx-text-fill: #9F96D9;
+}
+
+/* Estilo para las columnas de la tabla */
+#moviesTable .table-column {
+    -fx-background-color: #d0d0d0;
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+}
+
+
+/* Estilo para las celdas de la tabla */
+#moviesTable .table-cell {
+    -fx-border-color: #c0c0c0;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+/* Estilo para el botón de eliminar */
+#deleteButton {
+    -fx-min-height: 50px;
+    -fx-min-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-pref-width: 131px;
+    -fx-max-width: 150px;
+    -fx-background-radius: 20px;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-font-size: 12px;
+    -fx-effect: innershadow(three-pass-box, rgba(152, 42, 191, 1), 10, 0, 0, 0);
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #9F96D9;
+}
