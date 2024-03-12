@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox fx:id="mainBox" prefHeight="400.0" prefWidth="600.0" style="-fx-max-height: 600; -fx-background-color: #192959; -fx-min-height: 600; -fx-max-width: 800; -fx-min-width: 800;" stylesheets="@signInViewStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uptc.view.SingInView">
-   <SplitPane dividerPositions="0.29797979797979796" prefHeight="574.0" prefWidth="739.0">
+   <SplitPane dividerPositions="0.5" prefHeight="574.0" prefWidth="739.0">
      <items>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-border-color: #ffffff; -fx-max-width: 310; -fx-min-width: 310; -fx-background-color: #ffffff;">
             <children>
@@ -50,7 +50,7 @@
                      </InnerShadow>
                   </effect>
                </PasswordField>
-                 <ToggleButton fx:id="password1" layoutX="184.0" layoutY="238.0" onAction="#seeFirstPassword" style="-fx-background-radius: 100; -fx-max-width: 50; -fx-min-width: 50; -fx-background-color: #ffffff;" styleClass="tButton" text="Show">
+                 <ToggleButton fx:id="password1" layoutX="184.0" layoutY="250.0" onAction="#seeFirstPassword" style="-fx-background-radius: 100; -fx-max-width: 50; -fx-min-width: 50; -fx-background-color: #ffffff;" styleClass="tButton" text="Show">
                   <font>
                      <Font name="Eras Demi ITC" size="12.0" />
                   </font>
@@ -127,6 +127,11 @@
                      <Font name="Eras Bold ITC" size="16.0" />
                   </font>
                </Label>
+                 <VBox layoutX="59.0" layoutY="224.0" prefHeight="18.0" prefWidth="300.0">
+                     <Label fx:id="showPassword1" textFill="WHITE" />
+                 </VBox>
+                 <VBox layoutX="137.0" layoutY="438.0" prefWidth="300" />
+                  <Label fx:id="showPassword2" layoutX="59.0" layoutY="368.0" prefHeight="18.0" prefWidth="300.0" textFill="WHITE" />
             </children>
             <effect>
                <InnerShadow />
@@ -134,17 +139,8 @@
          </AnchorPane>
      </items>
    </SplitPane>
-    <HBox alignment="CENTER" disable="true" prefHeight="82.0" prefWidth="739.0" styleClass="hbox-sub">
-        <VBox prefWidth="300.0">
-            <Label fx:id="showPassword1" />
-        </VBox>
-       <HBox alignment="CENTER" prefHeight="6.0" prefWidth="74.0" styleClass="hbox-sub">
-           <VBox prefWidth="300">
-               <Label fx:id="showPassword2" />
-           </VBox>
-       </HBox>
-    </HBox>
-   <VBox prefHeight="58.0" prefWidth="739.0" />
+   <VBox prefHeight="0.0" prefWidth="706.0" />
 
-    <Label fx:id="errorLabel" wrapText="true" />
+                <Label fx:id="errorLabel" prefHeight="18.0" prefWidth="741.0" wrapText="true" />
+    <HBox alignment="CENTER" prefHeight="61.0" prefWidth="342.0" styleClass="hbox-sub" />
 </VBox>
