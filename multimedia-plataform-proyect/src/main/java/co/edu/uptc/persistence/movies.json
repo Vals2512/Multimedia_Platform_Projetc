@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "duration": 120,
+    "multimedia": {
+      "tittle": "Interestelar",
+      "categories": [
+        {
+          "name": "Drama",
+          "description": "Películas o series de género dramático"
+        }
+      ],
+      "details": "adas",
+      "releaseYear": 2012
+    },
+    "imagepath": "src\\main\\java\\co\\edu\\uptc\\images\\xd.jpg",
+    "tittle": "Interestelar",
+    "categories": [
+      {
+        "name": "Drama",
+        "description": "Películas o series de género dramático"
+      }
+    ],
+    "details": "adas",
+    "releaseYear": 2012
+  }
+]

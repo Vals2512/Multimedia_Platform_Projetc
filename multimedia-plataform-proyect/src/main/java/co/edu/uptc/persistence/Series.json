@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "name": "Breaking Bad",
+    "seasons": [
+      {
+        "name": "Season 1",
+        "chapters": [
+          {
+            "name": "Capitulo primero",
+            "duration": 45
+          }
+        ]
+      }
+    ],
+    "imagePath": "src\\main\\java\\co\\edu\\uptc\\images\\xd.jpg",
+    "releaseYear": 0
+  }
+]

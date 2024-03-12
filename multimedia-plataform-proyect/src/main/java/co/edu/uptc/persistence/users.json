@@ -74,7 +74,7 @@
       "name": "si",
       "content": [
         {
-          "duration": 50,
+          "duration": 50.0,
           "multimedia": {
             "tittle": "Matilda",
             "categories": [
@@ -84,7 +84,7 @@
               }
             ],
             "details": "Ni�a que tiene poderes",
-            "releaseYear": 2001
+            "releaseYear": 2001.0
           },
           "tittle": "Matilda",
           "categories": [
@@ -94,7 +94,7 @@
             }
           ],
           "details": "Ni�a que tiene poderes",
-          "releaseYear": 2001
+          "releaseYear": 2001.0
         }
       ]
     },
@@ -106,6 +106,23 @@
     "payment": {
       "amount": 11.99,
       "paymentMethod": "PayPal"
+    }
+  },
+  {
+    "email": "disney23232222@gmail.com",
+    "password": "Gomino23@",
+    "playlist": {
+      "name": "",
+      "content": []
+    },
+    "plan": {
+      "name": "Basic",
+      "price": 7.99,
+      "duration": 30
+    },
+    "payment": {
+      "amount": 7.99,
+      "paymentMethod": "credit card"
     }
   }
 ]
