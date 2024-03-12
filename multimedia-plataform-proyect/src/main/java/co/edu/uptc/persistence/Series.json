@@ -12,7 +12,127 @@
         ]
       }
     ],
-    "imagePath": "src\\main\\java\\co\\edu\\uptc\\images\\xd.jpg",
+    "imagePath": "src\\main\\resources\\Images\\Breaking Bad.jpg",
+    "releaseYear": 0
+  },
+  {
+    "name": "Gambito de Dama",
+    "seasons": [
+      {
+        "name": "Temporada 1",
+        "chapters": [
+          {
+            "name": "Aperturas",
+            "duration": 48
+          },
+          {
+            "name": "Intercambios",
+            "duration": 48
+          },
+          {
+            "name": "Peones doblados",
+            "duration": 48
+          },
+          {
+            "name": "Medio juego",
+            "duration": 48
+          },
+          {
+            "name": "Ataque doble",
+            "duration": 47
+          },
+          {
+            "name": "Aplazamientos",
+            "duration": 47
+          },
+          {
+            "name": "Final",
+            "duration": 48
+          }
+        ]
+      }
+    ],
+    "imagePath": "D:\\INFORMACION\\Desktop\\Project Multimedia Platform\\Multimedia_Platform_Projetc\\multimedia-plataform-proyect\\src\\main\\resources\\Images\\Gambito de dama.jpg",
+    "releaseYear": 0
+  },
+  {
+    "name": "Guardaespaldas",
+    "seasons": [
+      {
+        "name": "Temporada 1",
+        "chapters": [
+          {
+            "name": "Capitulo 1",
+            "duration": 58
+          },
+          {
+            "name": "Capitulo 2",
+            "duration": 58
+          },
+          {
+            "name": "Capitulo 3",
+            "duration": 58
+          },
+          {
+            "name": "Capitulo 4",
+            "duration": 58
+          },
+          {
+            "name": "Capitulo 5",
+            "duration": 58
+          },
+          {
+            "name": "Capitulo 6",
+            "duration": 58
+          }
+        ]
+      }
+    ],
+    "imagePath": "D:\\INFORMACION\\Desktop\\Project Multimedia Platform\\Multimedia_Platform_Projetc\\multimedia-plataform-proyect\\src\\main\\resources\\Images\\Guardaespaldas.jpg",
+    "releaseYear": 0
+  },
+  {
+    "name": "1899",
+    "seasons": [
+      {
+        "name": "Temporada 1",
+        "chapters": [
+          {
+            "name": "El barco",
+            "duration": 53
+          },
+          {
+            "name": "El niño",
+            "duration": 53
+          },
+          {
+            "name": "La niebla",
+            "duration": 53
+          },
+          {
+            "name": "La pelea",
+            "duration": 53
+          },
+          {
+            "name": "El llamado",
+            "duration": 53
+          },
+          {
+            "name": "La pirámide",
+            "duration": 53
+          },
+          {
+            "name": "La tormenta",
+            "duration": 53
+          },
+          {
+            "name": "La llave",
+            "duration": 53
+          }
+        ]
+      }
+    ],
+    "imagePath": "D:\\INFORMACION\\Desktop\\Project Multimedia Platform\\Multimedia_Platform_Projetc\\multimedia-plataform-proyect\\src\\main\\resources\\Images\\serie.jpg",
     "releaseYear": 0
   }
 ]

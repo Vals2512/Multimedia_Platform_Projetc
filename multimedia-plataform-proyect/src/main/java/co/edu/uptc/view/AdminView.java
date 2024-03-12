@@ -47,7 +47,14 @@ public class AdminView {
 
     @FXML
     private void updateMovie() throws IOException{
-        //Arreglar
+               // Carga el archivo FXML para el formulario
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("updateMovie.fxml"));        
+               // Crea una nueva escena con el formulario
+               Scene scene = new Scene(loader.load());
+               // Crea una nueva ventana (Stage) para mostrar el formulario
+               Stage stage = new Stage();
+               stage.setScene(scene);
+               stage.show(); 
     }
 
     @FXML

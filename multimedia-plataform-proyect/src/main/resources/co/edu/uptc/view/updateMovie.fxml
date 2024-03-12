@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uptc.view.UpdateMovie"
+            prefHeight="300.0" prefWidth="300.0"
+            stylesheets="@UpdateMovieStyle.css">
+    <TableView fx:id="moviesTable">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Title" />
+            <!-- Agrega más columnas según sea necesario -->
+        </columns>
+    </TableView>
+    <Button fx:id="updateButton" text="Update Movie" onAction="#updateMovie" />
+    
+</VBox>

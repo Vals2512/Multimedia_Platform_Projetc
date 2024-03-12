@@ -12,15 +12,39 @@
       "details": "adas",
       "releaseYear": 2012
     },
-    "imagepath": "src\\main\\java\\co\\edu\\uptc\\images\\xd.jpg",
-    "tittle": "Interestelar",
+    "imagepath": "src\\main\\resources\\Images\\interestelar.jpg",
+    "tittle": "Interestelarrr",
     "categories": [
       {
-        "name": "Drama",
-        "description": "Películas o series de género dramático"
+        "name": "Thriller",
+        "description": "Películas o series de suspenso"
       }
     ],
-    "details": "adas",
-    "releaseYear": 2012
+    "details": "sssss",
+    "releaseYear": 2013
+  },
+  {
+    "duration": 122,
+    "multimedia": {
+      "tittle": "Sonic 2",
+      "categories": [
+        {
+          "name": "Action",
+          "description": "Películas o series de acción"
+        }
+      ],
+      "details": "Sonic y su compañero Tails emprenden un viaje alrededor del mundo en busca de una esmeralda que tiene del poder de destruir civilizaciones.",
+      "releaseYear": 2022
+    },
+    "imagepath": "D:\\INFORMACION\\Desktop\\Project Multimedia Platform\\Multimedia_Platform_Projetc\\multimedia-plataform-proyect\\src\\main\\resources\\Images\\image.jpg",
+    "tittle": "Sonic 2",
+    "categories": [
+      {
+        "name": "Action",
+        "description": "Películas o series de acción"
+      }
+    ],
+    "details": "Sonic y su compañero Tails emprenden un viaje alrededor del mundo en busca de una esmeralda que tiene del poder de destruir civilizaciones.",
+    "releaseYear": 2022
   }
 ]
